@@ -25,12 +25,11 @@ _*SG = STRETCH GOALS*_
 ## ALL USERS CAN ACCESS/PERFORM
 
 #### (VIEW SINGLE EXAM): `{browser_url}/get_exams/{patient_id}/{exam_id}` - upon user clicking exam id `{exam_id}` [ GET /exam_id, list_single_exam.js]
-or (based on video) `{browser_url}/get_exam/{exam_id}`
-- I noticed there were exams with the same exam id under different patient ids so it has to be filter by patient -> filter by exam id -> get desired exam
+or [MORE LIKELY] (based on video @ 4:43) click on exam_id next to patient_id -> `{browser_url}/get_exam/{_id}` -> single exam
+- I noticed there were exams with the same exam id under different patient ids so it has to be filter by patient -> filter by exam id -> get desired exam or that exam_id in the chart really contains the href associated to _id being a patient's exam results
     * Example @1:34 -> 1st, 3rd, 5th, 7th rows have the same exact id
-    * one possible fix is to have the exam id randomized or use MongoDB's automated `_id`
+    * one possible fix is to have a randomized exam_results_id i.e MongoDB's automated `_id`
         - this would allow for an ease of querying single exam -> `{browser_url}/get_exam/{_id}`
-- (actually) the `exam id` is actually just the href content and the url seems to be `/exam/{random mongo _id}` @ 4:43
 
 1. (RE1 - Redirect) now viewing singular exam
     - singular exam page has two sections being patient info, exam info
