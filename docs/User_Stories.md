@@ -7,7 +7,7 @@
 4. Deploy and review site
 
 <details>
-<summary>TECH.DIVE NOTES (only FE)</summary>
+<summary>TECH.DIVE NOTES with focus on FE</summary>
 
 ### Goal
 - Design and build platform allowing for doctors to easily record info about what they discovered in order to take a look back at it
