@@ -72,7 +72,8 @@ or (based on video) `{browser_url}/get_exam/{exam_id}`
         * test fe for exams page to be auto-updated when exam on admin page is deleted, updated
 
 #### (CREATE EXAM): `{browser_url}/create_exam/` [POST /exams, create_exam.js]
-- Contains patient info, exam info section like that of get single exam section as well as buttons: add exam, random exam (maybe for testing purposes -> generate a new exam on spot in order to see how it is reflected on fe), cancel button (stop add exam process)
+- Contains patient info and exam info sections like that of the detail exam page
+- INcludes buttons: add exam, random exam (maybe for testing purposes -> generate a new exam on spot in order to see how it is reflected on fe), cancel (stop add exam process)
     * __POTENTIAL IMPROVEMENTS__
         - Provide a scrollable list for doctors to pick a patient from that when hovering displays a clickable modal to view their info in fuller modal that pops out in front of form in the middle of screen
             - admin wants to create exam -> under select patient [list of patients] -> hover over patient name -> view preview -> click preview -> view all patient info if needed
