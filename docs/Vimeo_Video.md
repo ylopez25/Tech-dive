@@ -25,8 +25,7 @@ _*SG = STRETCH GOALS*_
 ## ALL USERS CAN ACCESS/PERFORM
 
 #### (VIEW SINGLE EXAM): `{browser_url}/get_exams/{patient_id}/{exam_id}` - upon user clicking exam id `{exam_id}` [ GET /exam_id, list_single_exam.js]
-or
-(based on video) `{browser_url}/get_exam/{exam_id}`
+or (based on video) `{browser_url}/get_exam/{exam_id}`
 - I noticed there were exams with the same exam id under different patient ids so it has to be filter by patient -> filter by exam id -> get desired exam
     * Example @1:34 -> 1st, 3rd, 5th, 7th rows have the same exact id
     * one possible fix is to have the exam id randomized or use MongoDB's automated `_id`
@@ -42,9 +41,8 @@ or
             - Brixia Score
                 - (description) as it turns out is a scoring system that communicates the changes in lung parenchyma, which is component of lungs involved in gas exchange
                     * higher scores corresponding to higher mortality
-                    * ![Alt text](./images/image.png)
+                    * ![brixia](./images/image.png)
                 - (SG: improvement vs video) provide a method for doctors to interpret this score on the spot i.e given a provided score, doctors can press an interpret button and have advice/info about what said score means
-            - SG: BMI: maybe provide interpretation below BMI as well
 
 #### (VIEW SINGLE PATIENT): `{browser_url}/get_patient/{patient_id}` [ GET /patient_id, single_patient.js]
 - Contains everything on list exams page for a particular patient as well as number of exams and that individual patient's id
