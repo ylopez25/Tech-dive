@@ -48,7 +48,7 @@
     * Update Exam Page (update_exam.js)
 
 #### REGULAR USERS
-- On main page, Users can view all exams taken by patients and their corresponding information + use nav bar to navigate between exams and admin pages
+- On main page, Users can view all exams taken by patients and their corresponding information
 - On the main page and individual pages, Users can click on exam id, to go to a single report (patient's exam results) and click on patient id to go to a single patient's profile
 
 ##### Regular User Stretch Goals
@@ -56,6 +56,7 @@
 - Users are able to perform sorting of exams based on age, sex, bmi, zip code
 
 #### ADMINS
+- Admins are able to use nav bar to navigate between Exams and Admin pages
 - On Admin page, Admins are able to view details of exams taken by patients
 - On Admin page, Admins are able to create, update, and delete exams
 - On the admin page and individual pages, Admins are able to go to a single report and click on patient id to go to a single patient's profile
