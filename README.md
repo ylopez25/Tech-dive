@@ -1,13 +1,30 @@
-# Hack.Diversity Tech Dive Template
+# Tech Dive 2024
 
-## Getting Started
+## Welcome !
 
-This skeleton contains two different applications -- a front end, or "client," created with "Create React App," and a back end, or "API," created with Express. 
+[app name] is a web application that allows doctors to read and manage structured radiology reports as an assessment of x-ray images for exams of patients with COVID-19.
 
-In order to make both of them work together, you'll need to run both, but you can run just one or the other to start. As you begin working on this project, you'll first focus on the client, so you can more or less ignore the API portion of the code for now.
+One of the tools used by doctors to assess the condition of patients with COVID-19 is an x-ray, which creates an image of the patient’s organs and structures within their body. This can help visualize infections such as pneumonia within a patient’s lungs. After performing an x-ray, doctors need a way to record information about what they discovered, so that they can look back at it.
+
+# Images
+
+## Index Page
+### *Add Picture*
+## Sign Up
+### *Add Picture*
+## Log In
+### *Add Picture*
+## Administration Page
+### *Add Picture*
+
+# Getting started
+This project contains two different applications:
+ * a front end, or "client," created with "Create React App," 
+ * a back end, or "API," created with Express.
+
 
 ## Client
-In order to run the client, you'll run the following commands:
+In order to run the client, you'll run the following terminal commands from the root folder:
 
 ```bash
 cd client/
@@ -15,7 +32,7 @@ npm i
 npm start
 ```
 
-You should then be able to visit `localhost:3000` in your browser and see the client running. If you make changes in the `App.js` file, you should see them reflected.
+You should then be able to visit `localhost:3000` in your browser and see the client running. 
 
 ## API
 In order to run the server, you'll run the following commands:
@@ -27,3 +44,49 @@ npm start
 ```
 
 You should then be able to visit `localhost:9000` in your browser and see the server running.
+
+
+### This application uses the following technologies
+### Frontend
+
+* React
+   - Chakra UI
+   - Framer Motion
+   - Three.js
+* Node.js
+* HTML / CSS
+
+### Backend
+* MongoDB
+   - Mongoose
+* Express
+* Node.js
+* AWS 
+
+# CRUD Features
+
+## User
+Allows you to:
+   - Log in
+   - Sign up
+   - View all exam records
+   - Update User information
+   - Delete Self
+
+## Exam Records
+
+<!-- As a non-logged in user you can: -->
+
+As a logged in user you can:
+   - Create/Post new Exams
+   - Edit and Delete Exam info
+
+
+# Future Features
+
+## This application is a work in progress, the following features will be available in the future...
+
+- ## Some feature
+   - Some description
+- ## Another feature
+   - Another description
