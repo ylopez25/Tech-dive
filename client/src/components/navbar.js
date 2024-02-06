@@ -65,7 +65,7 @@ const NavTut = () => {
             <div>
                 <ChakraLink
                     as={ReactRouterLink}
-                    to="/admin/"
+                    to="/admin"
                 >
                     <h1>
                         Admin

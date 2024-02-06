@@ -20,24 +20,17 @@ const PatientExample = () => {
 
     return (
         <>
-            <div>
-                <h2>Patient Info</h2>
-            </div>
-            <div>
-                <h1>Patient Example</h1>
-                {patient.map(patient => (
-                    patient && (
-                        <>
-                            <div key={patient._id}>
-                                {patient.age}
-                            </div>
-                            <div key={patient._id}>
-                                {patient.keyFindings}
-                            </div>
-                        </>
-                    )
-                ))}
-            </div>
+            <h2>Patient Info</h2>
+            <h1>Patient Example</h1>
+            {patient.map(patient => (
+                patient && (
+                    <>
+                        <div key={patient._id}>
+                            {`${patient.age}  +  ${patient.keyFindings}`}
+                        </div>
+                    </>
+                )
+            ))}
         </>
     );
 }

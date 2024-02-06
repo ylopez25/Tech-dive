@@ -29,18 +29,16 @@ const ExamsPage = () => {
     return (
         <>
             <h2>Patient Exams</h2>
-            <div>
-                <h1>List All Exams</h1>
-                {exams.map(exam => (
-                    exam && (
-                        <>
-                            <div key={exam._id}>
-                                {exam._id}
-                            </div>
-                        </>
-                    )
-                ))}
-            </div>
+            <h1>List All Exams</h1>
+            {exams.map(exam => (
+                exam && (
+                    <>
+                        <div key={exam._id}>
+                            {exam._id}
+                        </div>
+                    </>
+                )
+            ))}
         </>
     );
 }
