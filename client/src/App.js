@@ -1,18 +1,14 @@
 import './App.css';
+import ExamDetails from './ExamDetails';
 
-import { useApi } from './hooks/use-api';
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
-  const { response } = useApi();
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          {response}
-        </p>
-      </header>
-    </div>
+    <ChakraProvider>
+  <h1>This is the home page</h1>
+  </ChakraProvider>
   );
 }
 
