@@ -2,10 +2,10 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // import { useApi } from './hooks/use-api';
 import ExamsPage from './pages/exams';
-import LandingPage from './pages/landing_page';
+import LandingPage from './pages/LandingPage';
 import PatientExample from './pages/patientExample'
 import NavTut from './components/navbar';
-
+import AdminPage from './pages/admin';
 
 
 // Need to Perform Styling
@@ -33,6 +33,10 @@ function App() {
               <Route
                 path="/single_patient"
                 element={<PatientExample />}
+              />
+              <Route
+                path="/admin"
+                element={<AdminPage />}
               />
             </Routes>
           </div>

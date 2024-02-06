@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+const _ = require('lodash');
 
 const PatientExample = () => {
 
@@ -19,19 +20,19 @@ const PatientExample = () => {
     }, []);
 
     return (
-        <>
+        <React.Fragment key={_.uniqueId()}>
             <h2>Patient Info</h2>
             <h1>Patient Example</h1>
             {patient.map(patient => (
                 patient && (
                     <>
-                        <div key={patient._id}>
+                        <div key={patient.age + patient._id}>
                             {`${patient.age}  +  ${patient.keyFindings}`}
                         </div>
                     </>
                 )
             ))}
-        </>
+        </React.Fragment>
     );
 }
 
