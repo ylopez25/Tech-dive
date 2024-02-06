@@ -3,12 +3,16 @@ body {
 }
 .nav {
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.5em;
   margin: 0 auto;
   color: white;
   background-color: black;
-  padding: 0 150px;
   height: 100px;
-  align-items: center;
-  justify-content: space-around;
-  font-size: 2em;
+}
+.nav a {
+  color:white;
+  text-decoration: none;
+  padding-right: 50px;
 }
