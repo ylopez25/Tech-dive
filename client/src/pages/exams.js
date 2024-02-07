@@ -10,14 +10,6 @@ const ExamsPage = () => {
                 const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
                 const res = await response.json();
                 const exams_data = res["exams"]
-                console.log(exams_data)
-                const tracker = new Map()
-                exams_data.map(exam => (
-                    exam && (
-                        tracker.set(exam._id, (tracker.get(exam._id) || 0) + 1)
-                    )
-                ))
-                console.log(tracker)
                 setExams(exams_data)
             } catch (e) {
                 console.error(e)
