@@ -10,13 +10,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <div className="pages">
-        <Routes>
+          <Routes>
             <Route path="/" element={<Home />} />
-          </Routes>
-          <Routes>
             <Route path="/exams" element={<Exams />} />
-          </Routes>
-          <Routes>
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </div>
