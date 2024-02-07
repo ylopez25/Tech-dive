@@ -8,14 +8,14 @@ export default function Home() {
   return (
       <div className="home">
         <h1> List of exams:</h1>
-        {/* {response && response?.exams[3].patientId} */}
+        {response && response?.exams[3].patientId}
 
-        {response && response?.exams.map((exam) => (
-         <div>
-         <h2>{exam.exams.patientId}</h2>
-        {/* <p>Age: {exam.age}</p> */}
+        {/* {response && response?.exams.map((exam) => (
+         <div key={exam._id}>
+         <h2>{exam.patientId}</h2>
+        <p>Age: {exam.age}</p>
         </div>
-        ))}
+        ))} */}
       </div>
 
   );
