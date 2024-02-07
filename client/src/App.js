@@ -1,26 +1,17 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Exams from "./pages/Exams";
-import Admin from "./pages/Admin";
-import Navbar from "./components/Navbar";
+import './App.css';
+
+import { useApi } from './hooks/use-api';
 
 function App() {
+  const { response } = useApi();
+
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <div className="pages">
-        <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-          <Routes>
-            <Route path="/exams" element={<Exams />} />
-          </Routes>
-          <Routes>
-            <Route path="/admin" element={<Admin />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
+      <header className="App-header">
+        <p>
+          {response}
+        </p>
+      </header>
     </div>
   );
 }
