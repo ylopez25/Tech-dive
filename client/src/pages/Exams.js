@@ -4,6 +4,7 @@ export default function Home() {
   const { response } = useApi();
   console.log(response);
   return (
+
     <div className="home">
       <h1> List of exams:</h1>
       {/* {response && response?.exams[3].patientId} */}
@@ -14,5 +15,6 @@ export default function Home() {
         </div>
         ))} */}
     </div>
+
   );
 }

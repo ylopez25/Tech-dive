@@ -3,6 +3,7 @@ import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
 
 export default function Navbar() {
   return (
+
     <div className="nav">
       <ChakraLink as={ReactRouterLink} to="/exams">
         Logo
@@ -13,6 +14,7 @@ export default function Navbar() {
       <ChakraLink as={ReactRouterLink} to="/admin">
         Admin
       </ChakraLink>
+
     </div>
   );
 }
