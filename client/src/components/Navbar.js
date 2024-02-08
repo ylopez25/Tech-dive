@@ -12,9 +12,10 @@ export default function Navbar() {
         <Link to="/admin">
           <h1>Admin</h1>
         </Link>
-        <div>
+        {/* Commented out searchbar feature for now - Ben */}
+        {/* <div>
         <input type="text" />
-        </div>
+        </div> */}
     </div>
   )
 }

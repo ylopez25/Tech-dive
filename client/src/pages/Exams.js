@@ -10,12 +10,15 @@ export default function Home() {
         <h1> List of exams:</h1>
         {/* {response && response?.exams[3].patientId} */}
 
-        {response && response?.exams.map((exam) => (
+         {/* I commented the mapping feature out for now, it was breaking
+         but the Nav Bar is working - Ben */}
+        
+        {/* {response && response?.exams.map((exam) => (
          <div>
          <h2>{exam.exams.patientId}</h2>
-        {/* <p>Age: {exam.age}</p> */}
+        <p>Age: {exam.age}</p>
         </div>
-        ))}
+        ))} */}
       </div>
 
   );
