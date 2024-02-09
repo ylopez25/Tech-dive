@@ -16,3 +16,11 @@ body {
   text-decoration: none;
   padding-right: 50px;
 }
+.exams p {
+  margin: 10px 50px;
+}
+.examsList {
+  display:flex;
+  justify-content: center;
+  padding: 20px;
+}
