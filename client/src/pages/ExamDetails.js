@@ -1,18 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from "react";
+import ExamInfo from "../components/ExamInfo";
+import {useExamContext} from "../context/ExamContext";
 
 function ExamDetails() {
-
-    return (
-        <>
-        <div>
-        <ul>Exam Id
-        <li>Date:</li>
-        <li>Brixia Score:</li>
-        <li>Key Findings:</li>
-        </ul>
-        </div>
-        </>
-    )
+    const {exam} = useExamContext()
+  return (
+    <>
+      <div className="exam-info">
+        <ExamInfo exam = {exam}/>
+      </div>
+    </>
+  );
 }
 
-export default ExamDetails
+export default ExamDetails;

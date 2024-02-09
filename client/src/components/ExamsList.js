@@ -1,8 +1,15 @@
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer} from "@chakra-ui/react";
+import { Link as ReactRouterLink } from 'react-router-dom'
+import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
 
 import React from "react";
+import {useExamContext} from "../context/ExamContext";
 
 export default function ExamsList({ exams }) {
+
+  const { updateExam } = useExamContext();
+
+
   return (
     <div className="examsList">
       <TableContainer>
@@ -29,7 +36,7 @@ export default function ExamsList({ exams }) {
                     <Tbody>
                       <Tr>
                         <Td> {exam.patientId}</Td>
-                        <Td> {exam.examId}</Td>
+                        <Td > <ChakraLink as={ReactRouterLink} color="blue" to="/examdetails" onClick={() => updateExam(exam)}>{exam.examId} </ChakraLink></Td>
                         <Td>{exam.imageURL}</Td>
                         <Td>{exam.keyFindings}</Td>
                         <Td>{exam.brixiaScores}</Td>
