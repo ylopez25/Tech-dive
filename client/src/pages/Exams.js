@@ -1,22 +1,33 @@
 import React from "react";
-import { useApi } from "../hooks/use-api";
-export default function Home() {
-  //useEffect
-  //render exams
-  const { response } = useApi();
-  console.log(response, "wtf is going on?");
+import ExamsList from '../components/ExamsList'
+// import { useApi } from "../hooks/use-api";
+import {useState, useEffect} from 'react'
+
+
+export default function Exams() {
+  const [exams, setExams] = useState([]);
+
+  useEffect(() => {
+      const fetchExams = async () => {
+          try {
+              const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
+              const res = await response.json();
+              const exams_data = res["exams"]
+              setExams(exams_data)
+          } catch (e) {
+              console.error(e)
+          }
+      }
+      fetchExams();
+  }, []);
+
   return (
-      <div className="home">
-        <h1> List of exams:</h1>
-        {/* {response && response?.exams[3].patientId} */}
-
-        {response && response?.exams.map((exam) => (
-         <div>
-         <h2>{exam.exams.patientId}</h2>
-        {/* <p>Age: {exam.age}</p> */}
+    <div className="exams">
+      <div className="total">
+        <p>Total: {exams.length}</p>
         </div>
-        ))}
-      </div>
-
+      <ExamsList exams={exams} />
+    </div>
   );
 }
+
