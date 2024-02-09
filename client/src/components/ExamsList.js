@@ -7,7 +7,7 @@ export default function ExamsList({ exams }) {
     <div className="examsList">
       <TableContainer>
         <Table variant="simple" width="100%">
-          <TableCaption>Imperial to metric conversion factors</TableCaption>
+          <TableCaption>All Exam Records</TableCaption>
           <Thead>
             <Tr>
               <Th>Patient ID</Th>
@@ -21,30 +21,27 @@ export default function ExamsList({ exams }) {
               <Th>zipcode</Th>
             </Tr>
           </Thead>
-          <>
+          <Tbody>
             {exams.map(
-              (exam) =>
+              (exam, index) =>
                 exam && (
-                  <>
-                    <Tbody>
-                      <Tr>
-                        <Td> {exam.patientId}</Td>
-                        <Td> {exam.examId}</Td>
-                        <Td>{exam.imageURL}</Td>
-                        <Td>{exam.keyFindings}</Td>
-                        <Td>{exam.brixiaScores}</Td>
-                        <Td>{exam.age}</Td>
-                        <Td>{exam.sex}</Td>
-                        <Td>{exam.bmi}</Td>
-                        <Td>{exam.zipCode}</Td>
-                      </Tr>
-                    </Tbody>
-                  </>
+                  <Tr key={index}>
+                    <Td>{exam.patientId}</Td>
+                    <Td>{exam.examId}</Td>
+                    <Td>{exam.imageURL}</Td>
+                    <Td>{exam.keyFindings}</Td>
+                    <Td>{exam.brixiaScores}</Td>
+                    <Td>{exam.age}</Td>
+                    <Td>{exam.sex}</Td>
+                    <Td>{exam.bmi}</Td>
+                    <Td>{exam.zipCode}</Td>
+                  </Tr>
                 )
             )}
-          </>
+          </Tbody>
         </Table>
       </TableContainer>
     </div>
+
   );
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Graduate&family=Gravitas+One&family=Press+Start+2P&family=Rubik:wght@300&display=swap');
+
 .App {
   text-align: center;
 }
@@ -18,4 +20,9 @@
 
 .App-link {
   color: #61dafb;
+}
+
+#error404 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
 }
