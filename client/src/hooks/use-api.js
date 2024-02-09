@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-const API_ROOT = 'https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams';
+const API_ROOT = 'http://localhost:9000';
 
-export function useApi() {
+export function useApi({ path } = { path: '' }) {
   const [response, setResponse] = useState();
 
   useEffect(() => {
-    fetch(`${API_ROOT}`)
-      .then(res => res.json())
+    fetch(`${API_ROOT}/${path}`)
+      .then(res => res.text())
       .then(res => setResponse(res));
   }, []);
 

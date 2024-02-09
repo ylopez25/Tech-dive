@@ -7,6 +7,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 import PageNotFound from "./pages/404PageNotFound";
 
 function App() {
+  const { response } = useApi();
+
   return (
     <ChakraProvider>
       <div className="App">
