@@ -28,6 +28,7 @@ export default function Exams() {
         </div>
       <ExamsList exams={exams} />
     </div>
+
   );
 }
 
