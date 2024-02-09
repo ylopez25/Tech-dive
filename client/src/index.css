@@ -12,10 +12,25 @@ code {
     monospace;
 }
 
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.5em;
+  margin: 0 auto;
+  color: white;
+  background-color: black;
+  height: 100px;
+}
+
 .nav a {
   color: white;
   text-decoration: none;
   padding-right: 50px;
+}
+
+.text-wrap {
+  white-space: normal;
 }
 
 .exams p {

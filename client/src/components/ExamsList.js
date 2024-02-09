@@ -1,4 +1,4 @@
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image } from "@chakra-ui/react";
 
 import React from "react";
 
@@ -6,7 +6,7 @@ export default function ExamsList({ exams }) {
   return (
     <div className="examsList">
       <TableContainer>
-        <Table variant="simple" width="100%">
+        <Table size="sm" variant="simple" width="100%">
           <TableCaption>All Exam Records</TableCaption>
           <Thead>
             <Tr>
@@ -28,8 +28,13 @@ export default function ExamsList({ exams }) {
                   <Tr key={index}>
                     <Td>{exam.patientId}</Td>
                     <Td>{exam.examId}</Td>
-                    <Td>{exam.imageURL}</Td>
-                    <Td>{exam.keyFindings}</Td>
+                    <Td>
+                      <Image
+                        src={exam.imageURL}
+                      >
+                      </Image>
+                    </Td>
+                    <Td className="text-wrap">{exam.keyFindings}</Td>
                     <Td>{exam.brixiaScores}</Td>
                     <Td>{exam.age}</Td>
                     <Td>{exam.sex}</Td>

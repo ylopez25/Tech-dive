@@ -1,13 +1,12 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Exams from "./pages/Exams";
-import Admin from "./pages/Admin";
 import Navbar from "./components/Navbar";
 import { ChakraProvider } from '@chakra-ui/react'
 import PageNotFound from "./pages/404PageNotFound";
+import Admin from './pages/Admin'
 
 function App() {
-  const { response } = useApi();
 
   return (
     <ChakraProvider>
