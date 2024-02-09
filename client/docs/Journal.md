@@ -54,6 +54,7 @@
 
 ### DS to implement
 0. perform data cleaning, examId is going to be exam_type_id
+
 1. Dictionary called ExamTypes - (1) iterate through all records, (2) insatiate a key for each exam_type_id in dict ExamTypes, (3) append at examTypes[exam_type_id] for all records that match that particular examType, (4) add a random report_id to each record
     - ExamTypes: {
         "Exam-1": [
@@ -68,10 +69,14 @@
     * (no be) in order to get to a page of single report after clicking on report_id would be to pass it via props through qPs
         1. either use qps, with path parameters
         2. use useContext to pass information to child props through handleOnClick
+        3. prop drilling
+
 2. Reports Page/Table, includes report_id, (patient results's id) _id, reviewer name (find a js name generator package), keyFindings
     - Report: {'report_id':...,'_id':...,}
     *_id links back to patient assessment
 3. (Patient Assessments) Exams - _id, patient_id, examId, ....
+    - going to try for useContext for get all exams page/endpoint
+
 4. Landing Page
 5. Create Exam Form
 6. Create Patient Form

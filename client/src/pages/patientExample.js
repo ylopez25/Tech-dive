@@ -21,17 +21,27 @@ const PatientExample = () => {
 
     return (
         <React.Fragment key={_.uniqueId()}>
-            <h2>Patient Info</h2>
-            <h1>Patient Example</h1>
-            {patient.map(patient => (
-                patient && (
-                    <>
-                        <div key={patient.age + patient._id}>
-                            {`${patient.age}  +  ${patient.keyFindings}`}
-                        </div>
-                    </>
-                )
-            ))}
+            <div>
+                <h2>Patient Info</h2>
+            </div>
+            <h1>
+                Number of Patient Records: {patient.length}
+            </h1>
+            <div>
+                <h1>Patient Example</h1>
+                {patient.map(patient => (
+                    patient && (
+                        <>
+                            <div key={patient._id}>
+                                {patient.age}
+                            </div>
+                            <div key={patient._id}>
+                                {patient.keyFindings}
+                            </div>
+                        </>
+                    )
+                ))}
+            </div>
         </React.Fragment>
     );
 }

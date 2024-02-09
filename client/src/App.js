@@ -8,7 +8,6 @@ import NavTut from './components/navbar';
 import AdminPage from './pages/admin';
 
 
-// Need to Perform Styling
 function App() {
   // const { response } = useApi();
 
