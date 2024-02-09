@@ -5,8 +5,11 @@ function ExamDetails() {
     return (
         <>
         <div>
-            {/* <img src="https://medlineplus.gov/images/Xray_share.jpg"/> */}
-            <button>URL</button>
+        <ul>Exam Id
+        <li>Date:</li>
+        <li>Brixia Score:</li>
+        <li>Key Findings:</li>
+        </ul>
         </div>
         </>
     )

@@ -19,6 +19,7 @@ function App() {
             {/* Commenting out homepage for now -Ben */}
             <Route path="/exams" element={<Exams />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/examdetails" element={<ExamDetails />} />
           </Routes>
         </div>
       </BrowserRouter>
