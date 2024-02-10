@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ExamsPage from './pages/exams';
 import LandingPage from './pages/LandingPage';
 import PatientExample from './pages/patientExample'
-import NavTut from './components/navbar';
+import NavTut from './components/navbar_cc';
 import AdminPage from './pages/admin';
 import { ChakraProvider } from '@chakra-ui/react';
 

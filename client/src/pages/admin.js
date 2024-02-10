@@ -11,6 +11,8 @@ use usecontext in order to get all exams
             * refresh page automatically when record becomes deleted
     * Nav Bar Search
         - most likely using qps, or match useContext with both button click for search or key word press enter using t3 tutorial hooks
+
+Tackling issue 29 and 41
  */
 const AdminPage = () => {
     return (
