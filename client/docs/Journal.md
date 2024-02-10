@@ -56,6 +56,10 @@
 - imported dayjs
     * `npm install dayjs`
     * `dayjs().toNow()`
+- integrated spinner
+    * [spinner](https://v1.chakra-ui.com/docs/components/feedback/spinner)
+- want to use background-repeat potentially (maybe random repeat)
+    * [repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat)
 
 ### DS to implement
 - Admin Page
