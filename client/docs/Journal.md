@@ -54,6 +54,8 @@
 
 ### 02.09.24
 - imported dayjs
+    * `npm install dayjs`
+    * `dayjs().toNow()`
 
 ### DS to implement
 - Admin Page
