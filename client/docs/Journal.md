@@ -41,7 +41,7 @@
 
 - Going to proceed with getting some initial design in C branch: priority on designated pages, going to flesh out some ideas on others:
     * Admin page
-        - update -> redirect to update page
+        - update -> redirect to update page (update last_updated key)
         - for each record in dummy data, add new key-value pair for instances of deletion
             * (default) isDeleted = false -> (user presses delete button) -> isDeleted = true (boolean for instances on chart will be shown, if !object[isDeleted] / if object[isDeleted]===true)
             * refresh page automatically when record becomes deleted
@@ -52,7 +52,13 @@
     * installed autoprefix `npm install autoprefixer@latest cross-env --save-dev`
     * edited client/package.json based on instructions of css autoprefixer -> [repo](https://github.com/postcss/autoprefixer)
 
+### 02.09.24
+- imported dayjs
+
 ### DS to implement
+- Admin Page
+    * implement useContext and add admin page with buttons that u/d
+
 0. perform data cleaning, examId is going to be exam_type_id
 
 1. Dictionary called ExamTypes - (1) iterate through all records, (2) insatiate a key for each exam_type_id in dict ExamTypes, (3) append at examTypes[exam_type_id] for all records that match that particular examType, (4) add a random report_id to each record
@@ -71,8 +77,9 @@
         2. use useContext to pass information to child props through handleOnClick
         3. prop drilling
 
-2. Reports Page/Table, includes report_id, (patient results's id) _id, reviewer name (find a js name generator package), keyFindings
+2. (sg)Reports Page/Table, includes report_id, (patient results's id) _id, reviewer name (find a js name generator package), keyFindings
     - Report: {'report_id':...,'_id':...,}
+
     *_id links back to patient assessment
 3. (Patient Assessments) Exams - _id, patient_id, examId, ....
     - going to try for useContext for get all exams page/endpoint
@@ -81,3 +88,4 @@
 5. Create Exam Form
 6. Create Patient Form
 7. Table Sorting/Filtering
+<!--  -->

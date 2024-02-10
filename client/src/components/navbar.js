@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react'
 // import { HamburgerIcon } from '@chakra-ui/icons'
 import { Link as ReactRouterLink } from "react-router-dom";
+import { ViewIcon } from '@chakra-ui/icons'
 
 
 const NavBar = () => {
@@ -31,6 +32,7 @@ const NavBar = () => {
 const NavTut = () => {
     return (
         <header>
+            {/* <ViewIcon /> */}
             <Logo />
             <div>
                 <ChakraLink
@@ -38,7 +40,7 @@ const NavTut = () => {
                     to="/"
                 >
                     <h1>
-                        Rx Reports
+                        Landing Page
                     </h1>
                 </ChakraLink>
             </div>
@@ -68,7 +70,7 @@ const NavTut = () => {
                     to="/admin"
                 >
                     <h1>
-                        Admin
+                        Admin {'  '} <ViewIcon style={{ marginLeft: "5px" }} />
                     </h1>
                 </ChakraLink>
             </div>

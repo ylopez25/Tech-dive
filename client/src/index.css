@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.examsList {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  align-items: center;
+}
+
+.text-wrap {
+  white-space: normal;
+}
+
+.navItem {
+  padding: 20px;
+}
+
+.landingPage {
+  position: absolute;
+  top: 300%;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  bottom: 100%;
+}

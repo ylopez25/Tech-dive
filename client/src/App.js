@@ -6,16 +6,17 @@ import LandingPage from './pages/LandingPage';
 import PatientExample from './pages/patientExample'
 import NavTut from './components/navbar';
 import AdminPage from './pages/admin';
+import { ChakraProvider } from '@chakra-ui/react';
 
 
 function App() {
   // const { response } = useApi();
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <NavTut />
-        <header className="App-header">
+    <ChakraProvider>
+      <div className="App">
+        <BrowserRouter>
+          <NavTut />
           {/* <p>
           {response}
         </p> */}
@@ -39,9 +40,9 @@ function App() {
               />
             </Routes>
           </div>
-        </header>
-      </BrowserRouter>
-    </div>
+        </BrowserRouter>
+      </div>
+    </ChakraProvider>
   );
 }
 
