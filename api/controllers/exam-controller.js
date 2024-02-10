@@ -9,4 +9,10 @@ const getExams = async (req, res) => {
     })
 
     res.status(200).json(workouts)
+    
 }
+
+module.exports = {
+    getExams,
+  };
+  

@@ -27,15 +27,15 @@ app.use('/users', usersRouter);
 app.use('/exams', examRouter)
 
 
-mongoose.connect(process.env.MONGO_URI).then(() => {
-  //listen for requests
-  // app.listen(process.env.PORT, () => {
-      console.log('connected to db & listening on port', process.env.PORT)
-  // })
-}
-).catch((error) => {
-  console.log(error)
-})
+// mongoose.connect(process.env.MONGO_URI).then(() => {
+//   //listen for requests
+//   // app.listen(process.env.PORT, () => {
+//       console.log('connected to db & listening on port', process.env.PORT)
+//   // })
+// }
+// ).catch((error) => {
+//   console.log(error)
+// })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
