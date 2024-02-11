@@ -18,8 +18,9 @@ const ExamsPage = () => {
                 exams_data.map(exam => {
                     if (exam) {
                         Object.keys(exam).map(key => {
-                            // going to be moved to admin page when user updates have this change in order for it to be reflected
+                            /*  going to be moved to admin page when user updates have this change in order for it to be reflected
                             exam['last_updated'] = dayjs().fromNow()
+                            */
                             exam['report_id'] = null
                             exam['isDeleted'] = null
                             if (key === "examId") {
