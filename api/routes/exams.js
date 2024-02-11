@@ -3,18 +3,14 @@ const express = require('express');
 const {
     getExams,
 //     getExam,
-//     createExam,
+    createExam,
 //     deleteExam,
 //     updateExam
 
 } = require('../controllers/exam-controller') //*
 const router = express.Router()
 
-//? 13 go back to server.js and give it access to this new page of workout routes
-
-//? 15. set up routes. 
 //! GET ALL
-
 router.get('/', function (req, res, next) {
 
     // res.json({mmsg: "GET ALL workouts"})
@@ -34,17 +30,19 @@ router.get('/', function (req, res, next) {
 
 //! POST NEW Exam
 // router.post('/create', createExam) async (req,res) => {
-    router.post('/newExam')
-const {title, load, reps} = req.body
+router.post('/newExam', (req,res, next) => {
+    res.send("post route good")
+})
+// const {title, load, reps} = req.body
 
-try {               //*6 add async and await
-    const Exam = await Exam.create({title, load, reps})
-    res.status(200).json(Exam) //* 8
-} catch (error) { //* 7
- res.status(400).json({error : error.message}) //* 9 create controller + controllerExam
-} //* 10 delete route, leave it at 'router.post('/', createExam)
-}
-)
+// try {               //*6 add async and await
+//     const Exam = await Exam.create({title, load, reps})
+//     res.status(200).json(Exam) //* 8
+// } catch (error) { //* 7
+//  res.status(400).json({error : error.message}) //* 9 create controller + controllerExam
+// } //* 10 delete route, leave it at 'router.post('/', createExam)
+// }
+// )
 
 //! DELETE ONE
 //* router.delete('/:id', deleteExam)
