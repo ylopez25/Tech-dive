@@ -13,7 +13,6 @@ const getExams = async (req, res) => {
 }
 
 //todo GET one exam by id
-//todo get one workout
 const getExam = async (req, res) => {
     const  { id } = req.params
 
@@ -46,25 +45,6 @@ const createExam = async (req,res, next) => {
     }
 
 
-    //todo update a Exam
-const updateExam = async (req, res) => {
-    const {id} = req.params
-    
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No Such exam to update'})
-    }
-
-    const exam = await Exam.findOneAndUpdate({_id: id}, {
-        ...req.body
-    })
-
-    if (!exam) {
-        return res.status(404).json({error: 'No such exam to update'})
-    }
-
-    res.status(200).json(exam)
-}
-
 
 
 //todo Delete exam
@@ -87,11 +67,33 @@ const deleteExam = async (req, res) => {
 }
 
 
+    //todo update a Exam
+    const updateExam = async (req, res) => {
+        const {id} = req.params
+        
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(404).json({error: 'No Such exam to update'})
+        }
+    
+        const examBefore = await Exam.findOneAndUpdate({_id: id}, {
+            ...req.body
+        })
+    
+        if (!examBefore) {
+            return res.status(404).json({error: 'No such exam to update'})
+        }
+
+        const examAfter = await Exam.findById(id)
+    
+        res.status(200).json(examAfter)
+    }
+    
+
 module.exports = {
     getExams,
     getExam,
     createExam,
-    updateExam,
-    deleteExam
+    deleteExam,
+    updateExam
   };
   
