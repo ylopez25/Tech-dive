@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-
+//todo add sign up columns and validators etc.
 const adminSchema = new Schema({
 	id: {
-		type: Number,
+		type: String,
 	},
 	username: {
 		type: String,
-		Number,
+	 	// unique: true
 	},
 });
 

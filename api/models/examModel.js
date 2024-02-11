@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const examSchema = new Schema({ 
     adminId : {
-        type: Number,
+        type: String,
         required: true
     },
     patientId: {
@@ -20,7 +20,7 @@ const examSchema = new Schema({
         required: true
     },
     zip: {
-        type: Number,
+        type: String,
         required: true
     },
     bmi: {
@@ -28,7 +28,7 @@ const examSchema = new Schema({
         required: true
     } ,
     examTypeId: {
-        type: Number,
+        type: String,
         required: true
     },
     keyFindings: {
@@ -36,7 +36,7 @@ const examSchema = new Schema({
         required: true
     },
     brixaScore: {
-        type: Number,
+        type: String,
         required: true
     },
     imageURL: {
