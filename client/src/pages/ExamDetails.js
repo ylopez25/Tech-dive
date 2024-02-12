@@ -1,13 +1,17 @@
-function ExamDetails() {
+import React, { useState, useEffect, useContext } from "react";
+import ExamInfo from "../components/ExamInfo";
+import { useExamContext } from "../context/ExamContext";
+import '../App.css'
 
-    return (
-        <>
-        <div>
-            {/* <img src="https://medlineplus.gov/images/Xray_share.jpg"/> */}
-            <button>URL</button>
-        </div>
-        </>
-    )
+function ExamDetails() {
+  const { exam } = useExamContext()
+  return (
+    <>
+      <div className="exams-info">
+        <ExamInfo exam={exam} />
+      </div>
+    </>
+  );
 }
 
-export default ExamDetails
+export default ExamDetails;
