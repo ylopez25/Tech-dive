@@ -1,4 +1,4 @@
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer} from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image} from "@chakra-ui/react";
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
 
@@ -13,8 +13,8 @@ export default function ExamsList({ exams }) {
   return (
     <div className="examsList">
       <TableContainer>
-        <Table variant="simple" width="100%">
-          <TableCaption>Imperial to metric conversion factors</TableCaption>
+        <Table size="sm" variant="simple" width="100%">
+          <TableCaption>All Exam Records</TableCaption>
           <Thead>
             <Tr>
               <Th>Patient ID</Th>
@@ -28,17 +28,21 @@ export default function ExamsList({ exams }) {
               <Th>zipcode</Th>
             </Tr>
           </Thead>
-          <>
+          <Tbody>
             {exams.map(
-              (exam) =>
+              (exam, index) =>
                 exam && (
                   <>
                     <Tbody>
                       <Tr>
                         <Td> {exam.patientId}</Td>
                         <Td > <ChakraLink as={ReactRouterLink} color="blue" to="/examdetails" onClick={() => updateExam(exam)}>{exam.examId} </ChakraLink></Td>
-                        <Td>{exam.imageURL}</Td>
-                        <Td>{exam.keyFindings}</Td>
+        
+                        <Td>
+                           <Image src={exam.imageURL}>
+                            </Image>
+                            </Td>
+                        <Td className="text-wrap">{exam.keyFindings}</Td>
                         <Td>{exam.brixiaScores}</Td>
                         <Td>{exam.age}</Td>
                         <Td>{exam.sex}</Td>
@@ -49,9 +53,10 @@ export default function ExamsList({ exams }) {
                   </>
                 )
             )}
-          </>
+          </Tbody>
         </Table>
       </TableContainer>
     </div>
+
   );
 }
