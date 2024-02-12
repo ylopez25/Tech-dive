@@ -1,4 +1,4 @@
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image, Link as ChakraLink } from "@chakra-ui/react";
 import { Spinner } from '@chakra-ui/react'
 
 import React from "react";
@@ -63,7 +63,11 @@ export default function ExamsList({ loading, exams }) {
                                         <Tr key={index}>
                                             <Td
                                             >{exam._id}</Td>
-                                            <Td>{exam.patientId}</Td>
+                                            <Td>
+                                                <ChakraLink
+
+                                                >{exam.patientId}</ChakraLink>
+                                            </Td>
                                             <Td>{exam.exam_type_id}</Td>
                                             <Td>
                                                 <Image

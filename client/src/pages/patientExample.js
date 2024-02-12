@@ -42,7 +42,7 @@ const PatientExample = () => {
     }
     if (!loading) {
         return (
-            <React.Fragment key={_.uniqueId()}>
+            <>
                 <div className="navItem">
                     <h2>Patient Info</h2>
                     <h1>
@@ -53,24 +53,24 @@ const PatientExample = () => {
                     <h1>Patient Example</h1>
                     {patient.map(patient => (
                         patient && (
-                            <>
+                            <React.Fragment key={patient._id}>
                                 <Img
                                     width='20%'
                                     marginLeft='auto'
                                     marginRight='auto'
                                     src={patient.imageURL}
                                 />
-                                <div key={patient._id}>
+                                <div>
                                     {patient.age}
                                 </div>
-                                <div key={patient._id}>
+                                <div>
                                     {patient.keyFindings}
                                 </div>
-                            </>
+                            </React.Fragment>
                         )
                     ))}
                 </div>
-            </React.Fragment>
+            </>
         );
     }
 }

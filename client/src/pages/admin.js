@@ -15,9 +15,11 @@ Tackling issue 29 and 41
  */
 const AdminPage = () => {
     return (
-        <div className="landingPage">
-            Admin Page
-        </div>
+        <>
+            <div className="landingPage">
+                Admin Page
+            </div>
+        </>
     )
 }
 
