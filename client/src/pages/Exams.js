@@ -22,12 +22,13 @@ export default function Exams() {
     }, []);
 
     return (
-        <div className="exams">
-            <div className="total">
-                <p>Total: {exams.length}</p>
+        <>
+            <div className="exams">
+                <div className="total">
+                    <p>Total: {exams.length}</p>
+                </div>
+                <ExamsList exams={exams} />
             </div>
-            <ExamsList exams={exams} />
-        </div>
-
+        </>
     );
 }

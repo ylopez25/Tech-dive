@@ -1,9 +1,9 @@
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image} from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from 'react-router-dom'
 import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
 
 import React from "react";
-import {useExamContext} from "../context/ExamContext";
+import { useExamContext } from "../context/ExamContext";
 
 export default function ExamsList({ exams }) {
 
@@ -33,23 +33,21 @@ export default function ExamsList({ exams }) {
               (exam, index) =>
                 exam && (
                   <>
-                    <Tbody>
-                      <Tr>
-                        <Td> {exam.patientId}</Td>
-                        <Td > <ChakraLink as={ReactRouterLink} color="blue" to="/examdetails" onClick={() => updateExam(exam)}>{exam.examId} </ChakraLink></Td>
-        
-                        <Td>
-                           <Image src={exam.imageURL}>
-                            </Image>
-                            </Td>
-                        <Td className="text-wrap">{exam.keyFindings}</Td>
-                        <Td>{exam.brixiaScores}</Td>
-                        <Td>{exam.age}</Td>
-                        <Td>{exam.sex}</Td>
-                        <Td>{exam.bmi}</Td>
-                        <Td>{exam.zipCode}</Td>
-                      </Tr>
-                    </Tbody>
+                    <Tr key={index}>
+                      <Td> {exam.patientId}</Td>
+                      <Td > <ChakraLink as={ReactRouterLink} color="blue.500" to="/examdetails" onClick={() => updateExam(exam)}>{exam.examId} </ChakraLink></Td>
+
+                      <Td>
+                        <Image src={exam.imageURL}>
+                        </Image>
+                      </Td>
+                      <Td className="text-wrap">{exam.keyFindings}</Td>
+                      <Td>{exam.brixiaScores}</Td>
+                      <Td>{exam.age}</Td>
+                      <Td>{exam.sex}</Td>
+                      <Td>{exam.bmi}</Td>
+                      <Td>{exam.zipCode}</Td>
+                    </Tr>
                   </>
                 )
             )}
