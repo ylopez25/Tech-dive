@@ -1,13 +1,14 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // import { useApi } from './hooks/use-api';
-import ExamsPage from './pages/exams';
+import ExamsList from './components/examsList'
 import LandingPage from './pages/LandingPage';
 import PatientExample from './pages/patientExample'
 import NavTut from './components/navbar_cc';
-import AdminPage from './pages/admin';
+import AdminPage from './components/admin';
 import { ChakraProvider } from '@chakra-ui/react';
-
+import ExamDetails from './components/examDetail';
+import UpdatePage from './components/adminUpdate';
 
 function App() {
   // const { response } = useApi();
@@ -24,7 +25,7 @@ function App() {
             <Routes>
               <Route
                 path="/exams"
-                element={<ExamsPage />}
+                element={<ExamsList />}
               />
               <Route
                 path="/"
@@ -37,6 +38,14 @@ function App() {
               <Route
                 path="/admin"
                 element={<AdminPage />}
+              />
+              <Route
+                path="/examdetails"
+                element={<ExamDetails />}
+              />
+              <Route
+                path="/update_exam"
+                element={<UpdatePage />}
               />
             </Routes>
           </div>

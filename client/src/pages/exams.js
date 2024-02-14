@@ -1,12 +1,21 @@
-import React, { useState, useEffect } from "react";
-import ExamsList from "./examsP";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import relativeTime from 'dayjs/plugin/relativeTime';
 const dayjs = require('dayjs')
 dayjs.extend(relativeTime)
 
-const ExamsPage = () => {
+const ExamsContext = createContext({});
+export const ExamsContextProvider = ({ children }) => {
+    const [selectedExam, setSelectedExam] = useState(null)
     const [loading, setLoading] = useState(false)
     const [exams, setExams] = useState([]);
+
+    const deleteExam = async (exam) => {
+        if (exam && !exam['isDeleted']) {
+            exam['isDeleted'] = true
+        }
+        let newExams = exams.filter((exam) => exam['isDeleted'] === false)
+        setExams(newExams)
+    }
 
     useEffect(() => {
         const fetchExams = async () => {
@@ -22,7 +31,7 @@ const ExamsPage = () => {
                             exam['last_updated'] = dayjs().fromNow()
                             */
                             exam['report_id'] = null
-                            exam['isDeleted'] = null
+                            exam['isDeleted'] = false
                             if (key === "examId") {
                                 exam['exam_type_id'] = exam['examId']
                                 delete exam['examId']
@@ -41,16 +50,12 @@ const ExamsPage = () => {
     }, []);
 
     return (
-        <>
-            <div className="navItem">
-                <h2 >Patient Exams</h2>
-                <h1>
-                    Number of Exams: {exams.length}
-                </h1>
-            </div>
-            <ExamsList loading={loading} exams={exams} />
-        </>
+        <ExamsContext.Provider
+            value={{ exams, setExams, selectedExam, setSelectedExam, deleteExam, loading }}
+        >
+            {children}
+        </ExamsContext.Provider>
     );
 }
 
-export default ExamsPage;
+export const useExams = () => useContext(ExamsContext)
