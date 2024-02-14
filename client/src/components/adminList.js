@@ -17,11 +17,19 @@ use usecontext in order to get all exams
 
 Tackling issue 29 and 41
  */
-const AdminPage = () => {
-    const { exams, setExams, selectedExam, setSelectedExam, loading, deleteExam } = useExams();
+const AdminList = () => {
+    const { exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam } = useExams();
 
     const performDelete = async (exam) => {
-        deleteExam(exam)
+        const response = await deleteExam(exam)
+        if (response) {
+            setDeleted(response['deleted'])
+            setExams(response['not_deleted'])
+        }
+    }
+    //sg: implementation of undelete or move deleted exam history to admin profile page
+    const UnDelete = async (exam) => {
+        console.log(exam)
     }
     if (loading) {
         return (
@@ -62,14 +70,16 @@ const AdminPage = () => {
                         Number of Exams: {exams.length}
                     </h1>
                 </div>
-                <Heading
-                    style={{ textAlign: 'left', paddingTop: '20px', paddingLeft: '180px' }}
-                >
-                    Not Deleted
-                </Heading>
                 <div className="examsList">
                     <TableContainer>
-                        <Table size="sm" variant="simple" width="100%">
+                        <Heading
+                            style={{ paddingTop: '20px', paddingRight: '650px' }}
+                        >
+                            Not Deleted
+                        </Heading>
+                        <Table
+
+                            size="sm" variant="simple" width="100%">
 
                             <TableCaption>All Exam Records</TableCaption>
                             <Thead>
@@ -77,12 +87,8 @@ const AdminPage = () => {
                                     <Th>Exam ID</Th>
                                     <Th>Patient ID</Th>
                                     <Th>Exams Types</Th>
-                                    <Th
-                                        style={{ textAlign: 'center' }}
-                                    > Delete </Th>
-                                    <Th
-                                        style={{ textAlign: 'center' }}
-                                    > Update </Th>
+                                    <Th></Th>
+                                    <Th></Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
@@ -113,7 +119,7 @@ const AdminPage = () => {
                                                         <Button
                                                             colorScheme="red"
                                                             size='sm'
-                                                            onClick={() => {
+                                                            onClick={(e) => {
                                                                 performDelete(exam)
                                                             }}
                                                         >
@@ -145,17 +151,26 @@ const AdminPage = () => {
                             >
                                 Deleted
                             </Heading>
+                            <Thead>
+                                <Tr>
+                                    <Th>Exam ID</Th>
+                                    <Th>Patient ID</Th>
+                                    <Th>Exams Types</Th>
+                                    <Th></Th>
+                                    <Th></Th>
+                                </Tr>
+                            </Thead>
                             <Tbody>
-                                {exams.map(
-                                    (exam, index) =>
-                                        exam && exam['isDeleted'] && (
-                                            <Tr key={exam._id}>
+                                {deleted.map(
+                                    (deletedExam, index) =>
+                                        deletedExam && (
+                                            <Tr key={deletedExam._id}>
                                                 <Td
-                                                >{exam._id}</Td>
-                                                <Td>{exam.patientId}</Td>
+                                                >{deletedExam._id}</Td>
+                                                <Td>{deletedExam.patientId}</Td>
                                                 <Td
                                                     className={
-                                                        selectedExam === exam.exam_type_id
+                                                        selectedExam === deletedExam.exam_type_id
                                                     }
                                                 >
                                                     <ChakraLink
@@ -163,21 +178,20 @@ const AdminPage = () => {
                                                         to="/examdetails"
                                                         color='teal.500'
                                                         onClick={() => {
-                                                            setSelectedExam(exam)
+                                                            setSelectedExam(deleteExam)
                                                         }}
-                                                    >{exam.exam_type_id}
+                                                    >{deletedExam.exam_type_id}
                                                     </ChakraLink>
                                                 </Td>
                                                 <Td>
                                                     <WrapItem>
                                                         <Button
-                                                            colorScheme="red"
-                                                            size='sm'
-                                                            onClick={() => {
-                                                                performDelete(exam)
+                                                            size="sm"
+                                                            onClick={(e) => {
+                                                                UnDelete(deletedExam)
                                                             }}
                                                         >
-                                                            DELETE
+                                                            UN-DELETE
                                                         </Button>
                                                     </WrapItem>
                                                 </Td>
@@ -203,4 +217,4 @@ const AdminPage = () => {
 }
 
 
-export default AdminPage;
+export default AdminList;

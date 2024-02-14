@@ -4,8 +4,8 @@ import { Spinner } from '@chakra-ui/react'
 import { useExams } from "../pages/exams";
 import { Link as ReactRouterLink } from "react-router-dom";
 
-
 export default function UpdatePage() {
+    const { selectedExam } = useExams();
     return (
         <Heading
             style={{ paddingTop: '100px', alignItems: 'center' }}

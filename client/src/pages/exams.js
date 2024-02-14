@@ -8,13 +8,20 @@ export const ExamsContextProvider = ({ children }) => {
     const [selectedExam, setSelectedExam] = useState(null)
     const [loading, setLoading] = useState(false)
     const [exams, setExams] = useState([]);
+    const [deleted, setDeleted] = useState([])
 
+    const deletedExams = [...deleted]
     const deleteExam = async (exam) => {
         if (exam && !exam['isDeleted']) {
             exam['isDeleted'] = true
+            deletedExams.push(exam)
         }
-        let newExams = exams.filter((exam) => exam['isDeleted'] === false)
-        setExams(newExams)
+        let newExams = exams.filter((exam) => exam && !exam['isDeleted'])
+        const returnedExams = {
+            'not_deleted': newExams,
+            'deleted': deletedExams
+        }
+        return returnedExams
     }
 
     useEffect(() => {
@@ -51,7 +58,7 @@ export const ExamsContextProvider = ({ children }) => {
 
     return (
         <ExamsContext.Provider
-            value={{ exams, setExams, selectedExam, setSelectedExam, deleteExam, loading }}
+            value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam }}
         >
             {children}
         </ExamsContext.Provider>

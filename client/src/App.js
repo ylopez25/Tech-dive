@@ -5,7 +5,7 @@ import ExamsList from './components/examsList'
 import LandingPage from './pages/LandingPage';
 import PatientExample from './pages/patientExample'
 import NavTut from './components/navbar_cc';
-import AdminPage from './components/admin';
+import AdminList from './components/adminList';
 import { ChakraProvider } from '@chakra-ui/react';
 import ExamDetails from './components/examDetail';
 import UpdatePage from './components/adminUpdate';
@@ -36,8 +36,8 @@ function App() {
                 element={<PatientExample />}
               />
               <Route
-                path="/admin"
-                element={<AdminPage />}
+                path="/admin_list"
+                element={<AdminList />}
               />
               <Route
                 path="/examdetails"

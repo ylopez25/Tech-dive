@@ -27,20 +27,34 @@ const ExamDetails = () => {
                 >
                     Details
                 </h1>
-                <ul>
-                    <li>
-                        {examData.age}
-                    </li>
-                    <li>
-                        {examData.patientId}
-                    </li>
-                    <Img
-                        src={examData.imageURL}
-                        alt='image'
-                    >
-                    </Img>
-
-                </ul>
+                <ul
+                    style={{ textAlign: 'start', paddingLeft: '20px' }}
+                >
+                    <div style={{ padding: '10px' }}>
+                        <h1
+                            style={{ padding: '20px', textDecorationLine: 'underline' }}
+                        >Patient Info</h1>
+                        <li>Patient Id: {examData.patientId}</li>
+                        <li>Age: {examData.age}</li>
+                        <li>Sex: {examData.sex}</li>
+                        <li>BMI: {examData.bmi}</li>
+                        <li
+                        >Zipcode: {examData.zipCode}</li>
+                        <h1
+                            style={{ padding: '20px', textDecorationLine: 'underline' }}
+                        >Exam Info</h1>
+                        <li>Exam ID: {examData._id}</li>
+                        <li>Date</li>
+                        <li>Brixia Score: {examData.brixiaScores}</li>
+                        <li>Key Findings: {examData.keyFindings}</li>
+                        <Img
+                            style={{ padding: '30px' }}
+                            width="200" height="200"
+                            src={examData.imageURL}
+                        >
+                        </Img>
+                    </div>
+                </ul >
             </>
         )
     }
