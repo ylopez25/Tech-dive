@@ -31,8 +31,9 @@ export const ExamsContextProvider = ({ children }) => {
         }
     })
     // performs update operation in adminUpdate
-    const updateExam = async (exam) => {
-        console.log('update')
+    const updateExam = async (newE, oldE) => {
+        console.log(newE)
+        console.log(oldE)
     }
 
     useEffect(() => {
@@ -69,7 +70,7 @@ export const ExamsContextProvider = ({ children }) => {
 
     return (
         <ExamsContext.Provider
-            value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, ExamTypes }}
+            value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, ExamTypes, updateExam }}
         >
             {children}
         </ExamsContext.Provider>

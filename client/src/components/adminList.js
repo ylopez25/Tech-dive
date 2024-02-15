@@ -40,14 +40,22 @@ const AdminList = () => {
                         Number of Exams:
                     </h1>
                 </div>
-                <div className="examsList">
+                <div
+                    className="examsList">
                     <TableContainer>
                         <Table size="sm" variant="simple" width="100%">
                             <Thead>
-                                <Tr>
-                                    <Th>Exam ID</Th>
-                                    <Th>Patient ID</Th>
-                                    <Th>Exams Types</Th>
+                                <Tr className="font-white-table"
+                                >
+                                    <Th
+
+                                    >Exam ID</Th>
+                                    <Th
+
+                                    >Patient ID</Th>
+                                    <Th
+
+                                    >Exams Types</Th>
                                 </Tr>
                             </Thead>
                         </Table>
@@ -82,11 +90,19 @@ const AdminList = () => {
                             size="sm" variant="simple" width="100%">
 
                             <TableCaption>All Exam Records</TableCaption>
-                            <Thead>
-                                <Tr>
-                                    <Th>Exam ID</Th>
-                                    <Th>Patient ID</Th>
-                                    <Th>Exams Types</Th>
+                            <Thead
+                            >
+                                <Tr
+                                >
+                                    <Th
+
+                                    >Exam ID</Th>
+                                    <Th
+
+                                    >Patient ID</Th>
+                                    <Th
+
+                                    >Exams Types</Th>
                                     <Th></Th>
                                     <Th></Th>
                                 </Tr>

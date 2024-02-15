@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Grid, GridItem, Heading, FormControl, Img, Text, Button } from "@chakra-ui/react";
 import { Spinner } from '@chakra-ui/react'
 import { useExams } from "../pages/exams";
@@ -7,55 +7,51 @@ import { FormTextComp, FormSelectComp } from "./formComp";
 
 export default function UpdatePage() {
     const { selectedExam, ExamTypes, exams, setExams, setSelectedExam, updateExam } = useExams();
-    const [_id, setId] = ("");
-    const [exam_type_id, setType] = ('');
-    const [brixia, setBrixia] = ('')
-    const [keyF, setkeyF] = ('')
-    const [ImgUrl, setImgUrl] = ('')
-    const handleInputChange = (e) => {
-        const { name, value } = e.target
-        switch (name) {
-            case '_id':
-                setId(value)
-                break;
-            case 'exam_type_id':
-                setType(value)
-                break;
-            case 'brixiaScore':
-                setBrixia(value)
-                break;
-            case 'keyFindings':
-                setkeyF(value)
-                break
-            case 'imageURL':
-                setImgUrl(value)
-                break;
+
+    const [values, setValues] = useState({
+        _id: "",
+        exam_type_id: "",
+        brixiaScores: "",
+        keyFindings: "",
+        imageURL: ""
+    })
+    const [formSubmitted, setFormSubmitted] = useState(false)
+    useEffect(() => {
+        async function conditionalSpinner(selectedExam, formSubmitted) {
+            if (!selectedExam) {
+                return (
+                    <>
+                        <Heading
+                            style={{ paddingTop: '100px', alignItems: 'center' }}
+                        >
+                            UPDATE EXAM
+                        </Heading>
+                        <Spinner
+                            marginTop='50px'
+                        />
+                    </>
+                )
+            }
+            if (!formSubmitted) {
+                setValues({
+                    ...values,
+                    _id: selectedExam._id,
+                    exam_type_id: selectedExam.exam_type_id,
+                    brixiaScores: selectedExam.brixiaScores,
+                    keyFindings: selectedExam.keyFindings,
+                    imageURL: selectedExam.imageURL
+                });
+            }
         }
-    };
-    const performUpdate = async (exam) => {
-        console.log(_id, exam_type_id, brixia, keyF, ImgUrl)
-        /**
-         * const newExam = {
-         *  ""
-         * }
-         * const updatedExam = await updateExam(exam)
-         * setSelectedExam(updatedExam)
-         */
+        conditionalSpinner()
+    }, [])
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setFormSubmitted(true);
+        console.log(values)
     }
-    if (!selectedExam) {
-        return (
-            <>
-                <Heading
-                    style={{ paddingTop: '100px', alignItems: 'center' }}
-                >
-                    UPDATE EXAM
-                </Heading>
-                <Spinner
-                    marginTop='50px'
-                />
-            </>
-        )
-    }
+
+
     if (selectedExam) {
         return (
             <>
@@ -124,58 +120,71 @@ export default function UpdatePage() {
                         marginBottom="10"
                         border="1px solid blue"
                     >
-                        <FormControl
-
+                        <form
+                            action='submit'
+                            onSubmit={handleSubmit}
                         >
-                            <FormTextComp
-                                label='ExamID'
-                                type='text'
-                                name="_id"
-                                helper='Enter new ExamID'
-                                // form_input={input._id}
-                                onChange={handleInputChange}
-                            />
-                            <FormSelectComp
-                                label='Exam Types'
-                                name="exam_type_id"
-                                placeholder='Select Exam Type'
-                                data={ExamTypes}
-                                onChange={handleInputChange}
-                            />
-                            <FormTextComp
-                                label='Brixia Score'
-                                type='text'
-                                name="brixiaScore"
-                                helper='Enter new Brixia Score'
-                                // form_input={input.brixiaScore}
-                                onChange={handleInputChange}
-                            />
-                            <FormTextComp
-                                label='Key Findings'
-                                type='text'
-                                name="keyFindings"
-                                helper='Enter new Key Findings'
-                                // form_input={input.keyFindings}
-                                onChange={handleInputChange}
-                            />
-                            <FormTextComp
-                                label='New Image'
-                                type='url'
-                                name="imageURL"
-                                helper='Enter new Image via url'
-                                // form_input={input.imageURL}
-                                onChange={handleInputChange}
-                            />
-                            <Button
-                                marginTop='10'
-                                colorScheme="pink"
-                                onClick={() => {
-                                    performUpdate(selectedExam)
-                                }}
+                            <FormControl
                             >
-                                UPDATE
-                            </Button>
-                        </FormControl>
+                                <FormTextComp
+                                    label='ExamID'
+                                    type='text'
+                                    name="_id"
+                                    id="_id"
+                                    value={values._id}
+                                    helper='Enter new ExamID'
+                                    onChange={e => setValues({ ...values, _id: e.target.value })}
+                                />
+
+                                <FormSelectComp
+                                    label='Exam Types'
+                                    name="exam_type_id"
+                                    id="exam_type_id"
+                                    value={values.exam_type_id}
+                                    placeholder='Select Exam Type'
+                                    data={ExamTypes}
+                                    onChange={e => setValues({ ...values, exam_type_id: e.target.value })}
+                                />
+
+                                <FormTextComp
+                                    label='Brixia Score'
+                                    type='text'
+                                    id="brixiaScore"
+                                    name="brixiaScore"
+                                    value={values.brixiaScores}
+                                    helper='Enter new Brixia Score'
+                                    onChange={e => setValues({ ...values, brixiaScores: e.target.value })}
+                                />
+
+                                <FormTextComp
+                                    label='Key Findings'
+                                    type='text'
+                                    name="keyFindings"
+                                    id="keyFindings"
+                                    value={values.keyFindings}
+                                    helper='Enter new Key Findings'
+                                    onChange={e => setValues({ ...values, keyFindings: e.target.value })}
+                                />
+
+                                <FormTextComp
+                                    label='New Image'
+                                    type='url'
+                                    id="imageURL"
+                                    name="imageURL"
+                                    value={values.imageURL}
+                                    helper='Enter new Image via url'
+                                    onChange={e => setValues({ ...values, imageURL: e.target.value })}
+                                />
+                                <Button
+                                    marginTop='5'
+                                    marginBottom='5'
+                                    colorScheme="pink"
+                                    type='submit'
+                                >
+                                    UPDATE
+                                </Button>
+                            </FormControl>
+                        </form>
                     </GridItem>
                 </Grid>
             </>
