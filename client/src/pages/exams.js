@@ -10,6 +10,7 @@ export const ExamsContextProvider = ({ children }) => {
     const [exams, setExams] = useState([]);
     const [deleted, setDeleted] = useState([])
 
+    // performs delete operation in adminList
     const deletedExams = [...deleted]
     const deleteExam = async (exam) => {
         if (exam && !exam['isDeleted']) {
@@ -22,6 +23,16 @@ export const ExamsContextProvider = ({ children }) => {
             'deleted': deletedExams
         }
         return returnedExams
+    }
+    const ExamTypes = []
+    exams.map((exam) => {
+        if (exam && !ExamTypes.includes(exam['exam_type_id'])) {
+            ExamTypes.push(exam['exam_type_id'])
+        }
+    })
+    // performs update operation in adminUpdate
+    const updateExam = async (exam) => {
+        console.log('update')
     }
 
     useEffect(() => {
@@ -58,7 +69,7 @@ export const ExamsContextProvider = ({ children }) => {
 
     return (
         <ExamsContext.Provider
-            value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam }}
+            value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, ExamTypes }}
         >
             {children}
         </ExamsContext.Provider>

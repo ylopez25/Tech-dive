@@ -130,8 +130,11 @@ const AdminList = () => {
                                                 <Td>
                                                     <WrapItem>
                                                         <ChakraLink
-                                                            href="/update_exam"
-                                                            passHref
+                                                            as={ReactRouterLink}
+                                                            to="/update_exam"
+                                                            onClick={() => {
+                                                                setSelectedExam(exam)
+                                                            }}
                                                         >
                                                             <Button
                                                                 as="a"

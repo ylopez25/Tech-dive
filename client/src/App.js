@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // import { useApi } from './hooks/use-api';
 import ExamsList from './components/examsList'
-import LandingPage from './pages/LandingPage';
+import LandingPage from './pages/landingPage';
 import PatientExample from './pages/patientExample'
 import NavTut from './components/navbar_cc';
 import AdminList from './components/adminList';

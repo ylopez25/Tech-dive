@@ -73,7 +73,7 @@ export default function ExamsList() {
                             </Thead>
                             <Tbody>
                                 {exams.map(
-                                    (exam, index) =>
+                                    (exam) =>
                                         exam && (
                                             <Tr key={exam._id}>
                                                 <Td
@@ -108,8 +108,7 @@ export default function ExamsList() {
                                                 <Td>{exam.bmi}</Td>
                                                 <Td>{exam.zipCode}</Td>
                                             </Tr>
-                                                )
-
+                                        )
                                 )}
                             </Tbody>
                         </Table>

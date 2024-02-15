@@ -9,7 +9,7 @@ const ExamDetails = () => {
         const exam = sessionStorage.getItem('exam');
         return JSON.parse(exam) || null;
     });
-
+    // attempt at preserving data upon refresh
     useEffect(() => {
         try {
             setExamData(selectedExam)
