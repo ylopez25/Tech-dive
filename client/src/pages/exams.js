@@ -30,7 +30,7 @@ export const ExamsContextProvider = ({ children }) => {
             ExamTypes.push(exam['exam_type_id'])
         }
     })
-    // performs update operation in adminUpdate
+    // is supposed to perform update operation in adminUpdate
     const updateExam = async (newE, oldE) => {
         console.log(newE)
         console.log(oldE)

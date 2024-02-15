@@ -17,7 +17,7 @@ export default function UpdatePage() {
     })
     const [formSubmitted, setFormSubmitted] = useState(false)
     useEffect(() => {
-        async function conditionalSpinner(selectedExam, formSubmitted) {
+        async function conditionalSpinner() {
             if (!selectedExam) {
                 return (
                     <>
@@ -41,6 +41,7 @@ export default function UpdatePage() {
                     keyFindings: selectedExam.keyFindings,
                     imageURL: selectedExam.imageURL
                 });
+                console.log(values)
             }
         }
         conditionalSpinner()
@@ -51,7 +52,20 @@ export default function UpdatePage() {
         console.log(values)
     }
 
-
+    if (!selectedExam) {
+        return (
+            <>
+                <Heading
+                    style={{ paddingTop: '100px', alignItems: 'center' }}
+                >
+                    UPDATE EXAM
+                </Heading>
+                <Spinner
+                    marginTop='50px'
+                />
+            </>
+        )
+    }
     if (selectedExam) {
         return (
             <>
