@@ -2,7 +2,8 @@ import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image } 
 
 import React from "react";
 
-export default function ExamsList({ exams }) {
+export default function ExamsList({exams}) {
+
   return (
     <div className="examsList">
       <TableContainer>
@@ -35,11 +36,11 @@ export default function ExamsList({ exams }) {
                       </Image>
                     </Td>
                     <Td className="text-wrap">{exam.keyFindings}</Td>
-                    <Td>{exam.brixiaScores}</Td>
+                    <Td>{exam.brixaScore}</Td>
                     <Td>{exam.age}</Td>
                     <Td>{exam.sex}</Td>
                     <Td>{exam.bmi}</Td>
-                    <Td>{exam.zipCode}</Td>
+                    <Td>{exam.zip}</Td>
                   </Tr>
                 )
             )}

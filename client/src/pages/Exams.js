@@ -11,12 +11,20 @@ export default function Exams() {
         const fetchExams = async () => {
             try {
                 // const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
-                const response = await fetch('/api/exams')
+                const response = await fetch('http://localhost:9000/exams')
+                //todo put localhost in env
+                // const response = await fetch('/api/exams')
 
                 
                 const res = await response.json();
-                const exams_data = res["exams"]
-                setExams(exams_data)
+                console.log(res, "res before")
+
+                console.log(res, "res after")
+                
+                setExams(res)
+
+                console.log(exams, "Set exam result")
+
             } catch (e) {
                 console.error(e)
             }
@@ -30,6 +38,8 @@ export default function Exams() {
                 <p>Total: {exams.length}</p>
             </div>
             <ExamsList exams={exams} />
+
+
         </div>
 
     );
