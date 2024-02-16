@@ -23,7 +23,7 @@ const LogoBox = styled.span`
 `
 
 const Logo = () => {
-    const PlatformLogo = `/images/logo${useColorModeValue('', '-dark')}.png`
+    const PlatformLogo = `/images/logo${useColorModeValue('', '')}.png`
     return (
         <Link>
             <LogoBox>

@@ -37,8 +37,26 @@ export const ExamsContextProvider = ({ children }) => {
         oldE[key] = newData[key]
       }
     })
-    console.log(oldE)
     return oldE
+  }
+
+  //undelete operation
+
+  const undeleteExam = async (exam) => {
+    if (exams) {
+      let currentExams = [...exams]
+      let deletedExams2 = [...deleted]
+      if (exam && exam['isDeleted']) {
+        exam['isDeleted'] = false
+        currentExams.push(exam)
+      }
+      deletedExams2 = deletedExams.filter((exam) => exam && exam['isDeleted'])
+      const returnedExams = {
+        'not_deleted': currentExams,
+        'deleted': deletedExams2
+      }
+      return returnedExams
+    }
   }
 
   useEffect(() => {
@@ -75,7 +93,7 @@ export const ExamsContextProvider = ({ children }) => {
 
   return (
     <ExamsContext.Provider
-      value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, ExamTypes, updateExam }}
+      value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, ExamTypes, updateExam, undeleteExam }}
     >
       {children}
     </ExamsContext.Provider>

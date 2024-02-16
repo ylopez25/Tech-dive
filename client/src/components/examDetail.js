@@ -28,7 +28,7 @@ const ExamDetails = () => {
                     Details
                 </h1>
                 <ul
-                    style={{ textAlign: 'start', paddingLeft: '20px' }}
+                    style={{ color: 'black', textAlign: 'start', paddingLeft: '20px' }}
                 >
                     <div style={{ padding: '10px' }}>
                         <h1

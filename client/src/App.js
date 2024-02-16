@@ -32,10 +32,6 @@ function App() {
                 element={<LandingPage />}
               />
               <Route
-                path="/single_patient"
-                element={<PatientExample />}
-              />
-              <Route
                 path="/admin_list"
                 element={<AdminList />}
               />

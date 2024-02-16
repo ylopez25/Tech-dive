@@ -74,7 +74,7 @@ export default function ExamsList() {
                             <Tbody>
                                 {exams.map(
                                     (exam) =>
-                                        exam && (
+                                        exam && !exam['isDeleted'] && (
                                             <Tr key={exam._id}>
                                                 <Td
                                                 >{exam._id}</Td>

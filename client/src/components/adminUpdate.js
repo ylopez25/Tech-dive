@@ -7,16 +7,19 @@ import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
 import styled from "@emotion/styled";
 
-const Button = styled.button`
-  margin-left:100px;
-  width:30%;
-  background-color: grey;
-  color: white;
-  font-weight: bold;
-  &:hover {
-    color: red;
-  }
-  margin-top:100px;
+const GreenButton = styled.button`
+border-radius:5px;
+background-color: white;
+border: 2px solid green;
+color: black;
+margin-top:100px;
+padding: 6px 8px;
+margin-left:70px;
+font-weight: bold;
+width:50%;
+&:hover {
+  color: green;
+}
 `
 
 export default function UpdatePage() {
@@ -42,10 +45,13 @@ export default function UpdatePage() {
         return (
             <>
                 <label
-                    style={{ marginLeft: '10px', textAlign: 'start', marginTop: '5px', }}
+                    style={{ textAlign: 'center', marginTop: '5px', }}
                     htmlFor={props.id || props.name}>{label}</label>
                 <input
-                    style={{ border: "1px solid blue", width: "50%", marginLeft: '10px' }}
+                    style={{
+                        backgroundColor: 'white',
+                        WebkitTextFillColor: 'gray', textAlign: 'center', borderRadius: '5px', border: "1px solid black", width: "80%", marginLeft: '30px'
+                    }}
                     className="text-input" {...field} {...props} />
                 {meta.touched && meta.error ? (
                     <div className="error">{meta.error}</div>
@@ -58,14 +64,15 @@ export default function UpdatePage() {
         return (
             <>
                 <div
-                    style={{ marginLeft: '10px', textAlign: 'start' }}
+                    style={{ textAlign: 'center' }}
                 >
                     <label htmlFor={props.id || props.name}>{label}</label>
                 </div>
                 <div
-                    style={{ marginLeft: '10px', textAlign: 'start' }}
+                    style={{ textAlign: 'center' }}
                 >
                     <select
+                        style={{ borderRadius: '5px', width: '80%', backgroundColor: 'silver' }}
                         {...field} {...props} />
                     {meta.touched && meta.error ? (
                         <div className="error">{meta.error}</div>
@@ -94,11 +101,13 @@ export default function UpdatePage() {
         return (
             <>
                 <Heading
+                    color="black"
                     marginTop='80px'
                 >
                     HELLO ADMIN
                 </Heading>
                 <Grid
+                    color='black'
                     marginTop="50px"
                     templateColumns='repeat(3, 1fr)'
                     gap={2}
@@ -218,11 +227,11 @@ export default function UpdatePage() {
                                     type="text"
                                     placeholder="imageURL"
                                 />
-                                <Button
+                                <GreenButton
                                     type="submit"
                                 >
                                     UPDATE
-                                </Button>
+                                </GreenButton>
                             </Form>
                         </Formik>
                     </GridItem>

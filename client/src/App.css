@@ -1,8 +1,11 @@
 .App {
   text-align: center;
   background-color: white;
+  color: white;
+}
+
+header {
   color: black;
-  overscroll-behavior: none;
 }
 
 .App-logo {

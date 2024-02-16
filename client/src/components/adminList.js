@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image, Link as ChakraLink, WrapItem, Button, Heading } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image, Link as ChakraLink, WrapItem, Heading } from "@chakra-ui/react";
 import { useExams } from '../pages/exams';
 import { Spinner } from '@chakra-ui/react'
+import styled from "@emotion/styled";
 import { Link as ReactRouterLink } from "react-router-dom";
 /*
 implement table with update, delete buttons
@@ -17,8 +18,33 @@ use usecontext in order to get all exams
 
 Tackling issue 29 and 41
  */
+
+const RedButton = styled.button`
+  border-radius:5px;
+  background-color: white;
+  border: 2px solid red;
+  color: black;
+  padding: 6px 8px;
+  font-weight: bold;
+  &:hover {
+    color: red;
+  }
+`
+const GreenButton = styled.button`
+border-radius:5px;
+background-color: white;
+border: 2px solid green;
+color: black;
+padding: 6px 8px;
+font-weight: bold;
+&:hover {
+  color: green;
+}
+
+    `
+
 const AdminList = () => {
-    const { exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam } = useExams();
+    const { exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, undeleteExam } = useExams();
 
     const performDelete = async (exam) => {
         const response = await deleteExam(exam)
@@ -28,8 +54,12 @@ const AdminList = () => {
         }
     }
     //sg: implementation of undelete or move deleted exam history to admin profile page
-    const UnDelete = async (exam) => {
-        console.log(exam)
+    const performUnDelete = async (exam) => {
+        const response = await undeleteExam(exam)
+        if (response) {
+            setDeleted(response['deleted'])
+            setExams(response['not_deleted'])
+        }
     }
     if (loading) {
         return (
@@ -40,15 +70,13 @@ const AdminList = () => {
                         Number of Exams:
                     </h1>
                 </div>
-                <div
-                    className="examsList">
+                <div>
                     <TableContainer>
                         <Table size="sm" variant="simple" width="100%">
                             <Thead>
-                                <Tr className="font-white-table"
+                                <Tr
                                 >
                                     <Th
-
                                     >Exam ID</Th>
                                     <Th
 
@@ -132,7 +160,7 @@ const AdminList = () => {
                                                 </Td>
                                                 <Td>
                                                     <WrapItem>
-                                                        <Button
+                                                        <RedButton
                                                             colorScheme="red"
                                                             size='sm'
                                                             onClick={(e) => {
@@ -140,7 +168,7 @@ const AdminList = () => {
                                                             }}
                                                         >
                                                             DELETE
-                                                        </Button>
+                                                        </RedButton>
                                                     </WrapItem>
                                                 </Td>
                                                 <Td>
@@ -152,11 +180,11 @@ const AdminList = () => {
                                                                 setSelectedExam(exam)
                                                             }}
                                                         >
-                                                            <Button
+                                                            <GreenButton
                                                                 as="a"
                                                                 size='sm'
                                                                 colorScheme='whatsapp'
-                                                            >UPDATE</Button>
+                                                            >UPDATE</GreenButton>
                                                         </ChakraLink>
                                                     </WrapItem>
                                                 </Td>
@@ -204,21 +232,21 @@ const AdminList = () => {
                                                 </Td>
                                                 <Td>
                                                     <WrapItem>
-                                                        <Button
+                                                        <RedButton
                                                             size="sm"
                                                             onClick={(e) => {
-                                                                UnDelete(deletedExam)
+                                                                performUnDelete(deletedExam)
                                                             }}
                                                         >
                                                             UN-DELETE
-                                                        </Button>
+                                                        </RedButton>
                                                     </WrapItem>
                                                 </Td>
                                                 <Td>
                                                     <WrapItem>
-                                                        <Button
+                                                        <GreenButton
                                                             size='sm'
-                                                            colorScheme='whatsapp'>UPDATE</Button>
+                                                            colorScheme='whatsapp'>UPDATE</GreenButton>
                                                     </WrapItem>
                                                 </Td>
                                             </Tr>
