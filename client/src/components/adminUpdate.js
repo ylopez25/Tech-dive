@@ -3,62 +3,60 @@ import { Grid, GridItem, Heading, FormControl, Img, Text, Button } from "@chakra
 import { Spinner } from '@chakra-ui/react'
 import { useExams } from "../pages/exams";
 import { ArrowRightIcon } from "@chakra-ui/icons";
-import { FormTextComp, FormSelectComp } from "./formComp";
+import { Formik, Form, useField } from 'formik';
+import * as Yup from 'yup';
 
 export default function UpdatePage() {
     const { selectedExam, ExamTypes, exams, setExams, setSelectedExam, updateExam } = useExams();
 
-    const [values, setValues] = useState({
-        _id: "",
-        exam_type_id: "",
-        brixiaScores: "",
-        keyFindings: "",
-        imageURL: ""
-    })
-    const [formSubmitted, setFormSubmitted] = useState(false)
-    useEffect(() => {
-        async function conditionalSpinner() {
-            if (!selectedExam) {
-                return (
-                    <>
-                        <Heading
-                            style={{ paddingTop: '100px', alignItems: 'center' }}
-                        >
-                            UPDATE EXAM
-                        </Heading>
-                        <Spinner
-                            marginTop='50px'
-                        />
-                    </>
-                )
-            }
-            if (!formSubmitted) {
-                setValues({
-                    ...values,
-                    _id: selectedExam._id,
-                    exam_type_id: selectedExam.exam_type_id,
-                    brixiaScores: selectedExam.brixiaScores,
-                    keyFindings: selectedExam.keyFindings,
-                    imageURL: selectedExam.imageURL
-                });
-                console.log(values)
+    const performUpdate = async (e) => {
+        const response = await updateExam(e, selectedExam)
+        if (response) {
+            try {
+                // refresh on page, create new obj w/ updated properties with obj spreading
+                setSelectedExam({ ...response });
+            } catch (e) {
+                console.error(e)
             }
         }
-        conditionalSpinner()
-    }, [])
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setFormSubmitted(true);
-        console.log(values)
     }
+
+    const MyTextInput = ({ label, ...props }) => {
+        // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
+        // which we can spread on <input>. We can use field meta to show an error
+        // message if the field is invalid and it has been touched (i.e. visited)
+        const [field, meta] = useField(props);
+        return (
+            <>
+                <label htmlFor={props.id || props.name}>{label}</label>
+                <input className="text-input" {...field} {...props} />
+                {meta.touched && meta.error ? (
+                    <div className="error">{meta.error}</div>
+                ) : null}
+            </>
+        );
+    };
+    const MySelect = ({ label, ...props }) => {
+        const [field, meta] = useField(props);
+        return (
+            <div>
+                <label htmlFor={props.id || props.name}>{label}</label>
+                <select {...field} {...props} />
+                {meta.touched && meta.error ? (
+                    <div className="error">{meta.error}</div>
+                ) : null}
+            </div>
+        );
+    };
+
 
     if (!selectedExam) {
         return (
             <>
                 <Heading
-                    style={{ paddingTop: '100px', alignItems: 'center' }}
+                    style={{ paddingTop: '70px', alignItems: 'center' }}
                 >
-                    UPDATE EXAM
+                    HELLO ADMIN
                 </Heading>
                 <Spinner
                     marginTop='50px'
@@ -72,7 +70,7 @@ export default function UpdatePage() {
                 <Heading
                     marginTop='80px'
                 >
-                    UPDATE EXAM
+                    HELLO ADMIN
                 </Heading>
                 <Grid
                     marginTop="50px"
@@ -134,71 +132,74 @@ export default function UpdatePage() {
                         marginBottom="10"
                         border="1px solid blue"
                     >
-                        <form
-                            action='submit'
-                            onSubmit={handleSubmit}
+                        <h1>Update Exam</h1>
+                        <Formik
+
+                            initialValues={{
+                                _id: "",
+                                exam_type_id: "",
+                                brixiaScores: "",
+                                keyFindings: "",
+                                imageURL: ""
+                            }}
+                            //can add type validation and require text/selection inputs at a later time
+                            validationSchema={Yup.object({
+                                _id: Yup.string(),
+                                exam_type_id: Yup.string().oneOf(
+                                    [...ExamTypes]
+                                ),
+                                brixiaScores: Yup.string(),
+                                keyFindings: Yup.string(),
+                                imageURL: Yup.string(),
+                            })}
+                            onSubmit={(values, { setSubmitting }) => {
+                                performUpdate(values)
+                                setSubmitting(false)
+                            }}
                         >
-                            <FormControl
-                            >
-                                <FormTextComp
-                                    label='ExamID'
-                                    type='text'
+                            <Form>
+                                <MyTextInput
+                                    label="_id"
                                     name="_id"
-                                    id="_id"
-                                    value={values._id}
-                                    helper='Enter new ExamID'
-                                    onChange={e => setValues({ ...values, _id: e.target.value })}
+                                    type="text"
+                                    placeholder="Exam ID"
                                 />
-
-                                <FormSelectComp
-                                    label='Exam Types'
+                                <MySelect
+                                    label="Exam Types"
                                     name="exam_type_id"
-                                    id="exam_type_id"
-                                    value={values.exam_type_id}
-                                    placeholder='Select Exam Type'
-                                    data={ExamTypes}
-                                    onChange={e => setValues({ ...values, exam_type_id: e.target.value })}
+                                >
+                                    {ExamTypes.map((type) =>
+                                        type && (<option
+                                            key={type}
+                                            value={type}
+                                        >{type}</option>)
+                                    )}
+                                </MySelect>
+                                <MyTextInput
+                                    label="brixiaScores"
+                                    name="brixiaScores"
+                                    type="text"
+                                    placeholder="Brixia Scores"
                                 />
-
-                                <FormTextComp
-                                    label='Brixia Score'
-                                    type='text'
-                                    id="brixiaScore"
-                                    name="brixiaScore"
-                                    value={values.brixiaScores}
-                                    helper='Enter new Brixia Score'
-                                    onChange={e => setValues({ ...values, brixiaScores: e.target.value })}
-                                />
-
-                                <FormTextComp
-                                    label='Key Findings'
-                                    type='text'
+                                <MyTextInput
+                                    label="keyFindings"
                                     name="keyFindings"
-                                    id="keyFindings"
-                                    value={values.keyFindings}
-                                    helper='Enter new Key Findings'
-                                    onChange={e => setValues({ ...values, keyFindings: e.target.value })}
+                                    type="text"
+                                    placeholder="Key Findings"
                                 />
-
-                                <FormTextComp
-                                    label='New Image'
-                                    type='url'
-                                    id="imageURL"
+                                <MyTextInput
+                                    label="imageURL"
                                     name="imageURL"
-                                    value={values.imageURL}
-                                    helper='Enter new Image via url'
-                                    onChange={e => setValues({ ...values, imageURL: e.target.value })}
+                                    type="text"
+                                    placeholder="imageURL"
                                 />
-                                <Button
-                                    marginTop='5'
-                                    marginBottom='5'
-                                    colorScheme="pink"
-                                    type='submit'
+                                <button
+                                    type="submit"
                                 >
                                     UPDATE
-                                </Button>
-                            </FormControl>
-                        </form>
+                                </button>
+                            </Form>
+                        </Formik>
                     </GridItem>
                 </Grid>
             </>

@@ -1,6 +1,6 @@
 import { FormLabel, Select, Input, FormHelperText } from "@chakra-ui/react"
 
-export const FormTextComp = ({ label, type, helper, margin, ...rest }) => {
+export const FormTextComp = ({ label, type, helper, margin, value, input, ...rest }) => {
     return (
         <>
             <FormLabel
@@ -13,6 +13,7 @@ export const FormTextComp = ({ label, type, helper, margin, ...rest }) => {
                 border="1px solid black"
                 width="80"
                 type={type}
+                value={input}
             />
             <FormHelperText
                 marginRight={margin}

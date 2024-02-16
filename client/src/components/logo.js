@@ -33,7 +33,7 @@ const Logo = () => {
                     height={20}
                 />
                 <Text
-                    color={useColorModeValue('black', 'white')}
+                    color={useColorModeValue('black', 'white.800')}
                     fontWeight='bold'
                     ml={3}
                 >
