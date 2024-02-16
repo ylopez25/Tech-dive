@@ -6,7 +6,7 @@ import './App.css';
 import ExamsList from './components/examsList'
 import LandingPage from './pages/LandingPage';
 import PatientExample from './pages/patientExample'
-import NavTut from './components/navbar_cc';
+import Navbar from "./components/Navbar";
 import AdminList from './components/adminList';
 import ExamDetails from './components/examDetail';
 import UpdatePage from './components/adminUpdate';
@@ -18,7 +18,7 @@ function App() {
     <ChakraProvider>
       <div className="App">
         <BrowserRouter>
-          <NavTut />
+          <Navbar />
           <div className="pages">
             <Routes>
               <Route path="*" element={<PageNotFound />} />

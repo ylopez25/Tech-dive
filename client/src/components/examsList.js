@@ -1,7 +1,5 @@
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image } from "@chakra-ui/react";
-
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image, Link as ChakraLink } from "@chakra-ui/react";
 import React from "react";
-
 import { Spinner } from '@chakra-ui/react'
 import { useExams } from "../pages/exams";
 import { Link as ReactRouterLink } from "react-router-dom";

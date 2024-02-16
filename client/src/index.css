@@ -6,7 +6,7 @@ html {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-color: white;
   overscroll-behavior: none;
 }
 
@@ -65,7 +65,7 @@ code {
   left: 50%;
   bottom: 100%;
   transform: translate(-50%, -50%);
-  color: black;
+  color: white;
 }
 
 .spinner {

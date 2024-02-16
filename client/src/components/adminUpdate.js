@@ -12,9 +12,9 @@ border-radius:5px;
 background-color: white;
 border: 2px solid green;
 color: black;
-margin-top:100px;
+margin:100px auto;
 padding: 6px 8px;
-margin-left:70px;
+align-items: center;
 font-weight: bold;
 width:50%;
 &:hover {
@@ -50,7 +50,7 @@ export default function UpdatePage() {
                 <input
                     style={{
                         backgroundColor: 'white',
-                        WebkitTextFillColor: 'gray', textAlign: 'center', borderRadius: '5px', border: "1px solid black", width: "80%", marginLeft: '30px'
+                        WebkitTextFillColor: 'gray', textAlign: 'center', borderRadius: '5px', border: "1px solid black", width: "80%", marginLeft: '36px'
                     }}
                     className="text-input" {...field} {...props} />
                 {meta.touched && meta.error ? (
@@ -69,10 +69,10 @@ export default function UpdatePage() {
                     <label htmlFor={props.id || props.name}>{label}</label>
                 </div>
                 <div
-                    style={{ textAlign: 'center' }}
+                    style={{ marginLeft: '20px', textAlign: 'center' }}
                 >
                     <select
-                        style={{ borderRadius: '5px', width: '80%', backgroundColor: 'silver' }}
+                        style={{ height: '25px', marginRight: '20px', borderRadius: '5px', width: '82%', backgroundColor: 'silver' }}
                         {...field} {...props} />
                     {meta.touched && meta.error ? (
                         <div className="error">{meta.error}</div>
@@ -167,7 +167,9 @@ export default function UpdatePage() {
                         marginBottom="10"
                         border="1px solid blue"
                     >
-                        <h1>Update Exam</h1>
+                        <h1
+                            style={{ fontWeight: 'bold' }}
+                        >Update Exam</h1>
                         <Formik
                             initialValues={{
                                 _id: "",
@@ -191,7 +193,7 @@ export default function UpdatePage() {
                                 setSubmitting(false)
                             }}
                         >
-                            <Form style={{ display: "grid", flexDirection: 'column', gap: '10px' }}>
+                            <Form style={{ display: "grid", flexDirection: 'column', gap: '10px', marginTop: '40px' }}>
                                 <MyTextInput
                                     label="_id"
                                     name="_id"
