@@ -62,8 +62,14 @@ export const ExamsContextProvider = ({ children }) => {
   useEffect(() => {
     const fetchExams = async () => {
       try {
-        setLoading(true)
-        const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
+        // const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
+        const response = await fetch('http://localhost:9000/exams')
+        /**
+         *  setLoading(true)
+            const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
+         */
+        //todo put localhost in env
+        // const response = await fetch('/api/exams')
         const res = await response.json();
         const exams_data = res["exams"]
         exams_data.map(exam => {
