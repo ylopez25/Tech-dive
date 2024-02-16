@@ -26,10 +26,10 @@ function App() {
                 path="/exams"
                 element={<ExamsList />}
               />
-              <Route
+              {/* <Route
                 path="/"
                 element={<LandingPage />}
-              />
+              /> */}
               <Route
                 path="/admin_list"
                 element={<AdminList />}
