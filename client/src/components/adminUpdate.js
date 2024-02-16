@@ -1,10 +1,23 @@
 import { React, useState, useEffect } from "react";
-import { Grid, GridItem, Heading, FormControl, Img, Text, Button } from "@chakra-ui/react";
+import { Grid, GridItem, Heading, FormControl, Img, Text } from "@chakra-ui/react";
 import { Spinner } from '@chakra-ui/react'
 import { useExams } from "../pages/exams";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
+import styled from "@emotion/styled";
+
+const Button = styled.button`
+  margin-left:100px;
+  width:30%;
+  background-color: grey;
+  color: white;
+  font-weight: bold;
+  &:hover {
+    color: red;
+  }
+  margin-top:100px;
+`
 
 export default function UpdatePage() {
     const { selectedExam, ExamTypes, exams, setExams, setSelectedExam, updateExam } = useExams();
@@ -28,8 +41,12 @@ export default function UpdatePage() {
         const [field, meta] = useField(props);
         return (
             <>
-                <label htmlFor={props.id || props.name}>{label}</label>
-                <input className="text-input" {...field} {...props} />
+                <label
+                    style={{ marginLeft: '10px', textAlign: 'start', marginTop: '5px', }}
+                    htmlFor={props.id || props.name}>{label}</label>
+                <input
+                    style={{ border: "1px solid blue", width: "50%", marginLeft: '10px' }}
+                    className="text-input" {...field} {...props} />
                 {meta.touched && meta.error ? (
                     <div className="error">{meta.error}</div>
                 ) : null}
@@ -39,13 +56,22 @@ export default function UpdatePage() {
     const MySelect = ({ label, ...props }) => {
         const [field, meta] = useField(props);
         return (
-            <div>
-                <label htmlFor={props.id || props.name}>{label}</label>
-                <select {...field} {...props} />
-                {meta.touched && meta.error ? (
-                    <div className="error">{meta.error}</div>
-                ) : null}
-            </div>
+            <>
+                <div
+                    style={{ marginLeft: '10px', textAlign: 'start' }}
+                >
+                    <label htmlFor={props.id || props.name}>{label}</label>
+                </div>
+                <div
+                    style={{ marginLeft: '10px', textAlign: 'start' }}
+                >
+                    <select
+                        {...field} {...props} />
+                    {meta.touched && meta.error ? (
+                        <div className="error">{meta.error}</div>
+                    ) : null}
+                </div>
+            </>
         );
     };
 
@@ -158,15 +184,13 @@ export default function UpdatePage() {
                         >
                             <Form style={{ display: "grid", flexDirection: 'column', gap: '10px' }}>
                                 <MyTextInput
-                                    style={{ padding: '10px' }}
                                     label="_id"
                                     name="_id"
                                     type="text"
                                     placeholder="Exam ID"
                                 />
                                 <MySelect
-                                    style={{ padding: '10px' }}
-                                    label="Exam Types"
+                                    label="Exam Types "
                                     name="exam_type_id"
                                 >
                                     {ExamTypes.map((type) =>
@@ -177,31 +201,28 @@ export default function UpdatePage() {
                                     )}
                                 </MySelect>
                                 <MyTextInput
-                                    style={{ padding: '20px' }}
                                     label="brixiaScores"
                                     name="brixiaScores"
                                     type="text"
                                     placeholder="Brixia Scores"
                                 />
                                 <MyTextInput
-                                    style={{ padding: '10px', marginTop: '40px' }}
                                     label="keyFindings"
                                     name="keyFindings"
                                     type="text"
                                     placeholder="Key Findings"
                                 />
                                 <MyTextInput
-                                    style={{ padding: '10px', marginTop: '40px' }}
                                     label="imageURL"
                                     name="imageURL"
                                     type="text"
                                     placeholder="imageURL"
                                 />
-                                <button
+                                <Button
                                     type="submit"
                                 >
                                     UPDATE
-                                </button>
+                                </Button>
                             </Form>
                         </Formik>
                     </GridItem>
