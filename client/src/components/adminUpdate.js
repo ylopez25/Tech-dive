@@ -134,7 +134,6 @@ export default function UpdatePage() {
                     >
                         <h1>Update Exam</h1>
                         <Formik
-
                             initialValues={{
                                 _id: "",
                                 exam_type_id: "",
@@ -157,14 +156,16 @@ export default function UpdatePage() {
                                 setSubmitting(false)
                             }}
                         >
-                            <Form>
+                            <Form style={{ display: "grid", flexDirection: 'column', gap: '10px' }}>
                                 <MyTextInput
+                                    style={{ padding: '10px' }}
                                     label="_id"
                                     name="_id"
                                     type="text"
                                     placeholder="Exam ID"
                                 />
                                 <MySelect
+                                    style={{ padding: '10px' }}
                                     label="Exam Types"
                                     name="exam_type_id"
                                 >
@@ -176,18 +177,21 @@ export default function UpdatePage() {
                                     )}
                                 </MySelect>
                                 <MyTextInput
+                                    style={{ padding: '20px' }}
                                     label="brixiaScores"
                                     name="brixiaScores"
                                     type="text"
                                     placeholder="Brixia Scores"
                                 />
                                 <MyTextInput
+                                    style={{ padding: '10px', marginTop: '40px' }}
                                     label="keyFindings"
                                     name="keyFindings"
                                     type="text"
                                     placeholder="Key Findings"
                                 />
                                 <MyTextInput
+                                    style={{ padding: '10px', marginTop: '40px' }}
                                     label="imageURL"
                                     name="imageURL"
                                     type="text"
