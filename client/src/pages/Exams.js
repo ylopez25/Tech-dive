@@ -1,26 +1,44 @@
 import React from "react";
-import { useApi } from "../hooks/use-api";
-export default function Home() {
-  //useEffect
-  //render exams
-  const { response } = useApi();
-  console.log(response, "wtf is going on?");
+import ExamsList from '../components/ExamsList'
+// import { useApi } from "../hooks/use-api";
+import { useState, useEffect } from 'react'
+
+
+export default function Exams() {
+  const [exams, setExams] = useState([]);
+
+  useEffect(() => {
+    const fetchExams = async () => {
+      try {
+        // const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
+        const response = await fetch('http://localhost:9000/exams')
+
+        //todo put localhost in env
+        // const response = await fetch('/api/exams')
+        const res = await response.json();
+        console.log(res, "res before")
+
+        console.log(res, "res after")
+
+        setExams(res)
+
+        console.log(exams, "Set exam result")
+
+      } catch (e) {
+        console.error(e)
+      }
+    }
+    fetchExams();
+  }, []);
+
   return (
-    <div className="body">
-      <h1
-        style={{ textAlign: 'center ', padding: '20px' }}
-      > List of exams:</h1>
-      {/* {response && response?.exams[3].patientId} */}
+    <div className="exams">
+      <div className="total">
+        <p>Total: {exams.length}</p>
+      </div>
+      <ExamsList exams={exams} />
 
-      {/* I commented the mapping feature out for now, it was breaking
-         but the Nav Bar is working - Ben */}
 
-      {/* {response && response?.exams.map((exam) => (
-         <div>
-         <h2>{exam.exams.patientId}</h2>
-        <p>Age: {exam.age}</p>
-        </div>
-        ))} */}
     </div>
 
   );

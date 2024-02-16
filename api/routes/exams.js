@@ -17,7 +17,6 @@ router.get('/', getExams)
 //! GET ONE
 router.get('/:id', getExam)
 
-
 //! POST NEW Exam
 //todo add admin id param  for authenticaion etc
 router.post('/createExam', createExam)
