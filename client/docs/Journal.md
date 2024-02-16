@@ -62,10 +62,10 @@
     * [repeat](https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat)
 
 ### DS to implement
-- Admin Page
+- Admin Page [x] (DONE)
     * implement useContext and add admin page with buttons that u/d
 
-0. perform data cleaning, examId is going to be exam_type_id
+0. perform data cleaning, examId is going to be exam_type_id [x] (DONE)
 
 1. Dictionary called ExamTypes - (1) iterate through all records, (2) insatiate a key for each exam_type_id in dict ExamTypes, (3) append at examTypes[exam_type_id] for all records that match that particular examType, (4) add a random report_id to each record
     - ExamTypes: {
@@ -78,10 +78,8 @@
             ...
         ]
     }
-    * (no be) in order to get to a page of single report after clicking on report_id would be to pass it via props through qPs
-        1. either use qps, with path parameters
-        2. use useContext to pass information to child props through handleOnClick
-        3. prop drilling
+    * (no be) in order to get to a page of single report after clicking on report_id would be to pass it via props
+        - [x] 1. use useContext to pass information to child props through handleOnClick
 
 2. (sg)Reports Page/Table, includes report_id, (patient results's id) _id, reviewer name (find a js name generator package), keyFindings
     - Report: {'report_id':...,'_id':...,}
@@ -94,4 +92,8 @@
 5. Create Exam Form
 6. Create Patient Form
 7. Table Sorting/Filtering
+
+## 2.16.24
+Need to implement Creating Exam, Patient pages
+1. Create exam, CreateExam.js -> create and update exams with setExams to add new exam
 <!--  -->
