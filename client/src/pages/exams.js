@@ -65,13 +65,15 @@ export const ExamsContextProvider = ({ children }) => {
         // const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
         // const response = await fetch('http://localhost:9000/exams')
         setLoading(true)
-        const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
+        const response = await fetch('http://localhost:9000/exams')
 
         //todo put localhost in env
         // const response = await fetch('/api/exams')
         const res = await response.json();
-        const exams_data = res["exams"]
-        exams_data.map(exam => {
+        // const exams_data = res["exams"]
+        setExams(res)
+
+        exams.map(exam => {
           if (exam) {
             Object.keys(exam).map(key => {
               /*  going to be moved to admin page when user updates have this change in order for it to be reflected
@@ -86,9 +88,8 @@ export const ExamsContextProvider = ({ children }) => {
             })
           }
         })
-        console.log(exams_data)
+        console.log(exams)
         setLoading(false)
-        setExams(exams_data)
       } catch (e) {
         console.error(e)
       }
