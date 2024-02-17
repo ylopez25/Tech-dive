@@ -81,7 +81,6 @@ export const ExamsContextProvider = ({ children }) => {
             })
           }
         })
-        console.log(exams_data)
         setLoading(false)
         setExams(exams_data)
       } catch (e) {
