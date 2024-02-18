@@ -22,13 +22,12 @@ function App() {
 						<Routes>
 							<Route path="*" element={<PageNotFound />} />
 							<Route path="/exams" element={<ExamsList />} />
-							{/* <Route
-                path="/"
-                element={<LandingPage />}
-              /> */}
+							{/* <Route path="/" element={<LandingPage />}/> */}
 							<Route path="/admin/exams" element={<AdminList />} />
 							<Route path="/examdetails" element={<ExamDetails />} />
 							<Route path="/admin/exams/:id/update" element={<UpdatePage />} />
+							{/* <Route path=":id/update" element={<UpdatePage />} /> */}
+
 						</Routes>
 					</div>
 				</BrowserRouter>

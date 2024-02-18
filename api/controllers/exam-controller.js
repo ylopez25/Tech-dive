@@ -33,10 +33,10 @@ const getExam = async (req, res) => {
 //todo POST exam
 const createExam = async (req,res, next) => {
 
-    const {adminId, patientId, age, sex, zip, bmi, examTypeId, keyFindings, brixaScore, imageURL} = req.body
+    const {adminId, patientId, age, sex, zipCode, bmi, examTypeId, keyFindings, brixiaScore, imageURL} = req.body
     
     try {
-        const exam = await Exam.create({adminId, patientId, age, sex, zip, bmi, examTypeId, keyFindings, brixaScore, imageURL})
+        const exam = await Exam.create({adminId, patientId, age, sex, zipCode, bmi, examTypeId, keyFindings, brixiaScore, imageURL})
         res.status(200).json(exam)
     } catch (error) { 
      res.status(400).json({error : error.message}) 

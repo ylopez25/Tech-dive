@@ -175,7 +175,7 @@ const AdminList = () => {
                                                     <WrapItem>
                                                         <ChakraLink
                                                             as={ReactRouterLink}
-                                                            to={`admin/exams/${exam._id}/update`}
+                                                            to={`${exam._id}/update`}
                                                             onClick={() => {
                                                                 setSelectedExam(exam)
                                                             }}
