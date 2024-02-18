@@ -19,7 +19,7 @@ const examSchema = new Schema({
         type: String,
         required: true
     },
-    zip: {
+    zipCode: {
         type: String,
         required: true
     },
@@ -35,7 +35,7 @@ const examSchema = new Schema({
         type: String,
         required: true
     },
-    brixaScore: {
+    brixiaScore: {
         type: String,
         required: true
     },
