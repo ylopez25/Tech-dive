@@ -1,8 +1,6 @@
 import React from "react";
 import ExamsList from '../components/ExamsList'
-import AdminList from "./Admin";
 // import { useApi } from "../hooks/use-api";
-import CreateExam from "./CreateExam";
 import { useState, useEffect } from 'react'
 
 

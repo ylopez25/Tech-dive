@@ -52,7 +52,7 @@ font-weight: bold;
   color: blue;
 }`
 
-export const AdminList = () => {
+export const Admin = () => {
     const [exams, setExams] = useState([])
     const [examtypes, setExamTypes] = useState([])
     const [loading, setLoading] = useState(false)
@@ -236,4 +236,4 @@ export const AdminList = () => {
 }
 
 
-export default AdminList;
+export default Admin;
