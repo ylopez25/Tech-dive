@@ -31,23 +31,6 @@ const getPatientExams = async (req, res) => {
     })
 
     res.status(200).json(patientExams)
-
-    // if (!mongoose.Types.ObjectId.isValid(patientId)) {
-    //     return res.status(404).json({error: 'No such patient'})
-    // }
-
-    // const patientExams = await Exam.find({}).sort({
-    //     createdAt: -1
-    // })
-
-    // console.log(patientExams, "Patient EXAMS");
-
-
-    // if (!exams) {
-    //     return res.status(404).json({error: 'No such patient'})
-    // }
-
-    // res.status(200).json(patientExams)
 }
 
 
