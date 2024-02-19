@@ -4,6 +4,7 @@ const {
     getExams,
     getExam,
     getPatientExams,
+    getExamTypes,
     createExam,
     deleteExam,
     updateExam
@@ -17,6 +18,9 @@ router.get('/', getExams)
 
 //! GET ALL PATIENT EXAMS
 router.get('/patient/:id/exams', getPatientExams)
+
+//! GET ALL EXAM TYPES 
+router.get('/types', getExamTypes)
 
 //! GET ONE
 router.get('/:id', getExam)

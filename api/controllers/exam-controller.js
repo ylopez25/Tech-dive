@@ -34,6 +34,18 @@ const getPatientExams = async (req, res) => {
 }
 
 
+
+//todo GET ALL exam types
+const getExamTypes = async (req, res) => {
+    let examsTypes = []
+    const exams = await  Exam.distinct('examTypeId')
+
+    res.status(200).json({examTypes: [exams]})
+
+}
+
+
+
 //todo GET one exam by id
 const getExam = async (req, res) => {
     const  { id } = req.params
@@ -117,6 +129,7 @@ module.exports = {
     getExams,
     getExam,
     getPatientExams,
+    getExamTypes,
     createExam,
     deleteExam,
     updateExam
