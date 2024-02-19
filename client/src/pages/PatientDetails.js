@@ -3,7 +3,7 @@ function PatientDetails() {
 
     return (
         <>
-            <PatientInfo />
+            <PatientInfo parent="PatientDetails" />
         </>
     )
 }

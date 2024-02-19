@@ -1,6 +1,6 @@
 import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image, Spinner } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from 'react-router-dom'
-import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
+import { Link as ChakraLink } from '@chakra-ui/react'
 import React from "react";
 
 export default function ExamsList({ exams, loading }) {
@@ -68,8 +68,8 @@ export default function ExamsList({ exams, loading }) {
                                         <>
                                             <Tbody>
                                                 <Tr>
-                                                    <Td> <ChakraLink as={ReactRouterLink} color="blue" to={`/api/patient/${exam._id}/exams`}>{exam.patientId}</ChakraLink></Td>
-                                                    <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/api/exams/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
+                                                    <Td> <ChakraLink as={ReactRouterLink} color="blue" to={`/patient/${exam._id}`}>{exam.patientId}</ChakraLink></Td>
+                                                    <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/exams/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
 
                                                     <Td>
                                                         <Image src={exam.imageURL}>

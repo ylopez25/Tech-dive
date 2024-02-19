@@ -21,8 +21,8 @@ function App() {
               <Route path="*" element={<PageNotFound />} />
               <Route path="/exams" element={<Exams />} />
               <Route path="/admin" element={<Admin />} />
-              <Route path="/api/exams/:id" element={<ExamInfo />} />
-              <Route path="/api/patient/:id/exams" element={<PatientDetails />} />
+              <Route path="/exams/:id" element={<ExamInfo />} />
+              <Route path="/patient/:id" element={<PatientDetails />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>
