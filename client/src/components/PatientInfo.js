@@ -1,15 +1,17 @@
-function PatientInfo() {
+function PatientInfo({ exam }) {
   return (
     <>
       <div>
-        <h1>
+        <h1
+          style={{ padding: '20px', textDecorationLine: 'underline' }}
+        >
           Patient Info
         </h1>
-        <li>Patient Id: "COVID-2019</li>
-        <li>Age: 29</li>
-        <li>Sex: F</li>
-        <li>BMI: 25</li>
-        <li>Zipcode: 11204</li>
+        <li>Patient Id: {exam.patientId}</li>
+        <li>Age: {exam.age} </li>
+        <li>Sex: {exam.sex} </li>
+        <li>BMI: {exam.bmi}</li>
+        <li>Zipcode: {exam.zipCode}</li>
       </div>
     </>
   );

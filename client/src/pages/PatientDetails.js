@@ -1,8 +1,9 @@
 import PatientInfo from "../components/PatientInfo";
-function PatientDetails () {
+function PatientDetails() {
+
     return (
         <>
-        <PatientInfo/>
+            <PatientInfo />
         </>
     )
 }
