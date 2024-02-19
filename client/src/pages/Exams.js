@@ -24,6 +24,8 @@ export default function Exams() {
         fetchExams();
     }, []);
 
+    console.log(exams)
+
     return (
         <>
             <div className="exams">

@@ -1,24 +1,26 @@
 import { Img } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import PatientInfo from './PatientInfo';
+import { useParams } from "react-router-dom"
 
 
-function ExamInfo({ examContext }) {
-    console.log(examContext)
+function ExamInfo() {
 
-    const [exam, setExam] = useState(examContext)
+    const {id} = useParams();
+    const [exam, setExam] = useState([])
+
+     useEffect(() => {
+        fetch(`http://localhost:9000/exams/${id}`)
+      .then(response => response.json())
+      .then(data => setExam(data))
+      .catch(error => console.error("Error fetching patient:", error));
+  }, [id])
+
     return (
-        <>
-            <ul>Exam Id: {exam.examId}
+        <div>
+            <ul>Exam Id: {exam.examTypeId}
                 <div style={{ padding: '10px' }}>
-                    <h1
-                        style={{ padding: '20px', textDecorationLine: 'underline' }}
-                    >Patient Info</h1>
-                    <li>Patient Id: {exam.patientId}</li>
-                    <li>Age: {exam.age}</li>
-                    <li>Sex: {exam.sex}</li>
-                    <li>BMI: {exam.bmi}</li>
-                    <li
-                    >Zipcode: {exam.zipCode}</li>
+                    <PatientInfo />
                     <h1
                         style={{ padding: '20px', textDecorationLine: 'underline' }}
                     >Exam Info</h1>
@@ -34,7 +36,7 @@ function ExamInfo({ examContext }) {
                     </Img>
                 </div>
             </ul >
-        </>
+        </div>
     )
 }
 

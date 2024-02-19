@@ -13,14 +13,14 @@ This web app uses the following API routes to dynamically update the page to cre
 - Every user can view all Exams or a specific Exam, logged in or not. 
 
   - `GET ALL /api/exams`
-  - `GET ONE /api/exam/:id`
+  - `GET ONE /api/exams/:id`
 - View Every exam associated with a patient
   
   - OR `GET ONE /api/exams/patient/:id`
 
 - Admin use 
-  - `POST /api/exam/create`
-  - `PUT /api/exam/:id/update`
+  - `POST /api/exams/create`
+  - `PUT /api/exams/:id/update`
   - `DELETE /api/exam/:id`
 
 
