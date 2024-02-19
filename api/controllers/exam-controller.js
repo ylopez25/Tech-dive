@@ -27,14 +27,18 @@ const getPatientExams = async (req, res) => {
     const patientExamsreq = await  Exam.find({
         patientId: `${patientId}`
     })
+    .sort({
+        createdAt: -1
+    })
+
+    const latestExam = patientExamsreq[0]
     
     let patient = {
-        id: id,
         patientid: patientId, 
-        age: exam.age, 
-        sex: exam.sex, 
-        zipCode: exam.zipCode, 
-        bmi: exam.bmi, 
+        age: latestExam.age, 
+        sex: latestExam.sex, 
+        zipCode: latestExam.zipCode, 
+        bmi: latestExam.bmi, 
         exams: patientExamsreq
     }
 
