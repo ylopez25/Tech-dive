@@ -36,7 +36,7 @@ export default function ExamsList({ exams }) {
                   <>
                     <Tbody>
                       <Tr>
-                        <Td> {exam.patientId}</Td>
+                        <Td> <ChakraLink as={ReactRouterLink} color="blue" to={`/patientdetails/${exam._id}`}>{exam.patientId}</ChakraLink></Td>
                         <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/examdetails/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
         
                         <Td>
