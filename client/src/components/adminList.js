@@ -45,6 +45,7 @@ font-weight: bold;
 
 const AdminList = () => {
     const { exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, undeleteExam } = useExams();
+    
 
     const performDelete = async (exam) => {
         const response = await deleteExam(exam)
@@ -54,13 +55,13 @@ const AdminList = () => {
         }
     }
     //sg: implementation of undelete or move deleted exam history to admin profile page
-    const performUnDelete = async (exam) => {
-        const response = await undeleteExam(exam)
-        if (response) {
-            setDeleted(response['deleted'])
-            setExams(response['not_deleted'])
-        }
-    }
+    // const performUnDelete = async (exam) => {
+    //     const response = await undeleteExam(exam)
+    //     if (response) {
+    //         setDeleted(response['deleted'])
+    //         setExams(response['not_deleted'])
+    //     }
+    // }
     if (loading) {
         return (
             <>
@@ -230,7 +231,7 @@ const AdminList = () => {
                                                     >{deletedExam.exam_type_id}
                                                     </ChakraLink>
                                                 </Td>
-                                                <Td>
+                                                {/* <Td>
                                                     <WrapItem>
                                                         <RedButton
                                                             size="sm"
@@ -241,7 +242,7 @@ const AdminList = () => {
                                                             UN-DELETE
                                                         </RedButton>
                                                     </WrapItem>
-                                                </Td>
+                                                </Td> */}
                                                 <Td>
                                                     <WrapItem>
                                                         <GreenButton

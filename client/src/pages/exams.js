@@ -4,6 +4,8 @@ const dayjs = require('dayjs')
 dayjs.extend(relativeTime)
 
 const ExamsContext = createContext({});
+
+
 export const ExamsContextProvider = ({ children }) => {
   const [selectedExam, setSelectedExam] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -40,30 +42,29 @@ export const ExamsContextProvider = ({ children }) => {
     return oldE
   }
 
-  //undelete operation
+  //todo undelete operation for stretch goal
 
-  const undeleteExam = async (exam) => {
-    if (exams) {
-      let currentExams = [...exams]
-      let deletedExams2 = [...deleted]
-      if (exam && exam['isDeleted']) {
-        exam['isDeleted'] = false
-        currentExams.push(exam)
-      }
-      deletedExams2 = deletedExams.filter((exam) => exam && exam['isDeleted'])
-      const returnedExams = {
-        'not_deleted': currentExams,
-        'deleted': deletedExams2
-      }
-      return returnedExams
-    }
-  }
+//   const undeleteExam = async (exam) => {
+//     if (exams) {
+//       let currentExams = [...exams]
+//       let deletedExams2 = [...deleted]
+//       if (exam && exam['isDeleted']) {
+//         exam['isDeleted'] = false
+//         currentExams.push(exam)
+//       }
+//       deletedExams2 = deletedExams.filter((exam) => exam && exam['isDeleted'])
+//       const returnedExams = {
+//         'not_deleted': currentExams,
+//         'deleted': deletedExams2
+//       }
+//       return returnedExams
+//     }
+//   }
 
   useEffect(() => {
     const fetchExams = async () => {
       try {
         // const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
-        // const response = await fetch('http://localhost:9000/exams')
         setLoading(true)
         const response = await fetch('http://localhost:9000/exams')
 
@@ -99,7 +100,9 @@ export const ExamsContextProvider = ({ children }) => {
 
   return (
     <ExamsContext.Provider
-      value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, ExamTypes, updateExam, undeleteExam }}
+    //   value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, ExamTypes, updateExam, undeleteExam }}
+    value={{ exams, setExams, selectedExam, setSelectedExam, deleted, setDeleted, loading, deleteExam, ExamTypes, updateExam }}
+
     >
       {children}
     </ExamsContext.Provider>
