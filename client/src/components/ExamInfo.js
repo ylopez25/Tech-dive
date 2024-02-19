@@ -1,7 +1,11 @@
 import { Img } from '@chakra-ui/react';
+import { useState } from 'react';
 
-function ExamInfo({ exam }) {
-    console.log(exam)
+
+function ExamInfo({ examContext }) {
+    console.log(examContext)
+
+    const [exam, setExam] = useState(examContext)
     return (
         <>
             <ul>Exam Id: {exam.examId}
