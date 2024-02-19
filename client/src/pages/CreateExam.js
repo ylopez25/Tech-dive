@@ -41,28 +41,7 @@ font-weight: bold;
   color: white;
 }`
 
-const CreateExam = () => {
-    const [examtypes, setExamTypes] = ([])
-    useEffect(() => {
-        const fetchExamTypes = async () => {
-            try {
-                const response = await fetch('http://localhost:9000/exams')
-                const res = await response.json()
-                const examTs = []
-                res.map((exam) => {
-                    if (!examTs.includes(exam['examTypeId'])) {
-                        examTs.push(exam['examTypeId'])
-                    }
-                })
-                setExamTypes(examTs)
-            } catch (e) {
-                console.error(e)
-            }
-        }
-        fetchExamTypes();
-    }, [examtypes])
-
-
+const CreateExam = ({ examtypes, onClose }) => {
 
     const MyTextInput = ({ label, ...props }) => {
         // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -130,6 +109,7 @@ const CreateExam = () => {
                 form='my-form'
                 type='submit'
                 style={{ marginTop: '20px', marginRight: '100px', fontWeight: 'bold' }}
+                onClick={onClose}
             >
                 Create Exam
             </BlueButton>

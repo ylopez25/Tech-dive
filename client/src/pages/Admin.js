@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image, Link as ChakraLink, WrapItem, Heading } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image, Link as ChakraLink, WrapItem, Heading, Modal, ModalBody, ModalOverlay, ModalContent, ModalCloseButton, ModalFooter, useDisclosure, ModalHeader } from "@chakra-ui/react";
 import { Spinner } from '@chakra-ui/react'
 import styled from "@emotion/styled";
 import { Link as ReactRouterLink } from "react-router-dom";
+import CreateExam from "./CreateExam";
 
 /*
 implement table with update, delete buttons
 table with search
-use usecontext in order to get all exams
-
-- update -> redirect to update page
-        - for each record in dummy data, add new key-value pair for instances of deletion
-            * (default) isDeleted = false -> (user presses delete button) -> isDeleted = true (boolean for instances on chart will be shown, if !object[isDeleted] / if object[isDeleted]===true)
-            * refresh page automatically when record becomes deleted
-    * Nav Bar Search
-        - most likely using qps, or match useContext with both button click for search or key word press enter using t3 tutorial hooks
 
 Tackling issue 29 and 41
  */
@@ -56,6 +49,7 @@ export const Admin = () => {
     const [exams, setExams] = useState([])
     const [examtypes, setExamTypes] = useState([])
     const [loading, setLoading] = useState(false)
+    const { isOpen, onOpen, onClose } = useDisclosure()
     useEffect(() => {
         const fetchExams = async () => {
             try {
@@ -63,6 +57,7 @@ export const Admin = () => {
                 const response = await fetch('http://localhost:9000/exams')
                 // need an exam types be route
                 const res = await response.json();
+                setLoading(false)
                 const eTypes = []
                 res.map((exam) => {
                     if (!eTypes.includes(exam.examTypeId)) {
@@ -71,7 +66,7 @@ export const Admin = () => {
                     setExamTypes(eTypes)
                     setExams(res)
                 })
-                setLoading(false)
+
             } catch (e) {
                 console.error(e)
             }
@@ -79,8 +74,26 @@ export const Admin = () => {
         fetchExams();
     }, []);
 
-    const CreateExamModal = () => {
+    const CreateExamModal = ({ isOpen, onClose }) => {
+        return (
+            <Modal isOpen={isOpen} onClose={onClose} >
+                <ModalOverlay>
+                    <ModalContent>
+                        <ModalHeader> Create Exam</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                            <CreateExam
+                                examtypes={examtypes}
+                                onClose={onClose}
+                            />
+                        </ModalBody>
+                        <ModalFooter>
+                        </ModalFooter>
+                    </ModalContent>
+                </ModalOverlay>
+            </Modal >
 
+        )
     }
     if (loading) {
         return (
@@ -137,9 +150,7 @@ export const Admin = () => {
                     <WrapItem>
                         <ChakraLink
                             as={ReactRouterLink}
-                            onClick={(e) => {
-
-                            }}
+                            onClick={onOpen}
                         >
                             CREATE EXAM
                         </ChakraLink>
