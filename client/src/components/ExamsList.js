@@ -7,9 +7,8 @@ import {useExamContext} from "../context/ExamContext";
 
 export default function ExamsList({ exams }) {
 
-  const { updateExam } = useExamContext();
-
   
+  console.log(exams)
 
 
   return (
@@ -37,8 +36,8 @@ export default function ExamsList({ exams }) {
                   <>
                     <Tbody>
                       <Tr>
-                        <Td> <ChakraLink as={ReactRouterLink} color="blue" to={`/patientdetails/${exam.patientId}`}>{exam.patientId} </ChakraLink></Td>
-                        <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/examdetails/${exam._id}`} onClick={() => updateExam(exam)}>{exam.examTypeId} </ChakraLink></Td>
+                        <Td> <ChakraLink as={ReactRouterLink} color="blue" to={`/patientdetails/${exam._id}`}>{exam.patientId}</ChakraLink></Td>
+                        <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/examdetails/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
         
                         <Td>
                            <Image src={exam.imageURL}>

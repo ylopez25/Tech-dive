@@ -1,31 +1,38 @@
 import { Img } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
+import {useParams} from "react-router-dom"
 import PatientInfo from './PatientInfo';
-import { useParams } from "react-router-dom"
 
 
 function ExamInfo() {
 
-    const {id} = useParams();
     const [exam, setExam] = useState([])
+    const {id} = useParams();
 
-     useEffect(() => {
-        fetch(`http://localhost:9000/exams/${id}`)
-      .then(response => response.json())
-      .then(data => setExam(data))
-      .catch(error => console.error("Error fetching patient:", error));
-  }, [id])
+    useEffect(()=> {
+        const fetchExam = async () => {
+            try {
+                const response = await
+                fetch(`http://localhost:9000/exams/${id}`)
+                const res = await response.json();
+                setExam(res)
+            }
+            catch(e){
+                 console.error("Error fetching exam:", e)}
+        }
+        fetchExam();
+    },[id])
+
 
     return (
         <div>
             <ul>Exam Id: {exam.examTypeId}
                 <div style={{ padding: '10px' }}>
-                    <PatientInfo />
+                    <PatientInfo examId ={exam._id} />
                     <h1
                         style={{ padding: '20px', textDecorationLine: 'underline' }}
                     >Exam Info</h1>
-                    <li>Exam ID: {exam._id}</li>
-                    <li>Date</li>
+                    <li>Exam ID: {exam.examTypeId}</li>
                     <li>Brixia Score: {exam.brixiaScores}</li>
                     <li>Key Findings: {exam.keyFindings}</li>
                     <Img
