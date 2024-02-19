@@ -23,12 +23,14 @@ const getPatientExams = async (req, res) => {
 
     const exam = await Exam.findById(id)
     const patientId = exam.patientId
-    // const {patientId} = exam.patientId ?
-// 
+    let patientExams = {}
 
-    const patientExams = await  Exam.find({
+    const patientExamsreq = await  Exam.find({
         patientId: `${patientId}`
     })
+
+    patientExams[`${patientId}`] = patientExamsreq
+
 
     res.status(200).json(patientExams)
 }
