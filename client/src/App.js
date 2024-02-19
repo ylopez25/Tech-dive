@@ -7,9 +7,11 @@ import PageNotFound from "./pages/404PageNotFound";
 import Admin from './pages/Admin'
 import ExamDetails from "./pages/ExamDetails";
 import { ExamProvider } from "./context/ExamContext";
+import PatientDetails from "./pages/PatientDetails";
 
 
 function App() {
+  
 
   return (
     <ChakraProvider>
@@ -21,7 +23,8 @@ function App() {
               <Routes>
                 <Route path="/exams" element={<Exams />} />
                 <Route path="/admin" element={<Admin />} />
-                <Route path="/examdetails" element={<ExamDetails />} />
+                <Route path="/examdetails/:id" element={<ExamDetails />} />
+                <Route path="/patientdetails" element={<PatientDetails/>}/>
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
             </div>
