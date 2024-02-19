@@ -12,22 +12,46 @@ const getExams = async (req, res) => {
     
 }
 
+
+//todo GET ALL exams associated with patientID
+const getPatientExams = async (req, res) => {
+    const  { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such exam exists'})
+    }
+
+    const exam = await Exam.findById(id)
+    const patientId = exam.patientId
+    // const {patientId} = exam.patientId ?
+// 
+
+    const patientExams = await  Exam.find({
+        patientId: `${patientId}`
+    })
+
+    res.status(200).json(patientExams)
+}
+
+
 //todo GET one exam by id
 const getExam = async (req, res) => {
     const  { id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No such exams'})
+        return res.status(404).json({error: 'No such exam exists'})
     }
 
     const exams = await Exam.findById(id)
 
     if (!exams) {
-        return res.status(404).json({error: 'No such exams'})
+        return res.status(404).json({error: 'No such exam exists'})
     }
 
     res.status(200).json(exams)
 }
+
+
 
 
 //todo POST exam
@@ -92,6 +116,7 @@ const deleteExam = async (req, res) => {
 module.exports = {
     getExams,
     getExam,
+    getPatientExams,
     createExam,
     deleteExam,
     updateExam

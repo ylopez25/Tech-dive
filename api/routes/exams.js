@@ -3,6 +3,7 @@ const express = require('express');
 const {
     getExams,
     getExam,
+    getPatientExams,
     createExam,
     deleteExam,
     updateExam
@@ -13,6 +14,9 @@ const router = express.Router()
 
 //! GET ALL
 router.get('/', getExams)
+
+//! GET ALL PATIENT EXAMS
+router.get('/patient/:id/exams', getPatientExams)
 
 //! GET ONE
 router.get('/:id', getExam)
