@@ -1,4 +1,18 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 function PatientInfo() {
+
+  const { id } = useParams();
+  const [patient, setPatient] = useState()
+  const [patientExams, setPatientExams] = useState([])
+
+  // useEffect(() => {
+  //   fetch(`/api/exams/${id}`)
+  //     .then(response => response.json())
+  //     .then(data => setPatient(data))
+  //     .catch(error => console.error("Error fetching patient:", error));
+  // }, [id]);
+
   return (
     <>
       <div>
