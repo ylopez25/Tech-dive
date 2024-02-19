@@ -4,7 +4,7 @@ import Exams from "./pages/Exams";
 import Navbar from "./components/Navbar";
 import { ChakraProvider } from '@chakra-ui/react'
 import PageNotFound from "./pages/404PageNotFound";
-import Admin from './pages/Admin'
+import AdminList from "./pages/Admin";
 import ExamInfo from "./components/ExamInfo";
 import PatientDetails from "./pages/PatientDetails";
 
@@ -18,9 +18,8 @@ function App() {
           <Navbar />
           <div className="pages">
             <Routes>
-              <Route path="*" element={<PageNotFound />} />
               <Route path="/exams" element={<Exams />} />
-              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin" element={<AdminList />} />
               <Route path="/api/exams/:id" element={<ExamInfo />} />
               <Route path="/api/patient/:id/exams" element={<PatientDetails />} />
               <Route path="*" element={<PageNotFound />} />

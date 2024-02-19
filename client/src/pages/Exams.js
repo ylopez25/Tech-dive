@@ -1,6 +1,8 @@
 import React from "react";
 import ExamsList from '../components/ExamsList'
+import AdminList from "./Admin";
 // import { useApi } from "../hooks/use-api";
+import CreateExam from "./CreateExam";
 import { useState, useEffect } from 'react'
 
 
@@ -14,7 +16,6 @@ export default function Exams() {
         setLoading(true)
         const response = await fetch('http://localhost:9000/exams')
         const res = await response.json();
-        // const exams_data = res["exams"]
         setExams(res)
         setLoading(false)
       } catch (e) {
@@ -29,8 +30,8 @@ export default function Exams() {
       <div className="exams">
         <div className="total">
           <p>Total: {exams.length}</p>
+          <ExamsList loading={loading} exams={exams} />
         </div>
-        <ExamsList loading={loading} exams={exams} />
       </div>
     </>
   );
