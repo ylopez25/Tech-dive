@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-function PatientInfo() {
+function PatientInfo({ exam }) {
 
   const { id } = useParams();
   const [patient, setPatient] = useState()
@@ -16,14 +16,16 @@ function PatientInfo() {
   return (
     <>
       <div>
-        <h1>
+        <h1
+          style={{ padding: '20px', textDecorationLine: 'underline' }}
+        >
           Patient Info
         </h1>
-        <li>Patient Id: "COVID-2019</li>
-        <li>Age: 29</li>
-        <li>Sex: F</li>
-        <li>BMI: 25</li>
-        <li>Zipcode: 11204</li>
+        <li>Patient Id: {exam.patientId}</li>
+        <li>Age: {exam.age} </li>
+        <li>Sex: {exam.sex} </li>
+        <li>BMI: {exam.bmi}</li>
+        <li>Zipcode: {exam.zipCode}</li>
       </div>
     </>
   );

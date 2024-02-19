@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const examSchema = new Schema({ 
-    adminId : {
+const examSchema = new Schema({
+    adminId: {
         type: String,
         required: true
     },
@@ -26,7 +26,7 @@ const examSchema = new Schema({
     bmi: {
         type: Number,
         required: true
-    } ,
+    },
     examTypeId: {
         type: String,
         required: true
@@ -35,7 +35,7 @@ const examSchema = new Schema({
         type: String,
         required: true
     },
-    brixiaScore: {
+    brixiaScoress: {
         type: String,
         required: true
     },
@@ -44,6 +44,6 @@ const examSchema = new Schema({
         required: true
     },
 
-}, {timestamps : true})
+}, { timestamps: true })
 
 module.exports = mongoose.model('examModel', examSchema)
