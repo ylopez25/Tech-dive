@@ -11,12 +11,12 @@ export default function Exams() {
     useEffect(() => {
         const fetchExams = async () => {
             try {
-                setLoading(true)
-                const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
+
+                const response = await fetch('http://localhost:9000/exams')
                 const res = await response.json();
-                const exams_data = res["exams"]
-                setLoading(false)
-                setExams(exams_data)
+                // const exams_data = res["exams"]
+                setExams(res)
+
             } catch (e) {
                 console.error(e)
             }
