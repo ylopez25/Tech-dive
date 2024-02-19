@@ -18,21 +18,27 @@ const getPatientExams = async (req, res) => {
     const  { id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No such exam exists'})
+        return res.status(404).json({error: 'Patient or Exam does not exists'})
     }
 
     const exam = await Exam.findById(id)
     const patientId = exam.patientId
-    let patientExams = {}
-
+    
     const patientExamsreq = await  Exam.find({
         patientId: `${patientId}`
     })
+    
+    let patient = {
+        id: id,
+        patientid: patientId, 
+        age: exam.age, 
+        sex: exam.sex, 
+        zipCode: exam.zipCode, 
+        bmi: exam.bmi, 
+        exams: patientExamsreq
+    }
 
-    patientExams[`${patientId}`] = patientExamsreq
-
-
-    res.status(200).json(patientExams)
+    res.status(200).json(patient)
 }
 
 
