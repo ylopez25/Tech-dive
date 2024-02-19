@@ -1,29 +1,38 @@
 import { Img } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {useParams} from "react-router-dom"
+import PatientInfo from './PatientInfo';
 
 
-function ExamInfo({ examContext }) {
-    console.log(examContext)
+function ExamInfo() {
 
-    const [exam, setExam] = useState(examContext)
+    const [exam, setExam] = useState([])
+    const {id} = useParams();
+
+    useEffect(()=> {
+        const fetchExam = async () => {
+            try {
+                const response = await
+                fetch(`http://localhost:9000/exams/${id}`)
+                const res = await response.json();
+                setExam(res)
+            }
+            catch(e){
+                 console.error("Error fetching exam:", e)}
+        }
+        fetchExam();
+    },[id])
+
+
     return (
         <>
-            <ul>Exam Id: {exam.examId}
+            <ul>Exam Id: {exam.examTypeId}
                 <div style={{ padding: '10px' }}>
-                    <h1
-                        style={{ padding: '20px', textDecorationLine: 'underline' }}
-                    >Patient Info</h1>
-                    <li>Patient Id: {exam.patientId}</li>
-                    <li>Age: {exam.age}</li>
-                    <li>Sex: {exam.sex}</li>
-                    <li>BMI: {exam.bmi}</li>
-                    <li
-                    >Zipcode: {exam.zipCode}</li>
+                    <PatientInfo examId ={exam._id} />
                     <h1
                         style={{ padding: '20px', textDecorationLine: 'underline' }}
                     >Exam Info</h1>
-                    <li>Exam ID: {exam._id}</li>
-                    <li>Date</li>
+                    <li>Exam ID: {exam.examTypeId}</li>
                     <li>Brixia Score: {exam.brixiaScores}</li>
                     <li>Key Findings: {exam.keyFindings}</li>
                     <Img
