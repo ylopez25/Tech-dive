@@ -2,7 +2,7 @@
 
 .App {
   text-align: center;
-  background-color: black;
+  background-color: #000000;
 }
 
 .App-logo {
@@ -26,4 +26,9 @@
 #error404 {
   font-family: 'Press Start 2P', cursive;
   font-size: 1.5rem;
+}
+
+.exam-info {
+  background-color: #000000;
+  text-align: left;
 }
