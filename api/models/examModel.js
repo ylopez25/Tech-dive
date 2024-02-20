@@ -35,6 +35,7 @@ const examSchema = new Schema({
         type: String,
         required: true
     },
+    // typo fixed
     brixiaScore: {
         type: String,
         required: true
