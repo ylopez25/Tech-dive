@@ -36,7 +36,7 @@ function ExamInfo() {
                             style={{ padding: '20px', textDecorationLine: 'underline' }}
                         >Exam Info</h1>
                         <li>Exam ID: {exam.examTypeId}</li>
-                        <li>Brixia Score: {exam.brixiaScores}</li>
+                        <li>Brixia Score: {exam.brixiaScore}</li>
                         <li>Key Findings: {exam.keyFindings}</li>
                         <Img
                             style={{ padding: '30px' }}

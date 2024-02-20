@@ -35,7 +35,7 @@ const examSchema = new Schema({
         type: String,
         required: true
     },
-    brixiaScores: {
+    brixiaScore: {
         type: String,
         required: true
     },
