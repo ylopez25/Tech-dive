@@ -34,7 +34,7 @@ const getPatientExams = async (req, res) => {
     const latestExam = patientExamsreq[0]
     
     let patient = {
-        patientid: patientId, 
+        patientId: patientId, 
         age: latestExam.age, 
         sex: latestExam.sex, 
         zipCode: latestExam.zipCode, 

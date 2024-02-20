@@ -38,7 +38,7 @@ function PatientInfo({ parent }) {
         setPatient({
           age: res.age,
           bmi: res.bmi,
-          patientId: res.patientid,
+          patientId: res.patientId,
           sex: res.sex,
           zipCode: res.zipCode,
         });
