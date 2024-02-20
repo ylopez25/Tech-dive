@@ -180,10 +180,10 @@ const CreateExam = ({ exams, examtypes }) => {
                 initialValues={{
                     adminId: "",
                     patientId: "",
-                    age: null,
+                    age: 0,
                     sex: "",
                     zipCode: "",
-                    bmi: null,
+                    bmi: 0,
                     examTypeId: "",
                     keyFindings: "",
                     brixiaScores: "",
