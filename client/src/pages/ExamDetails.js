@@ -1,13 +1,17 @@
-function ExamDetails() {
 
-    return (
-        <>
-        <div>
-            {/* <img src="https://medlineplus.gov/images/Xray_share.jpg"/> */}
-            <button>URL</button>
-        </div>
-        </>
-    )
+import ExamInfo from "../components/ExamInfo";
+import { useExamContext } from "../context/ExamContext";
+import '../App.css'
+
+function ExamDetails() {
+  const { exam } = useExamContext()
+  return (
+    <>
+      <div className="exams-info">
+        <ExamInfo examContext={exam} />
+      </div>
+    </>
+  );
 }
 
-export default ExamDetails
+export default ExamDetails;

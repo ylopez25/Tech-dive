@@ -12,22 +12,58 @@ const getExams = async (req, res) => {
     
 }
 
+
+//todo GET ALL exams associated with patientID
+const getPatientExams = async (req, res) => {
+    const  { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'Patient or Exam does not exists'})
+    }
+
+    const exam = await Exam.findById(id)
+    const patientId = exam.patientId
+    
+    const patientExamsreq = await  Exam.find({
+        patientId: `${patientId}`
+    })
+    .sort({
+        createdAt: -1
+    })
+
+    const latestExam = patientExamsreq[0]
+    
+    let patient = {
+        patientId: patientId, 
+        age: latestExam.age, 
+        sex: latestExam.sex, 
+        zipCode: latestExam.zipCode, 
+        bmi: latestExam.bmi, 
+        exams: patientExamsreq
+    }
+
+    res.status(200).json(patient)
+}
+
+
 //todo GET one exam by id
 const getExam = async (req, res) => {
     const  { id } = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'No such exams'})
+        return res.status(404).json({error: 'No such exam exists'})
     }
 
     const exams = await Exam.findById(id)
 
     if (!exams) {
-        return res.status(404).json({error: 'No such exams'})
+        return res.status(404).json({error: 'No such exam exists'})
     }
 
     res.status(200).json(exams)
 }
+
+
 
 
 //todo POST exam
@@ -92,6 +128,7 @@ const deleteExam = async (req, res) => {
 module.exports = {
     getExams,
     getExam,
+    getPatientExams,
     createExam,
     deleteExam,
     updateExam

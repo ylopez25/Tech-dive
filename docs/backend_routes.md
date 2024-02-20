@@ -16,7 +16,7 @@ This web app uses the following API routes to dynamically update the page to cre
   - `GET ONE /api/exam/:id`
 - View Every exam associated with a patient
   
-  - OR `GET ONE /api/exams/patient/:id`
+  - OR `GET ONE /api/patient/:id/exams`
 
 - Admin use 
   - `POST /api/exam/create`
