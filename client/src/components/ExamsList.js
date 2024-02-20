@@ -76,7 +76,7 @@ export default function ExamsList({ exams, loading }) {
                                                         </Image>
                                                     </Td>
                                                     <Td className="text-wrap">{exam.keyFindings}</Td>
-                                                    <Td>{exam.brixiaScores}</Td>
+                                                    <Td>{exam.brixiaScore}</Td>
                                                     <Td>{exam.age}</Td>
                                                     <Td>{exam.sex}</Td>
                                                     <Td>{exam.bmi}</Td>
