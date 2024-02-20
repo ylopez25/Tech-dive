@@ -34,13 +34,13 @@ function PatientInfo({ parent }) {
         );
         const res = await response.json();
         console.log(res);
-        setPatientExams(res);
+        setPatientExams(res.exams);
         setPatient({
-          age: res[0].age,
-          bmi: res[0].bmi,
-          patientId: res[0].patientId,
-          sex: res[0].sex,
-          zipCode: res[0].zipCode,
+          age: res.age,
+          bmi: res.bmi,
+          patientId: res.patientid,
+          sex: res.sex,
+          zipCode: res.zipCode,
         });
       } catch (e) {
         console.error("Error fetching exam:", e);
