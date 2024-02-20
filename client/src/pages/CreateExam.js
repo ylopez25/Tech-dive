@@ -3,11 +3,14 @@
  *
  * add exam - add records to all exams, random exam - create new exam with random values found in curent db
  */
+import React from 'react'
+import { useState, useEffect } from 'react';
 import { Formik, Form, useField, useFormikContext } from 'formik';
-import { Grid, GridItem, Heading, FormControl, Img, Text } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import * as Yup from 'yup';
 import styled from "@emotion/styled";
-import { useEffect } from 'react';
+import { useToast } from '@chakra-ui/react';
+
 
 export const RedButton = styled.button`
   border-radius:5px;
@@ -23,6 +26,7 @@ export const RedButton = styled.button`
 export const GreenButton = styled.button`
 border-radius:5px;
 background-color: #66FF99;
+border: 2px solid #66FF99;
 color: #454545;
 padding: 6px 8px;
 font-weight: bold;
@@ -41,7 +45,14 @@ font-weight: bold;
   color: white;
 }`
 
-const CreateExam = ({ examtypes, onClose }) => {
+
+
+const CreateExam = ({ exams, examtypes }) => {
+    const toast = useToast()
+
+    // const randomExam = () => {
+    //     console.log(Math.floor(Math.random() * exams.length))
+    // }
 
     const MyTextInput = ({ label, ...props }) => {
         // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -51,14 +62,18 @@ const CreateExam = ({ examtypes, onClose }) => {
         return (
             <>
                 <label
-                    style={{ textAlign: 'center', marginTop: '5px', }}
+                    style={{ marginRight: '10px', fontWeight: 'bold' }}
                     htmlFor={props.id || props.name}>{label}</label>
-                <input
-                    style={{
-                        backgroundColor: 'white',
-                        WebkitTextFillColor: 'gray', textAlign: 'center', borderRadius: '5px', border: "1px solid black", width: "80%", marginLeft: '36px'
-                    }}
-                    className="text-input" {...field} {...props} />
+                <div>
+                    <input
+                        style={{
+                            backgroundColor: 'white',
+                            marginBottom: '30px',
+                            WebkitTextFillColor: 'black', textAlign: 'start', borderRadius: '5px', border: "1px solid black", width: "80%"
+                        }}
+                        className="text-input" {...field} {...props} />
+                </div>
+
                 {meta.touched && meta.error ? (
                     <div className="error">{meta.error}</div>
                 ) : null}
@@ -71,15 +86,18 @@ const CreateExam = ({ examtypes, onClose }) => {
         return (
             <>
                 <div
-                    style={{ textAlign: 'center' }}
+                    style={{ textAlign: 'start', fontWeight: 'bold' }}
                 >
                     <label htmlFor={props.id || props.name}>{label}</label>
                 </div>
                 <div
-                    style={{ marginLeft: '20px', textAlign: 'center' }}
+                    style={{ textAlign: 'start' }}
                 >
                     <select
-                        style={{ height: '25px', marginRight: '20px', borderRadius: '5px', width: '82%', backgroundColor: 'silver' }}
+                        style={{
+                            textAlign: 'center',
+                            height: '25px', marginRight: '20px', borderRadius: '5px', width: '82%', backgroundColor: 'silver', marginBottom: '20px'
+                        }}
                         {...field} {...props} />
                     {meta.touched && meta.error ? (
                         <div className="error">{meta.error}</div>
@@ -89,143 +107,157 @@ const CreateExam = ({ examtypes, onClose }) => {
         );
     };
 
+    const [submission, setSubmission] = useState(false)
+    const handleSubmit = (values) => {
+        setSubmission(false)
+
+        const postUrl = 'http://localhost:9000/exams/createExam'
+        const fetchConfig = {
+            method: 'POST',
+            body: JSON.stringify(values),
+            headers: {
+                'Content-Type': "application/json",
+                'accept': 'application/json'
+            },
+        };
+        fetch(postUrl, fetchConfig)
+            .then(res => {
+                if (!res.ok) {
+                    setSubmission(false)
+                } else {
+                    setSubmission(true)
+                }
+                res.json()
+            })
+            .then(() => {
+                const PromiseE = new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        if (submission === true) {
+                            resolve('Congrats!')
+                            // if (resolve('Congrats')) {
+                            //     setSubmission(false)
+                            // }
+                        } else {
+                            reject('Invalid Exam Submission')
+                        }
+                    }, 1000)
+                });
+                toast.promise(PromiseE, {
+                    success: { title: 'Congrats!', description: 'Exam Submitted' },
+                    error: { title: 'Invalid Exam Submission', description: 'Please submit a valid Exam' },
+                    loading: { title: 'Submitting', description: 'Please wait' },
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
     return (
         <>
-            <Heading
-            >
-                Create Exam
-            </Heading>
             <GreenButton
-                style={{ marginTop: '20px', marginLeft: '100px', marginRight: '10px', fontWeight: 'bold' }}
+                style={{ marginTop: '20px', marginLeft: '20px', marginRight: '10px', fontWeight: 'bold' }}
+                onClick={() => {
+                    // randomExam()
+                }}
             >
                 Random Exam
             </GreenButton >
-            <RedButton
-                style={{ marginTop: '20px', marginRight: '10px', fontWeight: 'bold' }}
-            >
-                Cancel
-            </RedButton>
             <BlueButton
                 form='my-form'
                 type='submit'
                 style={{ marginTop: '20px', marginRight: '100px', fontWeight: 'bold' }}
-                onClick={onClose}
             >
                 Create Exam
             </BlueButton>
-            <Grid
-                color='black'
-                marginTop="50px"
-                templateColumns='repeat(3, 1fr)'
-                gap={2}
-                height="600px"
-                width="100%"
+            {/* <Heading
+                style={{ marginTop: '50px' }}
+                color="black"
             >
-                <GridItem
-                    width="90%"
-                    marginBottom="10px"
-                    marginLeft='10px'
-                >
-                    <Heading>
-                        Patient Info
-                    </Heading>
-                    <Formik
-                        initialValues={{
-                            _id: "",
-                            exam_type_id: "",
-                            brixiaScores: "",
-                            keyFindings: "",
-                            imageURL: ""
-                        }}
-                        //can add type validation and require text/selection inputs at a later time
-                        validationSchema={Yup.object({
-                            _id: Yup.string(),
-                            exam_type_id: Yup.string().oneOf(
-                                [...examtypes]
-                            ),
-                            brixiaScores: Yup.string(),
-                            keyFindings: Yup.string(),
-                            imageURL: Yup.string(),
-                        })}
-                        onSubmit={(values, { setSubmitting }) => {
-                            // performCreate(values)
-                            setSubmitting(false)
-                        }}
+                Exam and Patient Info
+            </Heading> */}
+            <Formik
+                initialValues={{
+                    adminId: "",
+                    patientId: "",
+                    age: null,
+                    sex: "",
+                    zipCode: "",
+                    bmi: null,
+                    examTypeId: "",
+                    keyFindings: "",
+                    brixiaScores: "",
+                    imageURL: ""
+                }}
+                //can add type validation and require text/selection inputs at a later time
+                validationSchema={Yup.object({
+                    adminId: Yup.string(),
+                    patientId: Yup.string(),
+                    age: Yup.number(),
+                    sex: Yup.string(),
+                    zipCode: Yup.string(),
+                    bmi: Yup.number(),
+                    examTypeId: Yup.string().oneOf(
+                        [...examtypes]
+                    ),
+                    keyFindings: Yup.string(),
+                    brixiaScores: Yup.string(),
+                    imageURL: Yup.string(),
+                })}
+                onSubmit={(values, { setSubmitting }) => {
+                    handleSubmit(values)
+                    setSubmitting(false)
+                }}
+            >
+                <Form
+                    id='my-form'
+                    style={{ display: "grid", flexDirection: 'column' }}>
+                    <Grid
+                        color='black'
+                        marginTop="50px"
+                        templateColumns='repeat(3, 1fr)'
+                        gap={20}
+                        height="600px"
+                        width="100%"
                     >
-                        <Form
-                            id='my-form'
-                            style={{ display: "grid", flexDirection: 'column', gap: '10px', marginTop: '40px' }}>
+                        <GridItem
+                            width="100%"
+                        >
                             <MyTextInput
-                                label="patient_id"
-                                name="patient_id"
+                                label="Admin Id"
+                                name="adminId"
+                                type="text"
+                            />
+                            <MyTextInput
+                                label="Patient Id"
+                                name="patientId"
                                 type="text"
                             />
                             <MyTextInput
                                 label="age"
                                 name="age"
-                                type="text"
+                                type="number"
                             />
                             <MyTextInput
-                                label="sex"
+                                label="Sex"
                                 name="sex"
                                 type="text"
                             />
                             <MyTextInput
-                                label="BMI"
-                                name="BMI"
-                                type="text"
-                            />
-                            <MyTextInput
                                 label="ZipCode"
-                                name="ZipCode"
+                                name="zipCode"
                                 type="text"
                             />
-                        </Form>
-                    </Formik>
-                </GridItem>
-
-                <GridItem
-                    width="90%"
-                    marginBottom="10px"
-                    marginLeft='300px'
-                >
-                    <Heading>
-                        Exam Info
-                    </Heading>
-                    <Formik
-                        initialValues={{
-                            _id: "",
-                            exam_type_id: "",
-                            brixiaScores: "",
-                            keyFindings: "",
-                            imageURL: ""
-                        }}
-                        //can add type validation and require text/selection inputs at a later time
-                        validationSchema={Yup.object({
-                            _id: Yup.string(),
-                            exam_type_id: Yup.string().oneOf(
-                                [...examtypes]
-                            ),
-                            brixiaScores: Yup.string(),
-                            keyFindings: Yup.string(),
-                            imageURL: Yup.string(),
-                        })}
-                        onSubmit={(values, { setSubmitting }) => {
-                            // performCreate(values)
-                            setSubmitting(false)
-                        }}
-                    >
-                        <Form
-                            id='my-form'
-                            style={{ display: "grid", flexDirection: 'column', gap: '10px', marginTop: '40px' }}>
                             <MyTextInput
-                                label="_id"
-                                name="_id"
-                                type="text"
+                                label="bmi"
+                                name="bmi"
+                                type="number"
                             />
+                        </GridItem>
+                        <GridItem>
                             <MySelect
-                                label="Exam Types "
-                                name="exam_type_id"
+                                label="examTypeId"
+                                name="examTypeId"
                             >
                                 {examtypes.map((type) =>
                                     type && (<option
@@ -235,13 +267,13 @@ const CreateExam = ({ examtypes, onClose }) => {
                                 )}
                             </MySelect>
                             <MyTextInput
-                                label="brixiaScores"
-                                name="brixiaScores"
+                                label="keyFindings"
+                                name="keyFindings"
                                 type="text"
                             />
                             <MyTextInput
-                                label="keyFindings"
-                                name="keyFindings"
+                                label="brixiaScores"
+                                name="brixiaScores"
                                 type="text"
                             />
                             <MyTextInput
@@ -249,10 +281,11 @@ const CreateExam = ({ examtypes, onClose }) => {
                                 name="imageURL"
                                 type="text"
                             />
-                        </Form>
-                    </Formik>
-                </GridItem>
-            </Grid>
+                        </GridItem>
+                    </Grid>
+
+                </Form>
+            </Formik>
         </>
     )
 }

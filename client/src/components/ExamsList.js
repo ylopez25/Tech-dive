@@ -7,12 +7,6 @@ export default function ExamsList({ exams, loading }) {
     if (loading) {
         return (
             <>
-                <div className="navItem">
-                    <h2 >Patient Exams</h2>
-                    <h1>
-                        Number of Exams:
-                    </h1>
-                </div>
                 <div className="examsList">
                     <TableContainer>
                         <Table size="sm" variant="simple" width="100%">
@@ -64,9 +58,9 @@ export default function ExamsList({ exams, loading }) {
                         {exams.map(
                             (exam) =>
                                 exam && (
-                                    <>
+                                    <React.Fragment key={exam._id}>
                                         <Tbody>
-                                            <Tr key={exam._id}>
+                                            <Tr >
                                                 <Td> <ChakraLink
                                                     className="text-wrap"
                                                     as={ReactRouterLink} color="blue" to={`/api/patient/${exam._id}/exams`}>{exam.patientId}</ChakraLink></Td>
@@ -87,7 +81,7 @@ export default function ExamsList({ exams, loading }) {
                                                 <Td>{exam.zipCode}</Td>
                                             </Tr>
                                         </Tbody>
-                                    </>
+                                    </React.Fragment>
                                 )
                         )}
                     </Table>
