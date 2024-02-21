@@ -14,7 +14,6 @@ export default function Exams() {
         setLoading(true)
         const response = await fetch('http://localhost:9000/exams')
         const res = await response.json();
-        // const exams_data = res["exams"]
         setExams(res)
         setLoading(false)
       } catch (e) {
@@ -28,9 +27,17 @@ export default function Exams() {
     <>
       <div className="exams">
         <div className="total">
-          <p>Total: {exams.length}</p>
+          <div style={{ marginTop: '40px', fontWeight: 'bold' }} className="navItem">
+            <h2
+
+            >Patient Exams</h2>
+            <h1
+            >
+              Number of Exams: {exams.length}
+            </h1>
+          </div>
+          <ExamsList loading={loading} exams={exams} />
         </div>
-        <ExamsList loading={loading} exams={exams} />
       </div>
     </>
   );

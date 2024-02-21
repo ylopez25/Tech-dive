@@ -14,7 +14,6 @@ function ExamInfo() {
             try {
                 const response = await fetch(`http://localhost:9000/exams/${id}`)
                 const res = await response.json();
-                console.log(res)
                 setExam(res)
             }
             catch (e) {
@@ -31,7 +30,7 @@ function ExamInfo() {
                 <ul>
                     <div style={{ padding: '10px' }}>
                         <PatientInfo
-                            parent = "ExamInfo"/>
+                            parent="ExamInfo" />
                         <h1
                             style={{ padding: '20px', textDecorationLine: 'underline' }}
                         >Exam Info</h1>

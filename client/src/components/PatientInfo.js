@@ -11,17 +11,18 @@ import {
   TableContainer,
   Image,
   Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 
 function PatientInfo({ parent }) {
   const [patient, setPatient] = useState({
-    age: 0,
-    bmi: 0,
-    patientId: "13",
-    sex: "M",
-    zipCode: "12345",
+    age: "",
+    bmi: "",
+    patientId: "",
+    sex: "",
+    zipCode: "",
   });
   const [patientExams, setPatientExams] = useState([]);
   const { id } = useParams();
@@ -42,6 +43,7 @@ function PatientInfo({ parent }) {
           sex: res.sex,
           zipCode: res.zipCode,
         });
+
       } catch (e) {
         console.error("Error fetching exam:", e);
       }
@@ -52,26 +54,29 @@ function PatientInfo({ parent }) {
   return (
     <>
       <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
-        <div>
-          <h1 style={{ padding: "20px", textDecorationLine: "underline" }}>
-            Patient Info
-          </h1>
-          <li>Patient Id: {patient.patientId}</li>
-          <li>Age: {patient.age} </li>
-          <li>Sex: {patient.sex} </li>
-          <li>BMI: {patient.bmi}</li>
-          <li>Zipcode: {patient.zipCode}</li>
-        </div>
-        
-        {parent === "PatientDetails" && (
+        <GridItem>
           <div>
             <h1 style={{ padding: "20px", textDecorationLine: "underline" }}>
+              Patient Info
+            </h1>
+            <li>Patient Id: {patient.patientId}</li>
+            <li>Age: {patient.age} </li>
+            <li>Sex: {patient.sex} </li>
+            <li>BMI: {patient.bmi}</li>
+            <li>Zipcode: {patient.zipCode}</li>
+          </div>
+        </GridItem>
+
+        {parent === "PatientDetails" && (
+          <div>
+            <h1 style={{ textDecorationLine: "underline" }}>
               Patient Exams
             </h1>
             <div className="examsList">
               <TableContainer>
                 <Table size="md" variant="simple" width="100%">
-                  <TableCaption>All Exams Record</TableCaption>
+                  <TableCaption
+                  >All Exams Record</TableCaption>
                   <Tbody>
                     <Thead>
                       <Tr>
@@ -97,11 +102,12 @@ function PatientInfo({ parent }) {
                               <Td>
                                 <Image
                                   src={exam.imageURL}
-                                  boxSize="150px"
+                                  width="200%"
+                                  height="100%"
                                 />
                               </Td>
                               <Td className="text-wrap">{exam.keyFindings}</Td>
-                              <Td>{exam.brixiaScore}</Td>
+                              <Td>{exam.brixiaScores}</Td>
                             </Tr>
                           )
                       )}
@@ -118,4 +124,3 @@ function PatientInfo({ parent }) {
 }
 
 export default PatientInfo;
-
