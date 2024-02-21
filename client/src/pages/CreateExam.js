@@ -4,8 +4,7 @@
  * add exam - add records to all exams, random exam - create new exam with random values found in curent db
  */
 import React from 'react'
-import { useState, useEffect } from 'react';
-import { Formik, Form, useField, useFormikContext } from 'formik';
+import { Formik, Form, useField } from 'formik';
 import { Grid, GridItem } from "@chakra-ui/react";
 import * as Yup from 'yup';
 import styled from "@emotion/styled";
@@ -57,13 +56,14 @@ const CreateExam = ({ dummy, setExams, examtypes }) => {
         console.log(object)
         if (object) {
             Object.keys(object).map((key) => {
-                if (object[key] == "") {
+                if (object[key] === "") {
                     object[key] = Math.floor(Math.random() * dummy.length - 1)
                 }
                 if (key === 'examId') {
                     object['examTypeId'] = object['examId'];
                     delete object['examId']
                 }
+                return null
             })
         } else {
             object = dummy[number + 1]
