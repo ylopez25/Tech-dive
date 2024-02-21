@@ -70,26 +70,33 @@ font-size: 20px;
 
 export const Admin = () => {
     const [exams, setExams] = useState([])
+    const [dummy, setDummy] = useState([])
     const [examtypes, setExamTypes] = useState([])
     const [loading, setLoading] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure()
+
     useEffect(() => {
         const fetchExams = async () => {
             try {
                 setLoading(true)
                 const response = await fetch('http://localhost:9000/exams')
                 // need an exam types be route
-                const res = await response.json();
-                setLoading(false)
-                const eTypes = []
-                res.map((exam) => {
-                    if (!eTypes.includes(exam.examTypeId)) {
-                        eTypes.push(exam.examTypeId)
-                    }
-                    setExamTypes(eTypes)
+                if (response.ok) {
+                    const res = await response.json();
+                    setLoading(false)
                     setExams(res)
+                }
+                const response_dummy = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
+                const dummy_res = await response_dummy.json()
+                const dummy_exams = dummy_res['exams']
+                setDummy(dummy_exams)
+                const eTypes = []
+                dummy_exams.map((exam) => {
+                    if (exam && !eTypes.includes(exam.examId)) {
+                        eTypes.push(exam.examId)
+                    }
                 })
-
+                setExamTypes(eTypes)
             } catch (e) {
                 console.error(e)
             }
@@ -100,6 +107,7 @@ export const Admin = () => {
     const CreateExamModal = () => {
         onOpen();
     }
+
     const performDelete = async (id) => {
         const deleteUrl = `http://localhost:9000/exams/${id}`
         const fetchConfig = {
@@ -144,7 +152,7 @@ export const Admin = () => {
                             <Thead>
                                 <Tr>
                                     <Th>Patient ID</Th>
-                                    <Th>Exam ID</Th>
+                                    <Th>Exams</Th>
                                     <Th>Exams Types</Th>
                                 </Tr>
                             </Thead>
@@ -205,9 +213,9 @@ export const Admin = () => {
                             <ModalBody
                             >
                                 <CreateExam
-                                    exams={exams}
+                                    dummy={dummy}
+                                    setExams={setExams}
                                     examtypes={examtypes}
-                                    onClose={onClose}
                                 />
                             </ModalBody>
                             <ModalFooter>
@@ -230,8 +238,7 @@ export const Admin = () => {
                             <Thead>
                                 <Tr>
                                     <Th>Patient ID</Th>
-                                    <Th>Exam ID</Th>
-                                    <Th>Exams Types</Th>
+                                    <Th>Exams</Th>
                                     <Th></Th>
                                     <Th></Th>
                                 </Tr>
@@ -241,18 +248,11 @@ export const Admin = () => {
                                     (exam, index) =>
                                         exam && !exam['isDeleted'] && (
                                             <Tr key={exam._id}>
-                                                <Td>{exam.patientId}</Td>
-                                                <Td
-                                                >{exam._id}</Td>
-                                                <Td
-                                                >
-                                                    <ChakraLink
-                                                        as={ReactRouterLink}
-                                                        to={`/api/exams/${exam._id}`}
-                                                        color='blue.500'
-                                                    >{exam.examTypeId}
-                                                    </ChakraLink>
-                                                </Td>
+                                                <Td> <ChakraLink
+                                                    className="text-wrap"
+                                                    as={ReactRouterLink} color="blue"
+                                                    to={`/api/patient/${exam._id}/exams`}>{exam.patientId}</ChakraLink></Td>
+                                                <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/api/exams/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
                                                 <Td>
                                                     <WrapItem>
                                                         <RedButton
@@ -268,19 +268,17 @@ export const Admin = () => {
                                                 </Td>
                                                 <Td>
                                                     <WrapItem>
-                                                        <ChakraLink
-                                                            as={ReactRouterLink}
+                                                        <ReactRouterLink
                                                             to={`${exam._id}/update`}
                                                             onClick={() => {
-
                                                             }}
                                                         >
                                                             <GreenButton
-                                                                as="a"
+                                                                as="button"
                                                                 size='sm'
                                                                 colorScheme='whatsapp'
                                                             >UPDATE</GreenButton>
-                                                        </ChakraLink>
+                                                        </ReactRouterLink>
                                                     </WrapItem>
                                                 </Td>
                                             </Tr>

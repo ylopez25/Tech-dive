@@ -30,7 +30,7 @@ function ExamInfo() {
                 <ul>
                     <div style={{ padding: '10px' }}>
                         <PatientInfo
-                            patient={exam} />
+                            parent="ExamInfo" />
                         <h1
                             style={{ padding: '20px', textDecorationLine: 'underline' }}
                         >Exam Info</h1>

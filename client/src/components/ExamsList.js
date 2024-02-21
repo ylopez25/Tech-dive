@@ -1,6 +1,6 @@
 import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image, Spinner } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from 'react-router-dom'
-import { Link as ChakraLink, LinkProps } from '@chakra-ui/react'
+import { Link as ChakraLink } from '@chakra-ui/react'
 import React from "react";
 
 export default function ExamsList({ exams, loading }) {
@@ -40,7 +40,8 @@ export default function ExamsList({ exams, loading }) {
             <div className="examsList">
                 <TableContainer>
                     <Table size="sm" variant="simple" width="100%">
-                        <TableCaption>All Exam Records</TableCaption>
+                        <TableCaption
+                        >All Exam Records</TableCaption>
                         <Thead>
                             <Tr>
                                 <Th>Patient ID</Th>
@@ -54,7 +55,6 @@ export default function ExamsList({ exams, loading }) {
                                 <Th>zipcode</Th>
                             </Tr>
                         </Thead>
-
                         {exams.map(
                             (exam) =>
                                 exam && (
@@ -63,7 +63,8 @@ export default function ExamsList({ exams, loading }) {
                                             <Tr >
                                                 <Td> <ChakraLink
                                                     className="text-wrap"
-                                                    as={ReactRouterLink} color="blue" to={`/api/patient/${exam._id}/exams`}>{exam.patientId}</ChakraLink></Td>
+                                                    as={ReactRouterLink} color="blue"
+                                                    to={`/api/patient/${exam._id}/exams`}>{exam.patientId}</ChakraLink></Td>
                                                 <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/api/exams/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
 
                                                 <Td>

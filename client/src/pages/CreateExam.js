@@ -47,12 +47,31 @@ font-weight: bold;
 
 
 
-const CreateExam = ({ exams, examtypes }) => {
+const CreateExam = ({ dummy, setExams, examtypes }) => {
     const toast = useToast()
 
-    // const randomExam = () => {
-    //     console.log(Math.floor(Math.random() * exams.length))
-    // }
+    const randomExam = () => {
+        let number = Math.floor(Math.random() * dummy.length - 1)
+        let object = dummy[number]
+        object['adminId'] = Math.floor(Math.random() * dummy.length - 1)
+        console.log(object)
+        if (object) {
+            Object.keys(object).map((key) => {
+                if (object[key] == "") {
+                    object[key] = Math.floor(Math.random() * dummy.length - 1)
+                }
+                if (key === 'examId') {
+                    object['examTypeId'] = object['examId'];
+                    delete object['examId']
+                }
+            })
+        } else {
+            object = dummy[number + 1]
+        }
+        delete object['_id']
+        delete object['__v']
+        handleSubmit(object)
+    }
 
     const MyTextInput = ({ label, ...props }) => {
         // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -107,58 +126,57 @@ const CreateExam = ({ exams, examtypes }) => {
         );
     };
 
-    const [submission, setSubmission] = useState(false)
-    const handleSubmit = (values) => {
-        setSubmission(false)
-
-        const postUrl = 'http://localhost:9000/exams/createExam'
-        const fetchConfig = {
-            method: 'POST',
-            body: JSON.stringify(values),
-            headers: {
-                'Content-Type': "application/json",
-                'accept': 'application/json'
-            },
-        };
-        fetch(postUrl, fetchConfig)
-            .then(res => {
-                if (!res.ok) {
-                    setSubmission(false)
-                } else {
-                    setSubmission(true)
-                }
-                res.json()
-            })
-            .then(() => {
-                const PromiseE = new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                        if (submission === true) {
-                            resolve('Congrats!')
-                            // if (resolve('Congrats')) {
-                            //     setSubmission(false)
-                            // }
-                        } else {
-                            reject('Invalid Exam Submission')
-                        }
-                    }, 1000)
-                });
-                toast.promise(PromiseE, {
-                    success: { title: 'Congrats!', description: 'Exam Submitted' },
-                    error: { title: 'Invalid Exam Submission', description: 'Please submit a valid Exam' },
-                    loading: { title: 'Submitting', description: 'Please wait' },
-                })
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-
+    const handleSubmit = async (values) => {
+        console.log(values)
+        try {
+            const postUrl = 'http://localhost:9000/exams/createExam'
+            toast({
+                title: 'Submitting',
+                description: 'Your exam is being submitted!',
+                status: 'loading',
+                duration: 300,
+                isClosable: true,
+            });
+            const fetchConfig = {
+                method: 'POST',
+                body: JSON.stringify(values),
+                headers: {
+                    'Content-Type': "application/json",
+                    'accept': 'application/json'
+                },
+            };
+            const response = await fetch(postUrl, fetchConfig);
+            if (!response.ok) {
+                throw new Error('Invalid Exam Submission');
+            }
+            toast({
+                title: 'Congrats!',
+                description: 'Exam Submitted',
+                status: 'success',
+                duration: 1000,
+                isClosable: true,
+            });
+            const res = await fetch('http://localhost:9000/exams');
+            const resE = await res.json();
+            if (res.ok) {
+                setExams(resE);
+            }
+        } catch (error) {
+            toast({
+                title: 'Invalid Exam Submission',
+                description: 'Please submit a valid Exam',
+                status: 'error',
+                duration: 1000,
+                isClosable: true,
+            });
+        }
+    };
     return (
         <>
             <GreenButton
                 style={{ marginTop: '20px', marginLeft: '20px', marginRight: '10px', fontWeight: 'bold' }}
                 onClick={() => {
-                    // randomExam()
+                    randomExam()
                 }}
             >
                 Random Exam
@@ -180,10 +198,10 @@ const CreateExam = ({ exams, examtypes }) => {
                 initialValues={{
                     adminId: "",
                     patientId: "",
-                    age: 0,
+                    age: "",
                     sex: "",
                     zipCode: "",
-                    bmi: 0,
+                    bmi: "",
                     examTypeId: "",
                     keyFindings: "",
                     brixiaScores: "",
