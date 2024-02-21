@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Image, Link as ChakraLink, WrapItem, Heading, Modal, ModalBody, ModalOverlay, ModalContent, ModalCloseButton, ModalFooter, useDisclosure, ModalHeader } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, TableCaption, TableContainer, Link as ChakraLink, WrapItem, Heading, Modal, ModalBody, ModalOverlay, ModalContent, ModalCloseButton, ModalFooter, useDisclosure, ModalHeader } from "@chakra-ui/react";
 import { Spinner } from '@chakra-ui/react'
 import styled from "@emotion/styled";
 import { Link as ReactRouterLink } from "react-router-dom";
@@ -96,6 +96,7 @@ export const Admin = () => {
                     if (exam && !eTypes.includes(exam.examId)) {
                         eTypes.push(exam.examId)
                     }
+                    return null
                 })
                 setExamTypes(eTypes)
             } catch (e) {
