@@ -87,6 +87,7 @@ export const Admin = () => {
                     setExams(res)
                 }
                 const response_dummy = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
+
                 const dummy_res = await response_dummy.json()
                 const dummy_exams = dummy_res['exams']
                 setDummy(dummy_exams)
