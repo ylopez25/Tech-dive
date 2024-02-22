@@ -69,11 +69,12 @@ font-size: 20px;
 `
 
 export const Admin = () => {
-    const [exams, setExams] = useState([])
-    const [dummy, setDummy] = useState([])
-    const [examtypes, setExamTypes] = useState([])
-    const [loading, setLoading] = useState(false)
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [exams, setExams] = useState([]);
+    const [dummy, setDummy] = useState([]);
+    const [examtypes, setExamTypes] = useState([]);
+    const [loading, setLoading] = useState(false);
+    
+    const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect(() => {
         const fetchExams = async () => {
@@ -253,8 +254,8 @@ export const Admin = () => {
                                                 <Td> <ChakraLink
                                                     className="text-wrap"
                                                     as={ReactRouterLink} color="blue"
-                                                    to={`/api/patient/${exam._id}/exams`}>{exam.patientId}</ChakraLink></Td>
-                                                <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/api/exams/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
+                                                    to={`/patient/${exam._id}/exams`}>{exam.patientId}</ChakraLink></Td>
+                                                <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/exams/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
                                                 <Td>
                                                     <WrapItem>
                                                         <RedButton
