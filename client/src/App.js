@@ -7,6 +7,7 @@ import PageNotFound from "./pages/404PageNotFound";
 import Admin from "./pages/Admin";
 import ExamInfo from "./components/ExamInfo";
 import PatientDetails from "./pages/PatientDetails";
+import UpdateExam from "./pages/UpdateExam";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="/admin" element={<Admin />} />
               <Route path="/api/exams/:id" element={<ExamInfo />} />
               <Route path="/api/patient/:id/exams" element={<PatientDetails />} />
+              <Route path="/admin/:id/update" element={<UpdateExam/>}/>
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>
