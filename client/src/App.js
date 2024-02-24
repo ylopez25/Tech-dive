@@ -18,13 +18,13 @@ function App() {
           <Navbar />
           <div className="pages">
             <Routes>
-              <Route path="*" element={<PageNotFound />} />
-              <Route path="/" element={<Exams />} />
+              {/* <Route path="*" element={<PageNotFound />} /> */}
               <Route path="/exams" element={<Exams />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/exams/:id" element={<ExamInfo />} />
               <Route path="/patient/:id/exams" element={<PatientDetails />} />
               <Route path="*" element={<PageNotFound />} />
+              <Route path="/" element={<Exams />} />
             </Routes>
           </div>
         </BrowserRouter>
