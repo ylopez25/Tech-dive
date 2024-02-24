@@ -15,7 +15,6 @@ const getPatientExams = async (req, res) => {
         })
     }
     const patientId = exam.patientId
-
     const patientExamsreq = await Exam.find({
         patientId: patientId
     })
@@ -72,7 +71,6 @@ const createExam = async (req, res, next) => {
     const { adminId, patientId, age, sex, zipCode, bmi, examTypeId, keyFindings, brixiaScores, imageURL } = req.body
     try {
         const exam = await Exam.create({ adminId, patientId, age, sex, zipCode, bmi, examTypeId, keyFindings, brixiaScores, imageURL })
-        console.log(exam)
         res.status(200).json(exam)
     } catch (error) {
         res.status(400).json({ error: error.message })
