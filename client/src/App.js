@@ -19,6 +19,7 @@ function App() {
           <div className="pages">
             <Routes>
               <Route path="*" element={<PageNotFound />} />
+              <Route path="/" element={<Exams />} />
               <Route path="/exams" element={<Exams />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/exams/:id" element={<ExamInfo />} />
