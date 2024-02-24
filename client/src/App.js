@@ -18,6 +18,7 @@ function App() {
           <Navbar />
           <div className="pages">
             <Routes>
+            <Route path="/" element={<Exams />} />
               <Route path="*" element={<PageNotFound />} />
               <Route path="/exams" element={<Exams />} />
               <Route path="/admin" element={<Admin />} />
