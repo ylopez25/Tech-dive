@@ -34,3 +34,18 @@
   background-color: white;
   text-align: left;
 }
+.nav {
+  align-items: center;
+  height: 100%;
+  background-color: rgb(27, 63, 82);
+}
+
+.nav_link {
+  display:flex;
+  justify-content: center;
+}
+
+.nav_logo {
+  display:flex;
+  justify-content: center;
+}
