@@ -5,7 +5,10 @@ export default function Navbar() {
   return (
     <div className="nav">
       <div className="nav_logo">
-        <ChakraLink as={ReactRouterLink} to="/exams" color="red">
+        <div className="img">
+          <p>RfX</p>
+        </div>
+        <ChakraLink as={ReactRouterLink} to="/">
           Ray-Force-X
         </ChakraLink>
       </div>
