@@ -35,17 +35,26 @@
   text-align: left;
 }
 .nav {
-  align-items: center;
-  height: 100%;
-  background-color: rgb(27, 63, 82);
+  /* align-items: center; */
+  height: 150%;
+  background-color: #233237;
+  font-family:"Gill Sans", sans-serif; 
 }
+
 
 .nav_link {
   display:flex;
   justify-content: center;
+  align-items: center;
 }
 
 .nav_logo {
   display:flex;
   justify-content: center;
+  align-items: center;
+}
+
+.nav_logo img {
+  width: 70px;
+  height:50px;
 }
