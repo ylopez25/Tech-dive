@@ -64,7 +64,6 @@ font-size: 20px;
 export const Admin = () => {
     const [exams, setExams] = useState([]);
     const [dummy, setDummy] = useState([]);
-    const [examtypes, setExamTypes] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -148,6 +147,7 @@ export const Admin = () => {
                 </div>
 
                 <Spinner
+                    style={{ marginTop: '10px' }}
                     className="spinner"
                     size="lg"
                 />
@@ -204,7 +204,6 @@ export const Admin = () => {
                                     onClose={onClose}
                                     dummy={dummy}
                                     setExams={setExams}
-                                    examtypes={examtypes}
                                 />
                             </ModalBody>
                             <ModalFooter>

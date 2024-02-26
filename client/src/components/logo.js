@@ -28,6 +28,7 @@ const Logo = () => {
         >
             <LogoBox>
                 <img
+                    alt="platformLogo"
                     src={PlatformLogo}
                     width={30}
                     height={30}
