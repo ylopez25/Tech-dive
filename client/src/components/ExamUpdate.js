@@ -12,7 +12,7 @@ import {
 
 
 
-  
+
 
 function ExamUpdate() {
   const { id } = useParams();
@@ -31,36 +31,37 @@ function ExamUpdate() {
     brixiaScores: "",
   });
 
-  const [isFocusImage, setIsFocusImage]= useState(false)
-  const [isFocusKF, setIsFocusKF]= useState(false)
+  const [isFocusImage, setIsFocusImage] = useState(false)
+  const [isFocusKF, setIsFocusKF] = useState(false)
 
 
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
 
     e.preventDefault();
 
     try {
-        const response = await fetch(`http://localhost:9000/exams/${id}/updateExam`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type':'application/json',
+      const response = await fetch(`http://localhost:9000/exams/${id}/updateExam`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(exam)});
+        body: JSON.stringify(exam)
+      });
 
-        if (response.ok) {
-            console.log(response)
-            navigate("/exams")
-        }
-        
+      if (response.ok) {
+        console.log(response)
+        navigate("/exams")
+      }
+
 
     }
 
     catch (error) {
-        console.error ('Error updating exam:', exam.message)
+      console.error('Error updating exam:', exam.message)
     }
-   }
+  }
 
-//Get Exam info
+  //Get Exam info
   useEffect(() => {
     const fetchExam = async () => {
       try {
@@ -80,137 +81,137 @@ function ExamUpdate() {
 
   return (
     <div>
-    <form onSubmit={handleSubmit}>
-      <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
-        <div className="patient-update">
-          <List>
-            <h1>Patient Update</h1>
-            <FormControl variant="floating">
-              <ListItem m={2}>
-                
-                <Input
-                  placeholder={exam.patientId}
-                  name="patientId"
-                  onChange={(e) =>
-                    setExam({ ...exam, patientId: e.target.value })
-                  }
-                ></Input>
-                <FormLabel>Patient Id</FormLabel>
+      <form onSubmit={handleSubmit}>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
+          <div className="patient-update">
+            <List>
+              <h1>Patient Update</h1>
+              <FormControl variant="floating">
+                <ListItem m={2}>
 
-              </ListItem>
+                  <Input
+                    placeholder={exam.patientId}
+                    name="patientId"
+                    onChange={(e) =>
+                      setExam({ ...exam, patientId: e.target.value })
+                    }
+                  ></Input>
+                  <FormLabel>Patient Id</FormLabel>
+
+                </ListItem>
               </FormControl>
-        
-              
-              <FormControl variant="floating">   
-              <ListItem m={2}>
-                <Input
-                  placeholder={exam.age}
-                  name="age"
-                  onChange={(e) => setExam({ ...exam, age: e.target.value })}
-                ></Input>
-                 <FormLabel>Age</FormLabel>
-              </ListItem>
-              </FormControl> 
-     
 
-              <FormControl variant="floating">   
-              <ListItem m={2}>
-                <Input
-                  placeholder={exam.bmi}
-                  name="bmi"
-                  onChange={(e) => setExam({ ...exam, bmi: e.target.value })}
-                ></Input>
-                 <FormLabel>BMI</FormLabel>
-              </ListItem>
-              </FormControl> 
 
               <FormControl variant="floating">
-              <ListItem m={2}>
-                <Input
-                  placeholder={exam.sex}
-                  name="sex"
-                  onChange={(e) => setExam({ ...exam, sex: e.target.value })}
-                ></Input>
-                 <FormLabel>Sex</FormLabel>
-              </ListItem>
-              </FormControl> 
+                <ListItem m={2}>
+                  <Input
+                    placeholder={exam.age}
+                    name="age"
+                    onChange={(e) => setExam({ ...exam, age: e.target.value })}
+                  ></Input>
+                  <FormLabel>Age</FormLabel>
+                </ListItem>
+              </FormControl>
 
-              <FormControl variant="floating"> 
-              <ListItem m={2}>
-                <Input
-                  placeholder={exam.zipCode}
-                  name="zipCode"
-                  onChange={(e) => setExam({ ...exam, zipCode: e.target.value })}
-                ></Input>
-                <FormLabel>Zip Code</FormLabel>
-              </ListItem>
-              </FormControl> 
-      
-          </List>
-        </div>
 
-        <div className="exam-update">
-          <List>
-            <h1>Exam Update</h1>
+              <FormControl variant="floating">
+                <ListItem m={2}>
+                  <Input
+                    placeholder={exam.bmi}
+                    name="bmi"
+                    onChange={(e) => setExam({ ...exam, bmi: e.target.value })}
+                  ></Input>
+                  <FormLabel>BMI</FormLabel>
+                </ListItem>
+              </FormControl>
 
-            <FormControl variant="floating"> 
-            <ListItem m={2}>
-              <Input
-                placeholder={exam.examTypeId}
-                name="examTypId"
-                onChange={(e) =>
-                    setExam({ ...exam, examTypeId: e.target.value })
-                }
-                ></Input>
-                <FormLabel>Exam Type</FormLabel>
-            </ListItem>
-            </FormControl>
+              <FormControl variant="floating">
+                <ListItem m={2}>
+                  <Input
+                    placeholder={exam.sex}
+                    name="sex"
+                    onChange={(e) => setExam({ ...exam, sex: e.target.value })}
+                  ></Input>
+                  <FormLabel>Sex</FormLabel>
+                </ListItem>
+              </FormControl>
 
-            <FormControl variant="floating"> 
-            <ListItem m={2}>
-              <Input
-                placeholder={isFocusImage? exam.imageURL : ""}
-                onFocus={()=>setIsFocusImage(!isFocusImage)}
-                onBlur={()=> setIsFocusImage(!isFocusImage)}
-                name="imageURL"
-                onChange={(e) => setExam({ ...exam, imageURL: e.target.value })}
-              ></Input>
-              <FormLabel>Image URL</FormLabel>
-            </ListItem>
-            </FormControl>
+              <FormControl variant="floating">
+                <ListItem m={2}>
+                  <Input
+                    placeholder={exam.zipCode}
+                    name="zipCode"
+                    onChange={(e) => setExam({ ...exam, zipCode: e.target.value })}
+                  ></Input>
+                  <FormLabel>Zip Code</FormLabel>
+                </ListItem>
+              </FormControl>
 
-            <FormControl variant="floating">
-            <ListItem m={2}>
-              <Input
-                placeholder={isFocusKF? exam.keyFindings : ""}
-                onFocus={()=>setIsFocusKF(!isFocusKF)}
-                onBlur={()=> setIsFocusKF(!isFocusKF)}
-                name="keyFindings"
-                onChange={(e) =>
-                  setExam({ ...exam, keyFindings: e.target.value })
-                }
-              ></Input>
-              <FormLabel>Key Findings</FormLabel>
-            </ListItem>
-            </FormControl>
+            </List>
+          </div>
 
-            <FormControl variant="floating">
-            <ListItem m={2}>
-              <Input
-                placeholder={exam.brixiaScores}
-                name="brixiaScores"
-                onChange={(e) =>
-                  setExam({ ...exam, brixiaScores: e.target.value })
-                }
-              ></Input>
-              <FormLabel>Brixia Score</FormLabel>
-            </ListItem>
-            </FormControl>
-          </List>
-        </div>
-      </Grid>
+          <div className="exam-update">
+            <List>
+              <h1>Exam Update</h1>
 
-      <Button type='submit'>Submit</Button>
+              <FormControl variant="floating">
+                <ListItem m={2}>
+                  <Input
+                    placeholder={exam.examTypeId}
+                    name="examTypId"
+                    onChange={(e) =>
+                      setExam({ ...exam, examTypeId: e.target.value })
+                    }
+                  ></Input>
+                  <FormLabel>Exam Type</FormLabel>
+                </ListItem>
+              </FormControl>
+
+              <FormControl variant="floating">
+                <ListItem m={2}>
+                  <Input
+                    placeholder={isFocusImage ? exam.imageURL : ""}
+                    onFocus={() => setIsFocusImage(!isFocusImage)}
+                    onBlur={() => setIsFocusImage(!isFocusImage)}
+                    name="imageURL"
+                    onChange={(e) => setExam({ ...exam, imageURL: e.target.value })}
+                  ></Input>
+                  <FormLabel>Image URL</FormLabel>
+                </ListItem>
+              </FormControl>
+
+              <FormControl variant="floating">
+                <ListItem m={2}>
+                  <Input
+                    placeholder={isFocusKF ? exam.keyFindings : ""}
+                    onFocus={() => setIsFocusKF(!isFocusKF)}
+                    onBlur={() => setIsFocusKF(!isFocusKF)}
+                    name="keyFindings"
+                    onChange={(e) =>
+                      setExam({ ...exam, keyFindings: e.target.value })
+                    }
+                  ></Input>
+                  <FormLabel>Key Findings</FormLabel>
+                </ListItem>
+              </FormControl>
+
+              <FormControl variant="floating">
+                <ListItem m={2}>
+                  <Input
+                    placeholder={exam.brixiaScores}
+                    name="brixiaScores"
+                    onChange={(e) =>
+                      setExam({ ...exam, brixiaScores: e.target.value })
+                    }
+                  ></Input>
+                  <FormLabel>Brixia Scores</FormLabel>
+                </ListItem>
+              </FormControl>
+            </List>
+          </div>
+        </Grid>
+
+        <Button type='submit'>Submit</Button>
       </form>
     </div>
   );

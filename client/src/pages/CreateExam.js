@@ -46,14 +46,13 @@ font-weight: bold;
 
 
 
-const CreateExam = ({ dummy, setExams, examtypes }) => {
+const CreateExam = ({ dummy, onClose, setExams }) => {
     const toast = useToast()
 
     const randomExam = () => {
         let number = Math.floor(Math.random() * dummy.length - 1)
         let object = dummy[number]
         object['adminId'] = Math.floor(Math.random() * dummy.length - 1)
-        console.log(object, "CREATE EXAM COMPONENT")
         if (object) {
             Object.keys(object).map((key) => {
                 if (object[key] === "") {
@@ -127,7 +126,6 @@ const CreateExam = ({ dummy, setExams, examtypes }) => {
     };
 
     const handleSubmit = async (values) => {
-        console.log(values, "HANDLE SUBMIT ")
         try {
             const postUrl = 'http://localhost:9000/exams/createExam'
             toast({
@@ -160,6 +158,7 @@ const CreateExam = ({ dummy, setExams, examtypes }) => {
             const resE = await res.json();
             if (res.ok) {
                 setExams(resE);
+                onClose()
             }
         } catch (error) {
             toast({
@@ -188,12 +187,6 @@ const CreateExam = ({ dummy, setExams, examtypes }) => {
             >
                 Create Exam
             </BlueButton>
-            {/* <Heading
-                style={{ marginTop: '50px' }}
-                color="black"
-            >
-                Exam and Patient Info
-            </Heading> */}
             <Formik
                 initialValues={{
                     adminId: "",
@@ -209,18 +202,16 @@ const CreateExam = ({ dummy, setExams, examtypes }) => {
                 }}
                 //can add type validation and require text/selection inputs at a later time
                 validationSchema={Yup.object({
-                    adminId: Yup.string(),
-                    patientId: Yup.string(),
-                    age: Yup.number(),
-                    sex: Yup.string(),
-                    zipCode: Yup.string(),
-                    bmi: Yup.number(),
-                    examTypeId: Yup.string().oneOf(
-                        [...examtypes]
-                    ),
-                    keyFindings: Yup.string(),
-                    brixiaScores: Yup.string(),
-                    imageURL: Yup.string(),
+                    adminId: Yup.string().required('Required'),
+                    patientId: Yup.string().required('Required'),
+                    age: Yup.number().required('Required'),
+                    sex: Yup.string().required('Required'),
+                    zipCode: Yup.string().required('Required'),
+                    bmi: Yup.number().required('Required'),
+                    examTypeId: Yup.string().required('Required'),
+                    keyFindings: Yup.string().required('Required'),
+                    brixiaScores: Yup.string().required('Required'),
+                    imageURL: Yup.string().required('Required'),
                 })}
                 onSubmit={(values, { setSubmitting }) => {
                     handleSubmit(values)
@@ -246,56 +237,68 @@ const CreateExam = ({ dummy, setExams, examtypes }) => {
                                 name="adminId"
                                 type="text"
                             />
-                            <MyTextInput
-                                label="Patient Id"
-                                name="patientId"
-                                type="text"
-                            />
-                            <MyTextInput
-                                label="age"
-                                name="age"
-                                type="number"
-                            />
-                            <MyTextInput
-                                label="Sex"
-                                name="sex"
-                                type="text"
-                            />
-                            <MyTextInput
-                                label="ZipCode"
-                                name="zipCode"
-                                type="text"
-                            />
-                            <MyTextInput
-                                label="bmi"
-                                name="bmi"
-                                type="number"
-                            />
-                        </GridItem>
-                        <GridItem>
-                            <MySelect
-                                label="examTypeId"
-                                name="examTypeId"
+
+                            <div
+                                style={{ marginTop: '15px' }}
                             >
-                                {examtypes.map((type) =>
-                                    type && (<option
-                                        key={type}
-                                        value={type}
-                                    >{type}</option>)
-                                )}
-                            </MySelect>
+                                <h1
+                                    style={{ fontSize: '20px', textDecoration: 'underline', fontWeight: 'bold', marginBottom: '20px' }}
+                                >
+                                    Patient Info
+                                </h1>
+                                <MyTextInput
+                                    label="Patient Id"
+                                    name="patientId"
+                                    type="text"
+                                />
+                                <MyTextInput
+                                    label="Age"
+                                    name="age"
+                                    type="number"
+                                />
+                                <MyTextInput
+                                    label="Sex"
+                                    name="sex"
+                                    type="text"
+                                />
+                                <MyTextInput
+                                    label="Zip Code"
+                                    name="zipCode"
+                                    type="text"
+                                />
+                                <MyTextInput
+                                    label="BMI"
+                                    name="bmi"
+                                    type="number"
+                                />
+                            </div>
+                        </GridItem>
+                        <GridItem
+                            style={{ marginTop: '100px' }}
+                        >
+                            <h1
+                                style={{ fontSize: '20px', textDecoration: 'underline', fontWeight: 'bold', marginBottom: '20px' }}
+                            >
+                                Exam Info
+                            </h1>
                             <MyTextInput
-                                label="keyFindings"
+                                label="Exam Type"
+                                name="examTypeId"
+                                type="text"
+                            >
+                            </MyTextInput>
+                            <MyTextInput
+                                label="Key Findings"
                                 name="keyFindings"
                                 type="text"
                             />
                             <MyTextInput
-                                label="brixiaScores"
+                                label="Brixia Scores"
                                 name="brixiaScores"
                                 type="text"
                             />
                             <MyTextInput
-                                label="imageURL"
+                                label="Image URL"
                                 name="imageURL"
                                 type="text"
                             />

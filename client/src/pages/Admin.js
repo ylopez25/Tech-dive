@@ -5,13 +5,6 @@ import styled from "@emotion/styled";
 import { Link as ReactRouterLink } from "react-router-dom";
 import CreateExam from "./CreateExam";
 
-/*
-implement table with update, delete buttons
-table with search
-
-Tackling issue 29 and 41
- */
-
 export const RedButton = styled.button`
   border-radius:5px;
   background-color: white;
@@ -71,9 +64,8 @@ font-size: 20px;
 export const Admin = () => {
     const [exams, setExams] = useState([]);
     const [dummy, setDummy] = useState([]);
-    const [examtypes, setExamTypes] = useState([]);
     const [loading, setLoading] = useState(false);
-    
+
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     useEffect(() => {
@@ -81,7 +73,6 @@ export const Admin = () => {
             try {
                 setLoading(true)
                 const response = await fetch('http://localhost:9000/exams')
-                // need an exam types be route
                 if (response.ok) {
                     const res = await response.json();
                     setLoading(false)
@@ -92,14 +83,6 @@ export const Admin = () => {
                 const dummy_res = await response_dummy.json()
                 const dummy_exams = dummy_res['exams']
                 setDummy(dummy_exams)
-                const eTypes = []
-                dummy_exams.map((exam) => {
-                    if (exam && !eTypes.includes(exam.examId)) {
-                        eTypes.push(exam.examId)
-                    }
-                    return null
-                })
-                setExamTypes(eTypes)
             } catch (e) {
                 console.error(e)
             }
@@ -130,7 +113,7 @@ export const Admin = () => {
                 }
             }
             )
-            .catch(err => console.log(err))
+            .catch(err => console.error(err))
     }
 
 
@@ -164,6 +147,7 @@ export const Admin = () => {
                 </div>
 
                 <Spinner
+                    style={{ marginTop: '10px' }}
                     className="spinner"
                     size="lg"
                 />
@@ -193,7 +177,8 @@ export const Admin = () => {
                 <Modal
                     size="full"
                     isOpen={isOpen}
-                    onClose={onClose} >
+                    onClose={onClose}
+                >
                     <ModalOverlay>
                         <ModalContent
                             backgroundColor="white"
@@ -216,9 +201,9 @@ export const Admin = () => {
                             <ModalBody
                             >
                                 <CreateExam
+                                    onClose={onClose}
                                     dummy={dummy}
                                     setExams={setExams}
-                                    examtypes={examtypes}
                                 />
                             </ModalBody>
                             <ModalFooter>
@@ -249,7 +234,7 @@ export const Admin = () => {
                             <Tbody>
                                 {exams.map(
                                     (exam, index) =>
-                                        exam && !exam['isDeleted'] && (
+                                        exam && (
                                             <Tr key={exam._id}>
                                                 <Td> <ChakraLink
                                                     className="text-wrap"
