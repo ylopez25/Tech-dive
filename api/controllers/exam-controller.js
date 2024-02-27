@@ -36,6 +36,11 @@ const getPatientExams = async (req, res) => {
     res.status(200).json(patient)
 }
 
+
+
+
+
+
 //todo get all exams
 const getExams = async (req, res) => {
     const exams = await Exam.find({}).sort({
@@ -69,6 +74,7 @@ const getExam = async (req, res) => {
 //todo POST exam
 const createExam = async (req, res, next) => {
     const { adminId, patientId, age, sex, zipCode, bmi, examTypeId, keyFindings, brixiaScores, imageURL } = req.body
+    console.log(req.body, "REQ BODYYY");
     try {
         const exam = await Exam.create({ adminId, patientId, age, sex, zipCode, bmi, examTypeId, keyFindings, brixiaScores, imageURL })
         res.status(200).json(exam)
@@ -78,6 +84,65 @@ const createExam = async (req, res, next) => {
 
 }
 
+
+//todo MASS POST
+const massCreate = async (req, res, next) => {
+    
+    for (let  i = 0;  i < 1;  i++) {
+        req.body[i]["adminId"] = 2;
+        const exam = req.body[i];
+        
+
+                let payload = {
+                    "adminId": 2, 
+                    "patientId": exam.patientId, 
+                    "age": exam.age, 
+                    "sex": exam.sex, 
+                    "zipCode": exam.zipCode, 
+                    "bmi": exam.bmi, 
+                    "examTypeId": exam.examId, 
+                    "keyFindings": exam.keyFindings, 
+                    "brixiaScores": exam.brixiaScores, 
+                    "imageURL": exam.imageURL
+                }
+        console.log(payload, "exam");
+
+        createExam(payload)
+
+
+    // router.post('/massPost', async (req, res, next) => {
+
+    //     const exam = req.body[i]
+    //     // console.log(exams, "Exams array");
+
+    //             console.log(exam, "Single EXAMM");
+                
+    //             let payload = {
+    //                 "adminId": 2, 
+    //                 "patientId": exam.patientId, 
+    //                 "age": exam.age, 
+    //                 "sex": exam.sex, 
+    //                 "zipCode": exam.zipCode, 
+    //                 "bmi": exam.bmi, 
+    //                 "examTypeId": exam.examId, 
+    //                 "keyFindings": exam.keyFindings, 
+    //                 "brixiaScores": exam.brixiaScores, 
+    //                 "imageURL": exam.imageURL
+    //             }
+    
+    //             const { adminId, patientId, age, sex, zipCode, bmi, examTypeId, keyFindings, brixiaScores, imageURL } = payload
+    //             // console.log(req.body, "REQ BODYYY");
+    //             try {
+    //                 const newExam = await Exam.create({ adminId, patientId, age, sex, zipCode, bmi, examTypeId, keyFindings, brixiaScores, imageURL })
+    //                 res.status(200).json(newExam)
+    //                 console.log(newExam);
+    //             } catch (error) {
+    //                 res.status(400).json({ error: error.message })
+    //             }
+    //         })
+
+        }
+}
 
 
 
@@ -127,6 +192,7 @@ module.exports = {
     getExams,
     getExam,
     getPatientExams,
+    massCreate,
     createExam,
     deleteExam,
     updateExam

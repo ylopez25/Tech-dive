@@ -4,6 +4,7 @@ const {
     getExams,
     getExam,
     getPatientExams,
+    massCreate,
     createExam,
     deleteExam,
     updateExam
@@ -23,6 +24,11 @@ router.get('/patient/:id/exams', getPatientExams)
 //! GET ONE
 //* exams/:id
 router.get('/:id', getExam)
+
+//! MASS POST 
+//* exams/createExam
+//todo add admin id param  for authenticaion etc
+router.post('/massPost', massCreate)
 
 //! POST NEW Exam
 //* exams/createExam
