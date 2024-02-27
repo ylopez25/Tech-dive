@@ -12,6 +12,9 @@ import {
   Image,
   Grid,
   GridItem,
+  CardHeader,
+  CardBody,
+  Heading
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
@@ -56,9 +59,9 @@ function PatientInfo({ parent }) {
       <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
         <GridItem>
           <div>
-            <h1 style={{ padding: "20px", textDecorationLine: "underline" }}>
-              Patient Info
-            </h1>
+            <CardHeader>
+                <Heading size="s" align="left" >Patient Info</Heading>
+            </CardHeader>
             <li>Patient Id: {patient.patientId}</li>
             <li>Age: {patient.age} </li>
             <li>Sex: {patient.sex} </li>
