@@ -13,6 +13,7 @@ import {
   CardHeader,
   CardBody,
   ButtonGroup,
+  Textarea,
 } from "@chakra-ui/react";
 
 function ExamUpdate() {
@@ -33,6 +34,8 @@ function ExamUpdate() {
 
   const [isFocusImage, setIsFocusImage] = useState(false);
   const [isFocusKF, setIsFocusKF] = useState(false);
+  const [isFocusPatientId, setIsFocusPatientId] = useState(false);
+  const [isFocusExamType, setIsFocusExamType] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,9 +83,9 @@ function ExamUpdate() {
                 <Heading size="s" align="left" >Edit Exam</Heading>
             </CardHeader>
             <CardBody>
-        <ButtonGroup spacing="60" size="lg" variant="outline" >
-        <Button type="submit" width="135px"  height="41.9" fontSize="12px" colorScheme='teal'>Submit</Button>
-        <Button type="cancel" width="135px"  height="41.9" fontSize="12px" colorScheme='red'>Cancel</Button>
+        <ButtonGroup spacing="60" size="lg">
+        <Button type="submit" width="135px"  height="41.9" fontSize="12px" colorScheme='teal'>SUBMIT</Button>
+        <Button type="cancel" width="135px"  height="41.9" fontSize="12px" colorScheme='red'>CANCEL</Button>
         </ButtonGroup>
         
         </CardBody>
@@ -100,7 +103,9 @@ function ExamUpdate() {
                 <FormControl variant="floating">
                   <ListItem m={2}>
                     <Input
-                      placeholder={exam.patientId}
+                       placeholder={isFocusPatientId ? exam.patientId : ""}
+                       onFocus={() => setIsFocusPatientId(!isFocusPatientId)}
+                       onBlur={() => setIsFocusPatientId(!isFocusPatientId)}
                       name="patientId"
                       onChange={(e) =>
                         setExam({ ...exam, patientId: e.target.value })
@@ -175,7 +180,9 @@ function ExamUpdate() {
               <FormControl variant="floating">
                 <ListItem m={2}>
                   <Input
-                    placeholder={exam.examTypeId}
+                     placeholder={isFocusExamType ? exam.examTypeId : ""}
+                     onFocus={() => setIsFocusExamType(!isFocusExamType)}
+                     onBlur={() => setIsFocusExamType(!isFocusExamType)}
                     name="examTypId"
                     onChange={(e) =>
                       setExam({ ...exam, examTypeId: e.target.value })
@@ -202,7 +209,7 @@ function ExamUpdate() {
 
               <FormControl variant="floating">
                 <ListItem m={2}>
-                  <Input
+                  <Textarea
                     placeholder={isFocusKF ? exam.keyFindings : ""}
                     onFocus={() => setIsFocusKF(!isFocusKF)}
                     onBlur={() => setIsFocusKF(!isFocusKF)}
@@ -210,7 +217,7 @@ function ExamUpdate() {
                     onChange={(e) =>
                       setExam({ ...exam, keyFindings: e.target.value })
                     }
-                  ></Input>
+                  ></Textarea>
                   <FormLabel>Key Findings</FormLabel>
                 </ListItem>
               </FormControl>
@@ -224,7 +231,7 @@ function ExamUpdate() {
                       setExam({ ...exam, brixiaScores: e.target.value })
                     }
                   ></Input>
-                  <FormLabel>Brixia Score</FormLabel>
+                  <FormLabel>Brixia Scores</FormLabel>
                 </ListItem>
               </FormControl>
               </CardBody>

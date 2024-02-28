@@ -95,13 +95,7 @@ export const Admin = () => {
   if (loading) {
     return (
       <>
-        <Heading color="black" marginTop="80px">
-          ADMIN PAGE
-        </Heading>
-        <div className="navItem">
-          <h2>Patient Exams</h2>
-          <h1>Number of Exams:</h1>
-        </div>
+       
         <div>
           <TableContainer>
             <Table size="sm" variant="simple" width="100%">
@@ -110,6 +104,7 @@ export const Admin = () => {
                   <Th>Patient ID</Th>
                   <Th>Exams</Th>
                   <Th>Exams Types</Th>
+                  <Th>Images</Th>
                 </Tr>
               </Thead>
             </Table>
@@ -168,7 +163,7 @@ export const Admin = () => {
                 <Tr>
                   <Th>Patient ID</Th>
                   <Th>Exams</Th>
-                  <Th>Image</Th>
+                  <Th>Images</Th>
                   <Th></Th>
                   <Th></Th>
                 </Tr>

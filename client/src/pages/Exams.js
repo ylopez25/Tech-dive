@@ -27,14 +27,14 @@ export default function Exams() {
     <>
       <div className="exams">
         <div className="total">
-          <div style={{ marginTop: '40px', fontWeight: 'bold' }} className="navItem">
-            <h2
+          <div m={5} className="navItem">
+            {/* <h2
 
             >Patient Exams</h2>
             <h1
             >
               Number of Exams: {exams.length}
-            </h1>
+            </h1> */}
           </div>
           <ExamsList loading={loading} exams={exams} />
         </div>

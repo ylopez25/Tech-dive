@@ -61,7 +61,7 @@ function PatientInfo({ parent, examId }) {
   }, [id]);
 
   return (
-    <div className="exams">
+    <div className={examId? "" : "exams"}>
       <Card
         className="patient-update"
         variant="elevated"
@@ -93,7 +93,7 @@ function PatientInfo({ parent, examId }) {
                   >
                     <Button
                       size="lg"
-                      variant="outline"
+                      // variant="outline"
                       fontSize="12px"
                       colorScheme="teal"
                       width="100%"

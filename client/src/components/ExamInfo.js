@@ -11,6 +11,7 @@ import {
   Center,
   Text,
   Link,
+  GridItem,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
@@ -58,7 +59,7 @@ function ExamInfo() {
                   {exam.examTypeId}
                 </ListItem>
                 <ListItem>
-                  <strong>Brixia Score:</strong> {exam.brixiaScore}
+                  <strong>Brixia Score:</strong> {exam.brixiaScores}
                 </ListItem>
                 <ListItem>
                   <strong>Image URL:</strong> {exam.imageURL}
@@ -70,7 +71,6 @@ function ExamInfo() {
               variant="elevated"
               border="1px"
               borderColor='teal.400'
-              //   w="50%"
             >
               <CardHeader>
                 <Heading size="xs" align="left">
@@ -88,11 +88,13 @@ function ExamInfo() {
       {/* Beginning of Patient Info and Image Grid */}
       <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
         {/* Beginning of Patient Info Card*/}
+        <GridItem>
         <PatientInfo parent="ExamInfo"  examId={exam._id}/>
+        </GridItem>
         
 
         {/* End of Patient Info Card*/}
-
+        <GridItem>
         <Card
           variant="elevated"
           mr="3"
@@ -146,6 +148,8 @@ function ExamInfo() {
             </Center>
           </CardBody>
         </Card>
+        </GridItem>
+        
       </Grid>
       {/* End of Patient Info and Image Grid */}
     </div>
