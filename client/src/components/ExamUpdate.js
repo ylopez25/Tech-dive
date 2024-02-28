@@ -73,9 +73,9 @@ function ExamUpdate() {
   }, [id]);
 
   return (
-    <div>
+    <div className="exams">
       <form onSubmit={handleSubmit} >
-        <Card className="header" variant="elevated" m="3" mt="5" p="auto" border='1px' borderColor='gray.200'>
+        <Card className="header" variant="elevated" m="3" mt="5" p="auto" border='1px' borderColor='teal.400'>
             <CardHeader>
                 <Heading size="s" align="left" >Edit Exam</Heading>
             </CardHeader>
@@ -87,8 +87,10 @@ function ExamUpdate() {
         
         </CardBody>
         </Card>
+
+        
         <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
-          <Card className="patient-update" variant="elevated" ml="3" mt="5" p="auto" border='1px' borderColor='gray.200'>
+          <Card className="patient-update" variant="elevated" ml="3" mt="5" p="auto" border='1px' borderColor='teal.400'>
             <List>
               <CardHeader>
                 <Heading size="s" align="left">Patient Update</Heading>
@@ -163,7 +165,7 @@ function ExamUpdate() {
             </List>
           </Card>
 
-          <Card className="exam-update" variant="elevated" mr="3" mt="5" p="auto" border='1px' borderColor='gray.200'>
+          <Card className="exam-update" variant="elevated" mr="3" mt="5" p="auto" border='1px' borderColor='teal.400'>
             <List>
                 <CardHeader>
               <Heading size="s" align="left">Exam Update</Heading>

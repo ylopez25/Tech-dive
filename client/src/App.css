@@ -2,8 +2,8 @@
 
 .App {
   text-align: center;
-  background-color: white;
-  color: black;
+  background-color: #00000014;
+  
 }
 
 .App-logo {
@@ -28,6 +28,10 @@
   font-family: 'Press Start 2P', cursive;
   font-size: 1.5rem;
 }
+
+.exams {
+  margin: 0px 100px;
+ }
 
 .exam-info {
   margin-top: 20px;

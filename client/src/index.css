@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior-y: none;
-  background-color: white;
+  background-color: #00000014;
 }
 
 code {
@@ -22,7 +22,8 @@ code {
   font-size: 1.5em;
   margin: 0 auto;
   color: white;
-  background-color: #000000;
+  background-color: #38B2AC
+  ;
   height: 100px;
 }
 

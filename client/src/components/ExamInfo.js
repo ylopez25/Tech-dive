@@ -1,5 +1,5 @@
 import {
-  Img,
+  Image,
   Grid,
   Card,
   CardBody,
@@ -7,8 +7,12 @@ import {
   Heading,
   List,
   ListItem,
-  Text
+  Box,
+  Center,
+  Text,
+  Link,
 } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import PatientInfo from "./PatientInfo";
@@ -17,7 +21,6 @@ import "../App.css";
 function ExamInfo() {
   const [exam, setExam] = useState([]);
   const { id } = useParams();
-
 
   useEffect(() => {
     const fetchExam = async () => {
@@ -33,76 +36,119 @@ function ExamInfo() {
   }, [id]);
 
   return (
-    <>
-      <div>
-        <Grid templateColumns="repeat(2, 1fr)" gap="6" centerContext border="2px" borderColor="red" >
-          <Card
-            className="header"
-            variant="elevated"
-            m="3"
-            mt="5"
-            border="1px"
-            borderColor="gray.200"
-          >
-            <PatientInfo parent="ExamInfo" />
-          </Card>
-          <Card
-            className="header"
-            variant="elevated"
-            m="3"
-            mt="5"
-            height="255px"
-            border="1px"
-            borderColor="gray.200"
-            align="center"
-          >
-            <Img boxSize="255px" objectFit="cover" src={exam.imageURL}></Img>
-          </Card>
-        </Grid>
+    <div className="exams">
+      {/* Beginning of Exam Info card with key findings */}
+      <Card
+        className="header"
+        variant="elevated"
+        m="3"
+        mt="5"
+        border="1px"
+        borderColor='teal.400'
+      >
+        <CardHeader>
+          <Grid templateColumns="repeat(2, 1fr)" gap={6} textAlign="left">
+            <div>
+              <Heading size="md" align="left" mb={5}>
+                Exam Info
+              </Heading>
+              <List spacing="4">
+                <ListItem>
+                  <strong>Exam ID: </strong>
+                  {exam.examTypeId}
+                </ListItem>
+                <ListItem>
+                  <strong>Brixia Score:</strong> {exam.brixiaScore}
+                </ListItem>
+                <ListItem>
+                  <strong>Image URL:</strong> {exam.imageURL}
+                </ListItem>
+              </List>
+            </div>
+            <Card
+              align="right"
+              variant="elevated"
+              border="1px"
+              borderColor='teal.400'
+              //   w="50%"
+            >
+              <CardHeader>
+                <Heading size="xs" align="left">
+                  Key Findings
+                </Heading>
+              </CardHeader>
+              <CardBody>{exam.keyFindings}</CardBody>
+            </Card>
+          </Grid>
+        </CardHeader>
+      </Card>
+
+      {/* End of Exam Info card with key findings */}
+
+      {/* Beginning of Patient Info and Image Grid */}
+      <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
+        {/* Beginning of Patient Info Card*/}
+        <PatientInfo parent="ExamInfo"  examId={exam._id}/>
+        
+
+        {/* End of Patient Info Card*/}
+
         <Card
-          className="header"
           variant="elevated"
-          m="3"
+          mr="3"
           mt="5"
+          p="auto"
           border="1px"
-          borderColor="gray.200"
+          borderColor='teal.400'
         >
           <CardHeader>
-            <Heading size="s" align="left">
-              Exam Info
+            <Heading size="md" align="left">
+              Image
             </Heading>
           </CardHeader>
+
           <CardBody>
-            <Grid templateColumns="repeat(2, 1fr)" gap={6} textAlign="left">
-              <List spacing="4">
-                <ListItem><strong>Exam ID: </strong>{exam.examTypeId}</ListItem>
-                <ListItem><strong>Brixia Score:</strong> {exam.brixiaScore}</ListItem>
-                <ListItem><strong>Image URL:</strong>  {exam.imageURL}</ListItem>
-              </List>
-              <Card
-                
-                variant="elevated"
-                border="1px"
-                borderColor="gray.200"
-                size="sm"
-               
+            <Center position="relative">
+              <Box
+                position="absolute"
+                top={0}
+                left={0}
+                right={0}
+                bottom={0}
+                backgroundColor="rgba(0, 0, 0, 0.5)"
+                borderRadius="md"
+                opacity={0}
+                transition="opacity 0.3s"
+                _hover={{
+                  opacity: 1,
+                  cursor: "pointer",
+                }}
               >
-                <CardHeader>
-                  <Heading size="xs" align="left">
-                    Key Findings
-                  </Heading>
-                </CardHeader>
-                <CardBody>
-                    <Text noOfLines={[1, 2, 3]}>
-                    {exam.keyFindings}
+        
+                <Link href={exam.imageURL} isExternal>
+                  <Center h="full">
+                    <Text color="white" fontWeight="bold" fontSize="xl">
+                      Open in new tab <ExternalLinkIcon mx="2px" />
                     </Text>
-                </CardBody>
-              </Card>
-            </Grid>
+                  </Center>
+                </Link>
+              </Box>
+              <Image
+                src={exam.imageURL}
+                alt="Exam Image"
+                borderRadius="md"
+                w="50%"
+                h="full"
+                _hover={{
+                  cursor: "pointer",
+                }}
+              />
+            </Center>
           </CardBody>
         </Card>
-      </div>
-    </>
+      </Grid>
+      {/* End of Patient Info and Image Grid */}
+    </div>
   );
 }
 

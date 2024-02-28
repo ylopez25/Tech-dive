@@ -50,7 +50,7 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <div className="App">
+      <div className="App" backgroundColor='blackAlpha.200'>
         <BrowserRouter>
           <Navbar />
           <div className="pages">

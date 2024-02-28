@@ -12,14 +12,21 @@ import {
   Image,
   Grid,
   GridItem,
+  Card,
   CardHeader,
   CardBody,
-  Heading
+  Heading,
+  List,
+  ListItem,
+  Avatar,
+  Center,
+  Box,
+  Button,
 } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 
-function PatientInfo({ parent }) {
+function PatientInfo({ parent, examId }) {
   const [patient, setPatient] = useState({
     age: "",
     bmi: "",
@@ -46,7 +53,6 @@ function PatientInfo({ parent }) {
           sex: res.sex,
           zipCode: res.zipCode,
         });
-
       } catch (e) {
         console.error("Error fetching exam:", e);
       }
@@ -55,74 +61,177 @@ function PatientInfo({ parent }) {
   }, [id]);
 
   return (
-    <>
-      <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
-        <GridItem>
-          <div>
+    <div className="exams">
+      <Card
+        className="patient-update"
+        variant="elevated"
+        m="3"
+        mt="5"
+        p="auto"
+        border="1px"
+        borderColor="teal.400"
+      >
+        <CardHeader>
+          <Heading size="md" align="left">
+            {examId ? "Patient Info" : "Profile"}
+          </Heading>
+        </CardHeader>
+        <Center>
+          <CardBody align="right" mt={examId ? "15" : "-5"}>
+            <Grid templateColumns="repeat(2, 1fr)" gap={10}>
+              <GridItem colSpan={1}>
+                <Center>
+                  <Avatar size="2xl" />
+                </Center>
+                {examId && (
+                  <ChakraLink
+                    as={ReactRouterLink}
+                    to={`/api/patient/${examId}/exams`}
+                    display="block"
+                    textAlign="center"
+                    mt={10} // Adjust margin top as needed
+                  >
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      fontSize="12px"
+                      colorScheme="teal"
+                      width="100%"
+                    >
+                      View Profile
+                    </Button>
+                  </ChakraLink>
+                )}
+              </GridItem>
+              <GridItem colSpan={1}>
+                {examId ? (
+                  //ExamInfo Page
+                  <List spacing="4" align="left">
+                    <ListItem>
+                      <strong>Patient Id: </strong>
+                      {patient.patientId}
+                    </ListItem>
+                    <ListItem>
+                      <strong>Age:</strong> {patient.age}
+                    </ListItem>
+                    <ListItem>
+                      <strong>Sex:</strong> {patient.sex}
+                    </ListItem>
+                    <ListItem>
+                      <strong>BMI:</strong> {patient.bmi}
+                    </ListItem>
+                    <ListItem>
+                      <strong>Zipcode:</strong> {patient.zipCode}
+                    </ListItem>
+                  </List>
+                ) : (
+                  //PatientDetails Page
+                  <Box>
+                    <List spacing="4" align="left">
+                      <Grid templateColumns="repeat(3, 1fr)" gap={10}>
+                        <GridItem colSpan={1}>
+                          <ListItem>
+                            <strong>Patient Id: </strong>
+                            {patient.patientId}
+                          </ListItem>
+                        </GridItem>
+                        <GridItem colSpan={1}>
+                          <ListItem>
+                            <strong>Age:</strong> {patient.age}
+                          </ListItem>
+                        </GridItem>
+                        <GridItem colSpan={1}>
+                          <ListItem>
+                            <strong>Sex:</strong> {patient.sex}
+                          </ListItem>
+                        </GridItem>
+                        <GridItem colSpan={1}>
+                          <ListItem>
+                            <strong>BMI:</strong> {patient.bmi}
+                          </ListItem>
+                        </GridItem>
+                        <GridItem colSpan={1}>
+                          <ListItem>
+                            <strong>Zipcode:</strong> {patient.zipCode}
+                          </ListItem>
+                        </GridItem>
+                      </Grid>
+                    </List>
+                  </Box>
+                )}
+              </GridItem>
+            </Grid>
+          </CardBody>
+        </Center>
+      </Card>
+
+      {parent === "PatientDetails" && (
+        <div>
+          <Card
+            variant="elevated"
+            m="3"
+            mt="5"
+            p="auto"
+            border="1px"
+            borderColor="teal.400"
+          >
             <CardHeader>
-                <Heading size="s" align="left" >Patient Info</Heading>
+              <Heading size="md" align="left">
+                Patient Exams
+              </Heading>
             </CardHeader>
-            <li>Patient Id: {patient.patientId}</li>
-            <li>Age: {patient.age} </li>
-            <li>Sex: {patient.sex} </li>
-            <li>BMI: {patient.bmi}</li>
-            <li>Zipcode: {patient.zipCode}</li>
-          </div>
-        </GridItem>
+            <CardBody>
+              <div className="examsList">
+                <TableContainer>
+                  <Table size="md" variant="simple" width="100%">
+                    <TableCaption>All Exams Record</TableCaption>
+                    <Tbody>
+                      <Thead>
+                        <Tr>
+                          <Th>Exams</Th>
+                          <Th>Image</Th>
+                          <Th>Key Findings</Th>
+                          <Th>Brixia Scores</Th>
+                        </Tr>
 
-        {parent === "PatientDetails" && (
-          <div>
-            <h1 style={{ textDecorationLine: "underline" }}>
-              Patient Exams
-            </h1>
-            <div className="examsList">
-              <TableContainer>
-                <Table size="md" variant="simple" width="100%">
-                  <TableCaption
-                  >All Exams Record</TableCaption>
-                  <Tbody>
-                    <Thead>
-                      <Tr>
-                        <Th>Exams</Th>
-                        <Th>Image</Th>
-                        <Th>Key Findings</Th>
-                        <Th>Brixia Scores</Th>
-                      </Tr>
-
-                      {patientExams.map(
-                        (exam) =>
-                          exam && (
-                            <Tr key={exam._id}>
-                              <Td>
-                                <ChakraLink
-                                  as={ReactRouterLink}
-                                  color="blue"
-                                  to={`/exams/${exam._id}`}
-                                >
-                                  {exam.examTypeId}
-                                </ChakraLink>
-                              </Td>
-                              <Td>
-                                <Image
-                                  src={exam.imageURL}
-                                  width="200%"
-                                  height="100%"
-                                />
-                              </Td>
-                              <Td className="text-wrap">{exam.keyFindings}</Td>
-                              <Td>{exam.brixiaScores}</Td>
-                            </Tr>
-                          )
-                      )}
-                    </Thead>
-                  </Tbody>
-                </Table>
-              </TableContainer>
-            </div>
-          </div>
-        )}
-      </Grid>
-    </>
+                        {patientExams.map(
+                          (exam) =>
+                            exam && (
+                              <Tr key={exam._id}>
+                                <Td>
+                                  <ChakraLink
+                                    as={ReactRouterLink}
+                                    color="blue"
+                                    to={`/api/exams/${exam._id}`}
+                                  >
+                                    {exam.examTypeId}
+                                  </ChakraLink>
+                                </Td>
+                                <Td>
+                                  <Image
+                                    src={exam.imageURL}
+                                    width="200%"
+                                    height="100%"
+                                  />
+                                </Td>
+                                <Td className="text-wrap">
+                                  {exam.keyFindings}
+                                </Td>
+                                <Td>{exam.brixiaScores}</Td>
+                              </Tr>
+                            )
+                        )}
+                      </Thead>
+                    </Tbody>
+                  </Table>
+                </TableContainer>
+              </div>
+            </CardBody>
+          </Card>
+        </div>
+      )}
+      {/* </Grid> */}
+    </div>
   );
 }
 

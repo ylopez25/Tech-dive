@@ -7,7 +7,7 @@ function ExamDetails() {
   const { exam } = useExamContext()
   return (
     <>
-      <div className="exams-info">
+      <div className="exams">
         <ExamInfo examContext={exam} />
       </div>
     </>
