@@ -2,8 +2,8 @@
 
 .App {
   text-align: center;
-  background-color: #00000014;
-  
+  background-color: white;
+  color: black;
 }
 
 .App-logo {
@@ -31,10 +31,10 @@
 
 .exams {
   margin: 0px 100px;
- }
+}
 
 .exam-info {
   margin-top: 20px;
-  background-color: white;
+  background-color: black;
   text-align: left;
 }
