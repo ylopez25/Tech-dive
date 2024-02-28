@@ -3,7 +3,6 @@
 .App {
   text-align: center;
   background-color: white;
-  color: black;
 }
 
 .App-logo {
@@ -29,8 +28,86 @@
   font-size: 1.5rem;
 }
 
+.home_top {
+  display:flex;
+  justify-content: center;
+  height: 400px;
+}
+
+.home_slogan {
+  border: 1px solid #984b43;
+  width: 50%;
+  color: black;
+  margin:30px;
+}
+
+.home_cta {
+  width: 50%;
+}
+
+.home_cta img {
+  display:flex;
+  justify-content: center;
+  margin-top:20%;
+}
+
+.home_button {
+  background-color: #233237;
+  height: 200px;
+}
+
+.home_button button {
+  color: #61dafb;
+  border: 3px solid red;
+}
+.exams {
+ margin: 0px 100px;
+}
+
 .exam-info {
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: white;
   text-align: left;
+}
+.nav {
+  align-items: center;
+  height:100%;
+  color: #233237;
+  font-family:"Gill Sans", sans-serif; 
+}
+
+.nav_link {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_logo {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #eac67a;
+}
+
+.img p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: black;
+  margin-top: 3px;
+}
+
+.navItem {
+  display:flex;
+  align-items: first baseline;
+  padding-left: 40px;
+  color: gray;
 }

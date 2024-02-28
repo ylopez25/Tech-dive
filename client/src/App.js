@@ -1,5 +1,6 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 import Exams from "./pages/Exams";
 import Navbar from "./components/Navbar";
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
@@ -60,6 +61,7 @@ function App() {
               <Route path="/exams/:id" element={<ExamInfo />} />
               <Route path="/admin/:id/update" element={<UpdateExam/>}/>
               <Route path="/patient/:id/exams" element={<PatientDetails />} />
+              <Route path="/" element={<Home/>} />
               <Route path="*" element={<PageNotFound />} />
               <Route path="/" element={<Exams />} />
             </Routes>
