@@ -33,8 +33,54 @@
   margin: 0px 100px;
  }
 
+.exams {
+ margin: 0px 100px;
+}
+
 .exam-info {
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: white;
   text-align: left;
+}
+.nav {
+  align-items: center;
+  height:100%;
+  color: #233237;
+  font-family:"Gill Sans", sans-serif; 
+}
+
+.nav_link {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_logo {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #eac67a;
+}
+
+.img p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: black;
+  margin-top: 3px;
+}
+
+.navItem {
+  display:flex;
+  align-items: first baseline;
+  padding-left: 40px;
+  color: gray;
 }

@@ -28,11 +28,12 @@ import { Link as ReactRouterLink } from "react-router-dom";
 import CreateExam from "./CreateExam";
 
 export const Admin = () => {
-  const [exams, setExams] = useState([]);
-  const [dummy, setDummy] = useState([]);
-  const [examtypes, setExamTypes] = useState([]);
+  const [exams, setExams] = useState([]);;
+  const [dummy, setDummy] = useState([]);;
+  const [examtypes, setExamTypes] = useState([]);;
   const [loading, setLoading] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+    ;
+  const { isOpen, onOpen, onClose } = useDisclosure();;
 
   useEffect(() => {
     const fetchExams = async () => {
@@ -180,7 +181,7 @@ export const Admin = () => {
                             className="text-wrap"
                             as={ReactRouterLink}
                             color="blue"
-                            to={`/api/patient/${exam._id}/exams`}
+                            to={`/patient/${exam._id}/exams`}
                           >
                             {exam.patientId}
                           </ChakraLink>
@@ -190,7 +191,7 @@ export const Admin = () => {
                           <ChakraLink
                             as={ReactRouterLink}
                             color="blue"
-                            to={`/api/exams/${exam._id}`}
+                            to={`/exams/${exam._id}`}
                           >
                             {exam.examTypeId}{" "}
                           </ChakraLink>

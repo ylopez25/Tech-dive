@@ -44,8 +44,9 @@ function PatientInfo({ parent, examId }) {
           `http://localhost:9000/exams/patient/${id}/exams`
         );
         const res = await response.json();
-        console.log(res);
+
         setPatientExams(res.exams);
+
         setPatient({
           age: res.age,
           bmi: res.bmi,
@@ -86,7 +87,7 @@ function PatientInfo({ parent, examId }) {
                 {examId && (
                   <ChakraLink
                     as={ReactRouterLink}
-                    to={`/api/patient/${examId}/exams`}
+                    to={`/patient/${examId}/exams`}
                     display="block"
                     textAlign="center"
                     mt={10} // Adjust margin top as needed

@@ -64,8 +64,8 @@ export default function ExamsList({ exams, loading }) {
                                                 <Td> <ChakraLink
                                                     className="text-wrap"
                                                     as={ReactRouterLink} color="blue"
-                                                    to={`/api/patient/${exam._id}/exams`}>{exam.patientId}</ChakraLink></Td>
-                                                <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/api/exams/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
+                                                    to={`/patient/${exam._id}/exams`}>{exam.patientId}</ChakraLink></Td>
+                                                <Td > <ChakraLink as={ReactRouterLink} color="blue" to={`/exams/${exam._id}`}>{exam.examTypeId} </ChakraLink></Td>
 
                                                 <Td>
                                                     <Image
