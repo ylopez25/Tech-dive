@@ -75,24 +75,20 @@ function ExamUpdate() {
   }, [id]);
 
   return (
-    <div className="exams">
-      <form onSubmit={handleSubmit} >
-        <Card className="header" variant="elevated" m="3" mt="5" p="auto" border='1px' borderColor='teal.400'>
-          <CardHeader>
-            <Heading size="s" align="left" >Edit Exam</Heading>
-          </CardHeader>
-          <CardBody>
-            <ButtonGroup spacing="60" size="lg">
-              <Button type="submit" width="135px" height="41.9" fontSize="12px" colorScheme='teal'>SUBMIT</Button>
-              <Button type="cancel" width="135px" height="41.9" fontSize="12px" colorScheme='red'>CANCEL</Button>
-            </ButtonGroup>
-
-          </CardBody>
-        </Card>
-
-
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
-          <Card className="patient-update" variant="elevated" ml="3" mt="5" p="auto" border='1px' borderColor='teal.400'>
+    <div className="exams"  >
+       {/* <Center h="100vh"> */}
+      <form onSubmit={handleSubmit}style={{ marginTop: "calc(50vh - 300px)" }}>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext > 
+          <Card
+            className="patient-update"
+            variant="elevated"
+            ml="3"
+            mt="5"
+            p="auto"
+            border="1px"
+            borderColor="teal.400"
+            boxShadow="lg"
+          >
             <List>
               <CardHeader>
                 <Heading size="s" align="left">Patient Update</Heading>
@@ -238,8 +234,30 @@ function ExamUpdate() {
           </Card>
         </Grid>
 
-
+        <ButtonGroup spacing="60" size="lg" mt={10}>
+          <Button
+            type="submit"
+            width="135px"
+            height="41.9"
+            fontSize="12px"
+            colorScheme="teal"
+            boxShadow="dark-lg"
+          >
+            SUBMIT
+          </Button>
+          <Button
+            type="cancel"
+            width="135px"
+            height="41.9"
+            fontSize="12px"
+            colorScheme="red"
+            boxShadow="dark-lg"
+          >
+            CANCEL
+          </Button>
+        </ButtonGroup>
       </form>
+      {/* </Center> */}
     </div>
   );
 }
