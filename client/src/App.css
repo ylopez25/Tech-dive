@@ -59,6 +59,8 @@
 .home_button button {
   color: #61dafb;
   border: 3px solid red;
+margin-top: 80px;
+
 }
 .exams {
  margin: 0px 100px;
