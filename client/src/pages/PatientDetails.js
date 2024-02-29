@@ -3,7 +3,9 @@ function PatientDetails() {
 
     return (
         <>
+
             <PatientInfo parent="PatientDetails" />
+
         </>
     )
 }

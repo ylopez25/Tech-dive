@@ -9,6 +9,7 @@ import Admin from "./pages/Admin";
 import ExamInfo from "./components/ExamInfo";
 import PatientDetails from "./pages/PatientDetails";
 import UpdateExam from "./pages/UpdateExam";
+import CreateExam from "./pages/CreateExam";
 
 const activeLabelStyles = {
   transform: "scale(0.85) translateY(-24px)"
@@ -51,17 +52,17 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
-      <div className="App">
+      <div className="App" backgroundColor='blackAlpha.200'>
         <BrowserRouter>
           <Navbar />
           <div className="pages">
             <Routes>
               <Route path="/exams" element={<Exams />} />
               <Route path="/admin" element={<Admin />} />
-              <Route path="/exams/:id" element={<ExamInfo />} />
-              <Route path="/admin/:id/update" element={<UpdateExam/>}/>
-              <Route path="/patient/:id/exams" element={<PatientDetails />} />
-              <Route path="/" element={<Home/>} />
+              <Route path="/api/exams/:id" element={<ExamInfo />} />
+              <Route path="/api/patient/:id/exams" element={<PatientDetails />} />
+              <Route path="/admin/create" element={<CreateExam />} />
+              <Route path="/admin/:id/update" element={<UpdateExam />} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>

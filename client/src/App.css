@@ -29,7 +29,7 @@
 }
 
 .exams {
- margin: 0px 100px;
+  margin: 0px 100px;
 }
 
 .exam-info {
@@ -37,21 +37,22 @@
   background-color: white;
   text-align: left;
 }
+
 .nav {
   align-items: center;
-  height:100%;
+  height: 100%;
   color: #233237;
-  font-family:"Gill Sans", sans-serif; 
+  font-family: "Gill Sans", sans-serif;
 }
 
 .nav_link {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .nav_logo {
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -74,7 +75,7 @@
 }
 
 .navItem {
-  display:flex;
+  display: flex;
   align-items: first baseline;
   padding-left: 40px;
   color: gray;

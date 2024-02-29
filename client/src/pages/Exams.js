@@ -26,8 +26,7 @@ export default function Exams() {
     <>
       <div className="exams">
         <div className="total">
-          <div style={{ marginTop: "40px", fontWeight: "bold" }} className="navItem">
-            <h5>Number of Exams: {exams.length}</h5>
+          <div m={5} className="navItem">
           </div>
           <ExamsList loading={loading} exams={exams} />
         </div>
