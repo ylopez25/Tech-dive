@@ -1,5 +1,6 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 import Exams from "./pages/Exams";
 import Navbar from "./components/Navbar";
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'

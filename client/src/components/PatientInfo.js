@@ -44,8 +44,9 @@ function PatientInfo({ parent, examId }) {
           `http://localhost:9000/exams/patient/${id}/exams`
         );
         const res = await response.json();
-        console.log(res);
+
         setPatientExams(res.exams);
+
         setPatient({
           age: res.age,
           bmi: res.bmi,
