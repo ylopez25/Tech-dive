@@ -61,7 +61,7 @@ function App() {
               <Route path="/exams/:id" element={<ExamInfo />} />
               <Route path="/admin/:id/update" element={<UpdateExam/>}/>
               <Route path="/patient/:id/exams" element={<PatientDetails />} />
-              <Route path="/" element={<Home/>} />
+              <Route path="/" element={<Exams/>} />
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </div>
