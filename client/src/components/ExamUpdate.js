@@ -78,10 +78,10 @@ function ExamUpdate() {
   }, [id]);
 
   return (
-    <div className="exams">
-      <form onSubmit={handleSubmit}>
-
-        <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext>
+    <div className="exams"  >
+       {/* <Center h="100vh"> */}
+      <form onSubmit={handleSubmit}style={{ marginTop: "calc(50vh - 300px)" }}>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} centerContext > 
           <Card
             className="patient-update"
             variant="elevated"
@@ -248,32 +248,32 @@ function ExamUpdate() {
               </CardBody>
             </List>
           </Card>
-            </Grid>
+        </Grid>
 
-          <ButtonGroup spacing="60" size="lg" mt={10}>
-                <Button
-                  type="submit"
-                  width="135px"
-                  height="41.9"
-                  fontSize="12px"
-                  colorScheme="teal"
-                  boxShadow="dark-lg"
-                >
-                  SUBMIT
-                </Button>
-                <Button
-                  type="cancel"
-                  width="135px"
-                  height="41.9"
-                  fontSize="12px"
-                  colorScheme="red"
-                  boxShadow="dark-lg"
-                >
-                  CANCEL
-                </Button>
-              </ButtonGroup>
-
+        <ButtonGroup spacing="60" size="lg" mt={10}>
+          <Button
+            type="submit"
+            width="135px"
+            height="41.9"
+            fontSize="12px"
+            colorScheme="teal"
+            boxShadow="dark-lg"
+          >
+            SUBMIT
+          </Button>
+          <Button
+            type="cancel"
+            width="135px"
+            height="41.9"
+            fontSize="12px"
+            colorScheme="red"
+            boxShadow="dark-lg"
+          >
+            CANCEL
+          </Button>
+        </ButtonGroup>
       </form>
+      {/* </Center> */}
     </div>
   );
 }
