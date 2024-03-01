@@ -23,8 +23,8 @@
 
 #### STEPS
 0. Call fake data using api endpoints provided
-    - get all exams: `https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams`
-    - get one patient id: `https://czi-covid-lypkrzry4q-uc.a.run.app/api/patient/COVID-19-AR-16406504`
+    - get all exams: `https://czi-covid-lypkrzry4q-uc.a.run.app/exams`
+    - get one patient id: `https://czi-covid-lypkrzry4q-uc.a.run.app/patient/COVID-19-AR-16406504`
     - image url example: `https://ohif-hack-diversity-covid.s3.amazonaws.com/covid-png/COVID-19-AR-16406504_XR_CHEST_AP_PORTABLE_2.png`
 1. Start with index page displaying all exams with key information pieces in chart (hardcode data and display on page)
     - Use functional comps to display data

@@ -31,22 +31,22 @@ This web app uses the following routes to dynamically navigate the app to create
 ## Admin
 - A logged in Admin user may read, delete, update or create Exams, from a page of all posted Exams.
 
-  - `GET /api/admin/exams` 
-  - `POST /api/admin/exams/create`
-  - `PUT /api/admin/exams/:id/update`
-  - `DELETE /api/admin/exams/:id`
+  - `GET /admin/exams` 
+  - `POST /admin/exams/create`
+  - `PUT /admin/exams/:id/update`
+  - `DELETE /admin/exams/:id`
 
 
 ## Exams
 
 - Every user can view all Exams or a specific Exam, logged in or not. 
 
-  - `GET ALL /api/exams`
-  - `GET ONE /api/exams/:id`
+  - `GET ALL /exams`
+  - `GET ONE /exams/:id`
 - ### Patient Page (MVP friendly)
   - View Every exam associated with a patient by clicking the patients ID
   
-  - `GET ONE /api/exams/patient/:patientId/exams`
+  - `GET ONE /exams/patient/:patientId/exams`
 
 
 
@@ -55,7 +55,7 @@ This web app uses the following routes to dynamically navigate the app to create
 
 - Every user can view Patient details, along with the list of all their exams and a specific Exam of that Patient, logged in or not.
 
-  - `GET /api/patient/:id` -->
+  - `GET /patient/:id` -->
 
 
 
@@ -69,4 +69,4 @@ This web app uses the following routes to dynamically navigate the app to create
 ### Patient Portal (After Model Implementation)
 - View Every exam associated with a patient
   
-  - `GET ALL /api/patient/:id/exams`
+  - `GET ALL /patient/:id/exams`

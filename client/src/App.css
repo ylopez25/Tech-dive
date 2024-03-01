@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Graduate&family=Gravitas+One&family=Press+Start+2P&family=Rubik:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Graduate&family=Gravitas+One&family=Press+Start+2P&family=Rubik:wght@300&display=swap');
 
 .App {
   text-align: center;
   background-color: white;
-  color: black;
 }
 
 .App-logo {
@@ -29,8 +28,142 @@
   font-size: 1.5rem;
 }
 
+.exams {
+  margin: 0px 100px;
+}
+
 .exam-info {
-  margin-top: 20px;
+  margin-top: 10px;
   background-color: white;
   text-align: left;
 }
+
+.nav {
+  align-items: center;
+  height: 100%;
+  color: #233237;
+  font-family: "Gill Sans", sans-serif;
+}
+
+.nav_link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #eac67a;
+}
+
+.img p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: black;
+  margin-top: 3px;
+}
+
+.navItem {
+  display: flex;
+  align-items: first baseline;
+  padding-left: 40px;
+  color: gray;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Graduate&family=Gravitas+One&family=Press+Start+2P&family=Rubik:wght@300&display=swap');
+.App {
+  text-align: center;
+  background-color: #00000014;
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+.App-link {
+  color: #61DAFB;
+}
+#error404 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+}
+.exams {
+  margin: 0px 100px;
+ }
+.exams {
+ margin: 0px 100px;
+}
+.exam-info {
+  margin-top: 10px;
+  background-color: white;
+  text-align: left;
+}
+.nav {
+  align-items: center;
+  height:100%;
+  color: #233237;
+  font-family:"Gill Sans", sans-serif;
+}
+.nav_link {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav_logo {
+  display:flex;
+  
+  justify-content: center;
+  align-items: center;
+}
+.img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #38B2AC;
+}
+.img p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  /* color: black; */
+  color: white;
+  margin-top: 3px;
+}
+.navItem {
+  display:flex;
+  align-items: first baseline;
+  padding-left: 40px;
+  color: gray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
