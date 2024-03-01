@@ -25,8 +25,7 @@ export default function Home() {
         <div className="home_imgs">
         <img src="" alt="one" />
         <img src="" alt="one" />
-        <img src="" alt="one" />
-        <img src="" alt="one" />
+  
         </div>
       </div>
     </div>
