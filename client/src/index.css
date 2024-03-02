@@ -27,6 +27,10 @@ code {
   height: 100px;
 }
 
+.red-logo{
+  color: red;
+}
+
 .nav a {
   /* color: white; */
   text-decoration: none;

@@ -69,7 +69,6 @@ const ExamCreate = ({ dummydata }) => {
         if (object && !object.adminId) {
             object['adminId'] = Math.floor(Math.random() * data.length - 1)
         }
-        console.log(object)
         if (object) {
             Object.keys(object).map((key) => {
                 if (object[key] === "") {
@@ -90,7 +89,6 @@ const ExamCreate = ({ dummydata }) => {
     }
 
     const handleSubmit = async (values) => {
-        console.log(values)
         try {
             const postUrl = 'http://localhost:9000/exams/createExam'
             toast({
