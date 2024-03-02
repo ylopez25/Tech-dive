@@ -5,23 +5,23 @@ This web app uses the following API routes to dynamically update the page to cre
 ## Admin
 - A logged in Admin user may delete, update or create Exams, from a page of all posted Exams.
 
-  - `GET /api/admin` 
+  - `GET /admin` 
 
 
 ## Exams
 
 - Every user can view all Exams or a specific Exam, logged in or not. 
 
-  - `GET ALL /api/exams`
-  - `GET ONE /api/exam/:id`
+  - `GET ALL /exams`
+  - `GET ONE /exam/:id`
 - View Every exam associated with a patient
   
-  - OR `GET ONE /api/exams/patient/:id`
+  - OR `GET ONE /patient/:id/exams`
 
 - Admin use 
-  - `POST /api/exam/create`
-  - `PUT /api/exam/:id/update`
-  - `DELETE /api/exam/:id`
+  - `POST /exam/create`
+  - `PUT /exam/:id/update`
+  - `DELETE /exam/:id`
 
 
 
@@ -29,7 +29,8 @@ This web app uses the following API routes to dynamically update the page to cre
 
 - Every user can view Patient details, along with the list of all their exams and a specific Exam of that Patient, logged in or not.
 
-  - `GET /api/patient/:id` -->
+  - `GET /patient/:id` -->
+
 
 
 
@@ -43,4 +44,4 @@ This web app uses the following API routes to dynamically update the page to cre
 ### Patient Portal
 - View Every exam associated with a patient
   
-  - `GET ALL /api/patient/:id/exams`
+  - `GET ALL /patient/:id/exams`
