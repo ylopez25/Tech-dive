@@ -90,6 +90,17 @@ margin-top: 80px;
   align-items: center;
 }
 
+.home_imgs {
+  display: flex;
+  justify-content: space-around;
+}
+
+.home_reviews img{
+  border: 2px solid red;
+  width: 50px;
+  height:50px;
+}
+
 .img {
   width: 25px;
   height: 25px;
