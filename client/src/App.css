@@ -52,7 +52,7 @@
 }
 
 .home_button {
-  background-color: #233237;
+border:2px dotted black;
   height: 200px;
 }
 
