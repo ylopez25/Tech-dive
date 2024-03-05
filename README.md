@@ -8,14 +8,14 @@ One of the tools used by doctors to assess the condition of patients with COVID-
 
 # Images
 
-## Index Page
-### *Add Picture*
-## Sign Up
-### *Add Picture*
-## Log In
-### *Add Picture*
-## Administration Page
-### *Add Picture*
+## <p style="text-align: center;">Exams Index Page</p>
+### ![Exams Index Page](./imgAssests/exams.png)
+## <p style="text-align: center;">Administration Page</p>
+### ![Administration Page](./imgAssests/admin-page.png)
+## <p style="text-align: center;">Exam Details Page</p>
+### ![Exam Details Page](./imgAssests/exam-details.png)
+## <p style="text-align: center;">Patient Portal</p>
+### ![Patient Portal](./imgAssests/patient-portal.png)
 
 # Getting started
 This project contains two different applications:
@@ -86,7 +86,7 @@ As a logged in user you can:
 
 ## This application is a work in progress, the following features will be available in the future...
 
-- ## Some feature
-   - Some description
+- ## Patient Log-in
+   - An updated Schema will allow dimension for the app to accomodate patients to be able to view their exams, and contact their specialist.
 - ## Another feature
    - Another description
