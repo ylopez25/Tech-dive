@@ -24,7 +24,7 @@ export default function Home() {
         <h3>Awards</h3>
         <div className="home_imgs">
         <img src="https://receivablesavvy.com/wp-content/uploads/2022/03/Tradeshift-Award-Emblem-Shiny-300x212.png" alt="one" />
-        <img src="" alt="one" />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzqF8Pj_fbBWU917nkntcfz8OVTLprCfYH_w&usqp=CAU" alt="one" />
         <img src="" alt="one" />
         <img src="" alt="one" />
         </div>
