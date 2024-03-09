@@ -23,7 +23,7 @@ export default function Home() {
       <div className="home_reviews">
         <h3>Awards</h3>
         <div className="home_imgs">
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Freceivablesavvy.com%2Fnews%2Ftradeshift-announced-winner-first-annual-perceptions-analytics-award-reliable-network%2F&psig=AOvVaw1uyCVz83QUuRGnRC9t9nLu&ust=1709957192507000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCOCA9Irl44QDFQAAAAAdAAAAABAI" alt="one" />
+        <img src="https://receivablesavvy.com/wp-content/uploads/2022/03/Tradeshift-Award-Emblem-Shiny-300x212.png" alt="one" />
         <img src="" alt="one" />
         <img src="" alt="one" />
         <img src="" alt="one" />
