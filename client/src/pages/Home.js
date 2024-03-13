@@ -18,7 +18,7 @@ export default function Home() {
         </div>
       </div>
       <div className="home_button">
-        <button>Trial</button>
+        <button>Explore</button>
       </div>
       <div className="home_reviews">
         <h3>Awards</h3>
