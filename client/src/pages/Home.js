@@ -29,6 +29,18 @@ export default function Home() {
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzqF8Pj_fbBWU917nkntcfz8OVTLprCfYH_w&usqp=CAU" alt="one" />
         </div>
       </div>
+      <footer>
+        <div>
+        social media 
+        </div>
+        <div>
+        contacts
+        </div>
+        <div>
+        info
+        </div>
+
+      </footer>
     </div>
   );
 }
