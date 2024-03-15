@@ -30,16 +30,6 @@ export default function Home() {
         </div>
       </div>
       <footer>
-        <div>
-        social media 
-        </div>
-        <div>
-        contacts
-        </div>
-        <div>
-        info
-        </div>
-
       </footer>
     </div>
   );
