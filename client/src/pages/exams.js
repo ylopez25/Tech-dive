@@ -66,6 +66,7 @@ export const ExamsContextProvider = ({ children }) => {
       try {
         // const response = await fetch('https://czi-covid-lypkrzry4q-uc.a.run.app/api/exams')
         setLoading(true)
+        //todo add API fix for deployment
         const response = await fetch('http://localhost:9000/exams')
 
         //todo put localhost in env

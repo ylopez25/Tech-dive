@@ -84,7 +84,7 @@ const deleteExam = async (req, res) => {
         }
 
         const examAfter = await Exam.findById(id)
-    
+
         res.status(200).json(examAfter)
     }
     
