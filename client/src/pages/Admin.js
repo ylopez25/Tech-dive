@@ -24,7 +24,7 @@ export const Admin = () => {
         const fetchExams = async () => {
             try {
                 setLoading(true);
-                const response = await fetch("http://localhost:9000/exams");
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}/exams`);
                 // need an exam types be route
                 if (response.ok) {
                     const res = await response.json();
@@ -39,7 +39,7 @@ export const Admin = () => {
     }, []);
 
     const performDelete = async (id) => {
-        const deleteUrl = `http://localhost:9000/exams/${id}`;
+        const deleteUrl = `${process.env.REACT_APP_BACKEND_SERVER}/exams/${id}`;
         const fetchConfig = {
             method: "DELETE",
             headers: {
@@ -50,7 +50,7 @@ export const Admin = () => {
         fetch(deleteUrl, fetchConfig)
             .then((res) => res.json())
             .then(async () => {
-                const res = await fetch("http://localhost:9000/exams");
+                const res = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}/exams`);
                 const resE = await res.json();
                 if (res.ok) {
                     setExams(resE);

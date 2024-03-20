@@ -90,7 +90,9 @@ const ExamCreate = ({ dummydata }) => {
 
     const handleSubmit = async (values) => {
         try {
-            const postUrl = 'http://localhost:9000/exams/createExam'
+        // const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}/exams`);
+            
+            const postUrl = `${process.env.REACT_APP_BACKEND_SERVER}/exams/createExam`
             toast({
                 title: 'Submitting',
                 description: 'Your exam is being submitted!',

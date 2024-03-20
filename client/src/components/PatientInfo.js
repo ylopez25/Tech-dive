@@ -41,7 +41,7 @@ function PatientInfo({ parent, examId }) {
     const fetchPatientExams = async () => {
       try {
         const response = await fetch(
-          `http://localhost:9000/exams/patient/${id}/exams`
+          `${process.env.REACT_APP_BACKEND_SERVER}/exams/patient/${id}/exams`
         );
         const res = await response.json();
 

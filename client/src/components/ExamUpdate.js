@@ -42,7 +42,7 @@ function ExamUpdate() {
 
     try {
       const response = await fetch(
-        `http://localhost:9000/exams/${id}/updateExam`,
+        `${process.env.REACT_APP_BACKEND_SERVER}/exams/${id}/updateExam`,
         {
           method: "PATCH",
           headers: {
@@ -64,7 +64,7 @@ function ExamUpdate() {
   useEffect(() => {
     const fetchExam = async () => {
       try {
-        const response = await fetch(`http://localhost:9000/exams/${id}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_SERVER}/exams/${id}`);
         const res = await response.json();
         setExam(res);
       } catch (e) {
