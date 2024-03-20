@@ -11,7 +11,9 @@ export default function Exams() {
     const fetchExams = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:9000/exams");
+        // const response = await fetch("http://localhost:9000/exams");
+        const response = await fetch("https://rayforce-x.onrender.com/exams");
+
         const res = await response.json();
         setExams(res);
         setLoading(false);
